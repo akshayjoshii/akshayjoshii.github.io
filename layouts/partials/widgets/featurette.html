@@ -26,7 +26,7 @@
       <div class="progress-bar" style="width:{{ .parcent }}"></div>
       {{ with .icon }}<div class="featurette-icon"><i class="{{ $pack }} {{ $pack_prefix }}-{{ . }}"></i></div>{{ end }}
       <h3>{{ .name | markdownify | emojify }}</h3>
-      {{ with .parcent }}<p>{{ . }}</p>{{ end }}
+      {{ with .parcent }}{{ end }}
     </div>
   </div>
   {{ end }}

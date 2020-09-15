@@ -1,48 +1,46 @@
 ---
 # Display name
-name: Michael Vahn
-avatar_image: "user-full.png"
+name: Akshay Joshi
+avatar_image: "akshay_2.png"
 # Username (this should match the folder name)
 authors:
 - admin
 # resume download button
 btn:
-- url : "https://sourcethemes.com/academic/docs/install/"
-  label : "Download Resume"
+- url : "files/cv.pdf"
+  label : "Download Résumé/CV"
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: M. Sc. Data Science & Artificial Intelligence
 
 # Organizations/Affiliations
 organizations:
-- name: Stanford University
-  url: ""
+- name: Universität des Saarlandes
+  url: "https://www.uni-saarland.de/start.html"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: Graduate student with an extensive background in Semiconductors and Software Engineering R&D, currently pursuing research in Neuro-Symbolic Reasoning, Self-supervised Learning and Conversational QA.
 
 # Should the user's education and interests be displayed?
-display_education: false
+display_education: true
 
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Neuro-Symbolic AI
+- Embodied Vision
+- Visual Scene Understanding
+- Dynamic Simultaneous Localization and Mapping
 
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: M. Sc. in Data Science & Artificial Intelligence
+    institution: Universität des Saarlandes
+    year: 2021
+  - course: B. Eng. in Computer Science & Engineering
+    institution: Visvesvaraya Technological University
+    year: 2017
 
 # Social/academia Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
@@ -51,16 +49,27 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: '#contact'  # For a direct email link, use "mailto:test@example.org".
-- icon: twitter
-  icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
-- icon: google-scholar
-  icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: mailto:akshayjoshi56@gmail.com  # For a direct email link, use "mailto:test@example.org".
+
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/akshayjoshii
+
+- icon: linkedin
+  icon_pack: fab
+  link: https://www.linkedin.com/in/akshayjoshi56/
+
+- icon: whatsapp
+  icon_pack: fab
+  link: https://wa.me/+4915733643012?text=Hello!,%20I%20am%20Akshay%20Joshi.%20Please%20call%20if%20it's%20urgent.
+  
+- icon: instagram
+  icon_pack: fab
+  link: https://www.instagram.com/akkshayjoshii/
+  # icon: facebook
+  # icon_pack: fab
+  # link: https://www.facebook.com/Aksh.J0shi/
+
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.  
 # - icon: cv
@@ -77,8 +86,5 @@ user_groups:
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Graduate student with an extensive background in Semiconductors and Software Engineering R&D, currently pursuing research in 3D Scene Reconstruction, Neuro-Symbolic Reasoning, Self-supervised Learning and Multilingual Conversational Question Answering.
 
-![reviews](../../img/certifacates.jpg)
-
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum. The point of using Lorem Ipsum. distracted by the readable content of a page.

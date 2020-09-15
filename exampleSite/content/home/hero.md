@@ -8,7 +8,7 @@ weight = 10  # Order that this section will appear.
 title = "Academia"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
-hero_media = "user-2.jpg"
+hero_media = "akshay_1.png"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -24,8 +24,8 @@ hero_media = "user-2.jpg"
   # gradient_end = "#000"
   
   # Background image.
-  # image = ""  # Name of image in `static/img/`.
-  # image_darken = 0.6  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
+  # image = "math.jpg"  # Name of image in `static/img/`.
+  # image_darken = 0.85  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
 
   # Text color (true=light or false=dark).
   text_color_light = false
@@ -34,14 +34,14 @@ hero_media = "user-2.jpg"
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
 [btn]
-  url = "/authors/admin"
-  label = "Know more"
+  url = "#about"
+  label = "Know More"
   
 [btn_alt]
   url = "#contact"
-  label = "Contact me"
+  label = "Contact Me"
 
 +++
-## My name is **Michael Vahn** and I'm a **Professor** specializing in **Artificial Intelligence**
+## My name is **Akshay Joshi** and I'm a **M. Sc. Student** specializing in **Data Science & Artificial Intelligence**
 
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.
+Research Interests: Visual Scene Understanding, Conversational Question Answering, Dynamic 3D Reconstruction & SLAM.
