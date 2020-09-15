@@ -1,5 +1,5 @@
 <div align="center">
-  <h1><a href="https://gethugothemes.com/" target="_blank" rel="noopener noreferrer">Academia Hugo</a></h1>
+  <h1><a href="https://akshayjoshi.tech/" target="_blank" rel="noopener noreferrer">Akshay Joshi Research Portfolio</a></h1>
 </div>
 
 ## Installation
