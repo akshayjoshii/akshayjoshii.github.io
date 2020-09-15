@@ -1,6 +1,5 @@
 [build]
-  command = "hugo --themesDir ../../ --i18n-warnings --gc --minify --enableGitInfo --baseURL $URL"
-  publish = "public"
+  publish = "academic-hugo/public/"
 
 [build.environment]
   HUGO_VERSION = "0.74.3"
@@ -9,11 +8,11 @@
 [context.production.environment]
   HUGO_ENV = "production"
 
-[context.deploy-preview]
-  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+# [context.deploy-preview]
+#   command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
-[context.branch-deploy]
-  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+# [context.branch-deploy]
+#   command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
 
 [[headers]]
   for = "*.webmanifest"
