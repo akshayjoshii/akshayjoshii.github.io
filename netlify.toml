@@ -1,5 +1,5 @@
 [build]
-  publish = "academia-hugo/public/"
+  publish = "public/"
 
 [build.environment]
   HUGO_VERSION = "0.74.3"
