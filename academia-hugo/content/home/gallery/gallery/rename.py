@@ -11,5 +11,5 @@ def rename(path):
   
 # Driver Code 
 if __name__ == '__main__': 
-	path = r"C:\Hugo\akshay\themes\academia-hugo\exampleSite\content\home\gallery\gallery"
+	path = r"academia-hugo\content\home\gallery\gallery"
 	rename(path)
