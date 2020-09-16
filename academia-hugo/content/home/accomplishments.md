@@ -19,43 +19,60 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[item]]
-  organization = "Coursera"
-  organization_url = "https://www.coursera.org"
-  title = "Neural Networks and Deep Learning"
+  organization = "Visvesvaraya Technological University"
+  organization_url = "https://vtu.ac.in/en/"
+  title = "Bachelor of Engineering Class Rank"
   url = ""
+  # The below tag generates the "See Certificate entry in the section"
   certificate_url = ""
-  date_start = "2018-10-01"
-  date_end = ""
-  description = "Formulated informed blockchain models, hypotheses, and use cases."
+  date_start = "2013-08-01"
+  date_end = "2017-06-30"
+  description = """
+  Details:
+  * Ranked in the Top 5% of the graduating class in Computer Science & Engineering department. 
+  * Total number of students in the graduating cohort of 2017 were 106.
+  """
 
 [[item]]
-  organization = "edX"
-  organization_url = "https://www.edx.org"
-  title = "Blockchain Fundamentals"
-  url = "https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals"
-  certificate_url = "https://www.edx.org"
-  date_start = "2018-03-01"
-  date_end = ""
-  description = "Formulated informed blockchain models, hypotheses, and use cases."
+  organization = "Advanced Micro Devices"
+  organization_url = "https://www.amd.com/"
+  title = "Professional Recommendations"
+  url = "https://www.linkedin.com/in/akshayjoshi56/"
+  certificate_url = ""
+  date_start = "2018-02-01"
+  date_end = "2019-09-23"
+  description = """
+  Details:
+  * Recommended by the Director of Technology & Software Engineering and various Senior Engineers at AMD.
+  * Demonstrated solid technical expertise and agile adaptability skills.
+  """
   
 [[item]]
-  organization = "DataCamp"
-  organization_url = "https://www.datacamp.com"
-  title = "Object-Oriented Programming in R: S3 and R6 Course"
+  organization = "Visvesvaraya Technological University"
+  organization_url = "https://vtu.ac.in/en/"
+  title = "Academic Recommendations"
   url = ""
-  certificate_url = "https://www.datacamp.com"
-  date_start = "2017-07-01"
-  date_end = "2017-12-21"
-  description = ""
+  certificate_url = ""
+  date_start = "2013-08-01"
+  date_end = "2017-06-30"
+  description = """
+  Details:
+  * Recommended by Prof. Shiva Kumar Dalali, Prof. Manjunatha P.B and Prof. Raghavendra T.S in the Computer Science department.
+  * Illustrated exceptional research/course work in Discrete Mathematics, Computer Graphics & Visualization.
+  """
   
 [[item]]
-  organization = "RDX"
-  organization_url = "https://www.rdx.com"
-  title = "Object-Oriented Programming in R: S3 and R6 Course"
+  organization = "Pramana Pre-University College"
+  organization_url = "https://www.icbse.com/schools/pramana-puc-raichur-67v5qy"
+  title = "Vice-Captain"
   url = ""
-  certificate_url = "https://www.datacamp.com"
-  date_start = "2017-07-01"
-  date_end = "2017-12-21"
-  description = ""
+  certificate_url = ""
+  date_start = "2012-12-01"
+  date_end = "2012-12-10"
+  description = """
+  Details:
+  * Vice-Captain of state-level Throwball team, representing Raichur district, India.
+  * The Pre-University tournament was held at Mysore, Karnataka, India.
+  """
 
 +++

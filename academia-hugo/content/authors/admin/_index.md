@@ -22,7 +22,7 @@ organizations:
   url: "https://www.uni-saarland.de/start.html"
 
 # Short bio (displayed in user profile at end of posts)
-bio: Graduate student with an extensive background in Semiconductors and Software Engineering R&D, currently pursuing research in Neuro-Symbolic Reasoning, Self-supervised Learning and Conversational QA.
+bio:
 
 # Should the user's education and interests be displayed?
 display_education: true
