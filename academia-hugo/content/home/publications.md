@@ -8,7 +8,7 @@ active = true  # Activate this widget? true/false
 weight = 48  # Order that this section will appear.
 
 title = "Research Publications"
-subtitle = "Seminars, Conferences & Publications that I have delivered/working on"
+subtitle = "Seminars, Conferences & Publications that I have delivered/currently working on"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.

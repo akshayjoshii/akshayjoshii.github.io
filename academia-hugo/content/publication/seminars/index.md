@@ -1,31 +1,30 @@
 ---
-title: "An example journal article"
+title: "Research Posters on Advanced Cryptography & High Performance Quantum Computing"
 authors:
 - admin
-- Robert Ford
-date: "2015-09-01T00:00:00Z"
+- Poojitha Vijayanarasimha
+date: "2017-04-01T00:00:00Z"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).
-publishDate: "2017-01-01T00:00:00Z"
+publishDate: "2017-04-01T00:00:00Z"
 
 # Publication type.
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
 # 3 = Preprint / Working Paper; 4 = Report; 5 = Book; 6 = Book section;
 # 7 = Thesis; 8 = Patent
-publication_types: ["2"]
+publication_types: ["0"]
 
 # Publication name and optional abbreviated publication name.
-publication: "*Journal of Source Themes, 1*(1)"
+publication: ""
 publication_short: ""
 
-abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.
+abstract: During my bachelors degree I have delivered a few seminars and research poster in the field of High Performance Computing (HPC), Quantum Logic Design & Advanced Cryptography. At Computer Society of India (CSI) 2017 conference, I have presented a research poster titled 'Advanced Cryptographic Standards & Security'. Furthermore, delivered bachelor degree seminar on 'High Performance Quantum Computing' & 'Designing of a Phased Array Antenna for 5G Mobile Phone Applications'.
 
 # Summary. An optional shortened abstract.
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
+summary: At Computer Society of India 2017 conference, presented a research poster on Advanced Cryptographic Standards & Security. Further, delivered seminars on Quantum Computing & Phased Array Antennas for 5G Mobile Applications.
 
 tags:
-- Source Themes
 featured: false
 
 # links:
@@ -43,7 +42,7 @@ featured: false
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/jdD8gXaTZsc)'
+  caption: 'Image credit: [**Medium**](https://medium.com/syncedreview/alibaba-launches-11-qubit-quantum-computing-cloud-service-ad7f8e02cc8)'
   focal_point: ""
   preview_only: false
 
@@ -70,4 +69,5 @@ Click the *Cite* button above to demo the feature to enable visitors to import p
 Click the *Slides* button above to demo academia's Markdown slides feature.
 {{% /alert %}}
 
-Supplementary notes can be added here, including [code and math](https://sourcethemes.com/academic/docs/writing-markdown-latex/).
+Further Information:
+* Please [contact](mailto:akshayjoshi56@gmail.com) for the corresponding research poster & seminar PPTs of the mentioned topics.
