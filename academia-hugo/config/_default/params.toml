@@ -15,7 +15,7 @@ font = "classic"
 description = "Graduate student with an extensive background in Semiconductors and Software Engineering R&D, currently pursuing research in 3D Scene Reconstruction, Neuro-Symbolic Reasoning, Self-supervised Learning and Multilingual Conversational Question Answering at Universität des Saarlandes, Saarbrücken, Germany."
 
 # Default image for social sharing and search engines. Place image in `static/img/` folder and specify image name here.
-sharing_image = "logo.png"
+sharing_image = "akshay_1.png"
 
 # Twitter username (without @). Used when a vistor shares your site on Twitter.
 twitter = "AkshayJoshi56"
