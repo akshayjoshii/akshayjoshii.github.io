@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
 title = "Academic Projects"
-subtitle = "Topics spanning across different research areas in Vision, NLP & Data Mining"
+subtitle = "Featured projects spanning across different research areas in Vision, NLP & Data Mining"
 
 [content]
   # Page type to display. E.g. project.
@@ -26,20 +26,20 @@ subtitle = "Topics spanning across different research areas in Vision, NLP & Dat
     tag = "*"
   
   [[content.filter_button]]
-    name = "Deep Learning"
-    tag = "Deep Learning"
+    name = "Machine/Deep Learning"
+    tag = "Machine and Deep Learning"
+
+  [[content.filter_button]]
+    name = "Vision"
+    tag = "Computer Vision"
   
   [[content.filter_button]]
-    name = "Other"
-    tag = "Demo"
-  
+    name = "NLP"
+    tag = "Natural Language Processing"
+
   [[content.filter_button]]
-    name = "Human"
-    tag = "human"
-  
-  [[content.filter_button]]
-    name = "Robotics"
-    tag = "robotics"
+    name = "Information Retrieval/Data Mining"
+    tag = "Information Retrieval and Data Mining"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
