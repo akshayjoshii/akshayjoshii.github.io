@@ -1,6 +1,6 @@
 ---
 title: Open-domain Question Answering with End-to-End Memory Networks
-summary: Deep Neural implementation of a QA System using Knowledge Graphs & Wikipedia Corpus.
+summary: Deep neural implementation of a QA system using Knowledge Graphs & Wikipedia Corpus.
 tags:
 - Machine and Deep Learning
 - Natural Language Processing
@@ -32,7 +32,7 @@ url_video: "https://youtu.be/9A34wTzw5Fw"
 slides: 
 ---
 
-**Please open the Video and Code links mentioned above to find detailed Model Performance and Source code!**
+**Please click on the 'Video' and 'Code' buttons displayed above to view project source code and model in action!**
 
 ## Abstract
 The task is to build a statistical or deep neural model for Question Answering either utilizing both the provided Wikidata Knowledge Graph and Wikipedia Text Corpus or just a single knowledge source. Any existing methods/libraries could be utilized. In this project, I have implemented an End-to-End Memory Net using Keras. Later, trained the model for 100 epochs on Facebook's bAbI dataset which has 1000 questions for training and 1000 for test. Also, the dataset has an array of text passages ranging from Single-fact, Multi-fact, Multihop Reasoning to Agent Decision based corpus.

@@ -32,7 +32,7 @@ url_video: ""
 slides: 
 ---
 
-**Please open the PDF and Code links mentioned above to find detailed project report and source code!**
+**Please click on the 'Pdf' and 'Code' buttons displayed above to view project report and source code!**
 
 ## Abstract:
 From recent times, Natural Language Processing Systems have been enjoying wide popularity in various domains such as in the development of high precision Search Engines, Text Entity Recognition, Content Recommenders, Speech Recognition Systems and so on. The prominent usage is in the fields of Information Retrieval and Data Mining through the usage of sophisticated Language Models. In this project the scope is only limited to statistical and classical methods rather than deployment large-scale deep learning solutions. In this project, we deploy an array of both simple and advanced Information Retrieval systems which deals with efficient and robust organization, storage, retrieval & evaluation of information from text corpus/document evidences. IR systems are very widely used in everyday lives in the forms of search engines, files explorers, document searching tools etc. Thus, development of such high impact systems is desired. However, there are a multitude of challenges while exploring the vastness of natural language text and it’s usage in the corpus scraped from the web.
@@ -45,7 +45,7 @@ In this project, the task is to develop and evaluate a two-stage information ret
 1. TF-IDF Model with Bi-gram features
 2. BM25 (Okapi and Plus) Model with Bi-gram features
 3. BM25 based Sentence Re-ranker
-4. Query processing time reduced to ~8 mins from 20 mins using Parallel processing, Caching & Efficient Data Structures
+4. Query processing time reduced to **~8 mins** from **20 mins** using Parallel processing, Caching & Efficient Data Structures
 
 ## Instructions:
 1. Install dependencies: "pip install -r requirements.txt"
