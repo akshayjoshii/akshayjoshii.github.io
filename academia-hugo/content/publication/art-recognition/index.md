@@ -67,6 +67,6 @@ projects:
 Click the *Slides* button above to demo academia's Markdown slides feature.
 {{% /alert %}}
 
-Further Information:
+#### Further Information:
 * Supplementary materials & code could be found here: [GitHub](https://github.com/akshayjoshii/Deep_Self-Supervised_Art_Style_Recognition).
 * Please [contact](mailto:akshayjoshi56@gmail.com) for the draft copy of the publication.

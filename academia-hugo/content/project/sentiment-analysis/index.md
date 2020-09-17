@@ -12,4 +12,23 @@ external_link:
 image:
   caption: 'Image credit: [**MZ Web**](https://www.mz-web.de/image/36334534/2x1/940/470/5c88f8dfe6f930ff2a8d4352e9313d17/or/b-coronavirus.jpg)'
   focal_point: Smart
+
+links:
+# - icon: twitter
+#   icon_pack: fab
+#   name: Follow
+#   url: https://twitter.com/georgecushen
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+
+# Slides (optional).
+#   Associate this project with Markdown slides.
+#   Simply enter your slide deck's filename without extension.
+#   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
+#   Otherwise, set `slides = ""`.
+slides: 
 ---
+
+Lorem
