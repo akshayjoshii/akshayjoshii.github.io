@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 30  # Order that this section will appear.
 
 title = "Technical Skills"
-subtitle = "I AM REALLY GOOD in THE FOLLOWING technologies/frameworks"
+subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
 
 # Showcase personal skills or business features.
 # 
@@ -16,23 +16,23 @@ subtitle = "I AM REALLY GOOD in THE FOLLOWING technologies/frameworks"
 
 [[feature]]
   name = "Python"
-  parcent = "85%"
+  parcent = "80%"
   
 [[feature]]
   name = "C++"
-  parcent = "80%"  
+  parcent = "75%"  
   
 [[feature]]
   name = "NumPy"
-  parcent = "70%"
+  parcent = "65%"
   
 [[feature]]
   name = "PyTorch"
-  parcent = "78%"
+  parcent = "70%"
     
 [[feature]]
   name = "Scikit - learn"
-  parcent = "95%"
+  parcent = "85%"
     
 [[feature]]
   name = "OpenCV"
@@ -44,7 +44,7 @@ subtitle = "I AM REALLY GOOD in THE FOLLOWING technologies/frameworks"
       
 [[feature]]
   name = "MySQL"
-  parcent = "70%"
+  parcent = "65%"
       
 [[feature]]
   name = "Computer Vision"
@@ -60,7 +60,7 @@ subtitle = "I AM REALLY GOOD in THE FOLLOWING technologies/frameworks"
       
 [[feature]]
   name = "NLP"
-  parcent = "80%"
+  parcent = "70%"
       
 [[feature]]
   name = "Statistics"
@@ -68,16 +68,16 @@ subtitle = "I AM REALLY GOOD in THE FOLLOWING technologies/frameworks"
 
 [[feature]]
   name = "A/B Testing"
-  parcent = "90%"
+  parcent = "75%"
       
 [[feature]]
   name = "R"
-  parcent = "75%"
+  parcent = "70%"
       
       
 [[feature]]
   name = "Deep Learning"
-  parcent = "90%"
+  parcent = "80%"
         
 [[feature]]
   name = "Tableau"
@@ -97,12 +97,12 @@ subtitle = "I AM REALLY GOOD in THE FOLLOWING technologies/frameworks"
           
 [[feature]]
   name = "Docker"
-  parcent = "95%"
+  parcent = "90%"
           
           
 [[feature]]
   name = "Git SCM"
-  parcent = "85%"
+  parcent = "80%"
           
 [[feature]]
   name = "Agile Development"
@@ -110,7 +110,7 @@ subtitle = "I AM REALLY GOOD in THE FOLLOWING technologies/frameworks"
           
 [[feature]]
   name = "Google Cloud Platform"
-  parcent = "75%"
+  parcent = "70%"
           
 
 
