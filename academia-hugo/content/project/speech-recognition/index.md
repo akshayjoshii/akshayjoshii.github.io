@@ -32,24 +32,30 @@ slides:
 ---
 
 **Please open the PDF and Code links mentioned above to find detailed project report and source code!**
+
 <br>
+
 ## Abstract:
 Accurate Grapheme-to-Phoneme conversion is crucial for the effectiveness and success of Automatic Speech Recognition and Text-to-Speech systems. This task may perhaps be particularly challenging when building multilingual ASR agents which requires un-ambiguous (without being affected by different accents/acoustic domains/similar sounding words in analogous languages ex: Kannada & Sanskrit) conversion of textual words to phonemes.
 
 A typical G2P process has 3 steps:
-* Aligning Grapheme token to Phoneme token
-* Learning the G to P conversion (neural/statistical methods)
-* Triaging the best possible pronunciation provided the model
+  * Aligning Grapheme token to Phoneme token
+  * Learning the G to P conversion (neural/statistical methods)
+  * Triaging the best possible pronunciation provided the model
 
 In this machine learning project, the task is to import and efficiently parse the dataset which contains 50 phonemes (perhaps retrieved from a CNN/Transformer based neural model for grapheme-to-phoneme conversion) & their corresponding representations in the embedding space as a 236-dimensional vector. Further, to assess if these phonemes are similar or correlated to each other in terms of usage/semantics/audio signature, we perform an array of tasks ranging from calculating the Pairwise Cosine Similarities, Dimensionality Reduction using Linear & Manifold Learning methods and Clustering to uncover hidden patterns in the phoneme vector space.
+
 <br>
+
 ## Tasks:
 
 1. Conduct a small research on phoneme embeddings (VSM).
 2. Read the dataset into a suitable data structure (e.g., Pandas data frame, Python dictionary, Numpy array, etc.)
 3. Computing the pair-wise cosine similarity between the phonemes represented by the embeddings and obtaining a confusion matrix of similarity scores. 
 4. Exploring the embeddings space with at different techniques. Perhaps, using dimensionality reduction and visualization (e.g., PCA, t-SNE), as well as a different clustering  analysis methods.
+
 <br>
+
 ## Implemented Functions:
 
 1. Pairwise Cosine Similarity Heatmap/Confusion Matrix
