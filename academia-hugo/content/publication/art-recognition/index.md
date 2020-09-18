@@ -2,8 +2,6 @@
 title: "Dense Art Style Recognition with Self-supervised Ensemble of Auto-Encoding Transformations [In Progress]"
 authors:
 - admin
-- Ankit Agrawal
-- Sushmita Nair
 date: "[In Progress]"
 doi: ""
 

@@ -2,7 +2,6 @@
 title: "Research Posters on Advanced Cryptography & High Performance Quantum Computing"
 authors:
 - admin
-- Poojitha Vijayanarasimha
 date: "2017-04-01T00:00:00Z"
 doi: ""
 

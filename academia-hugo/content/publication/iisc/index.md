@@ -2,7 +2,6 @@
 title: "Fundamentals of a Multi-socket x86 Server"
 authors:
 - admin
-- Akshatha Inamdar
 date: "2019-03-23"
 doi: ""
 
