@@ -2,7 +2,7 @@
 title: "Dense Art Style Recognition with Self-supervised Ensemble of Auto-Encoding Transformations [In Progress]"
 authors:
 - admin
-date: "[In Progress]"
+date: "2020-09-01T00:00:00Z"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).
