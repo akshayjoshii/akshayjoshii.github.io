@@ -19,77 +19,75 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[experience]]
-  title = "Research Assistant"
+  title = "###### Research Assistant"
   company = "German Research Center for Artificial Intelligence (DFKI)"
   company_url = "https://www.dfki.de/web/"
   location = "Saarbrücken, Germany"
   date_start = "2020-11-01"
   date_end = ""
   description = """ 
-  Details:
-  * Research Group: [Institute for Information Systems](https://www.dfki.de/web/forschung/forschungsbereiche/institut-fuer-wirtschaftsinformatik/)
-  * Task: Build Deep Neural Attention-based Language Models & Forecast Systems for Smart Vigilance in Medical Research & Development domain
+  **Research Group:** [Institute for Information Systems](https://www.dfki.de/web/forschung/forschungsbereiche/institut-fuer-wirtschaftsinformatik/)  
+  **Tasks:** Build Large Deep Neural Attention-based Language Models & Forecast Systems for Smart Vigilance in Medical Product Research & Development domain.
   """
 
 [[experience]]
-  title = "Graduate Teaching Assistant"
+  title = "###### Graduate Teaching Assistant"
   company = "Universität des Saarlandes"
   company_url = "https://www.uni-saarland.de/start.html"
   location = "Saarbrücken, Germany"
   date_start = "2020-10-01"
   date_end = "2021-03-31"
   description = """ 
-  Details:
-  * Lecture: [Architectures for Intelligent Systems](https://cms.sic.saarland/atis_19/)
-  * Professor: Dr. Jana Koehler (Chair of Artificial Intelligence Group) 
+  **Lecture:** [Architectures for Intelligent Systems](https://cms.sic.saarland/atis_19/)    
+  **Professor:** Prof. Dr. Jana Koehler   
+  **Research Group:** Artificial Intelligence Group   
+  **Tasks:** Develop course materials for Intelligent Speech Assistants & Deep Reinforcement Learning Agents for Conversational Question Answering, Searching, Planning & Reasoning.
   """
 
 [[experience]]
-  title = "Software Engineer I"
+  title = "###### Software Engineer I"
   company = "Advanced Micro Devices R&D"
   company_url = "https://www.amd.com/"
   location = "Bangalore, India"
   date_start = "2018-08-01"
   date_end = "2019-08-23"
   description = """
-  Details:
-  * Team: [Platform Security Processor (PSP) Firmware](https://www.amd.com/en/technologies/pro-security)
-  * Engineering Group: Core Software Group
+  **Team:** [Platform Security Processor (PSP) Firmware](https://www.amd.com/en/technologies/pro-security)  
+  **Engineering Group:** Core Software Group
   """
 
 [[experience]]
-  title = "Intern"
+  title = "###### Intern"
   company = "Advanced Micro Devices R&D"
   company_url = "https://www.amd.com/"
   location = "Bangalore, India"
   date_start = "2018-02-01"
   date_end = "2018-08-20"
   description = """
-  Details:
-  * Team: [AMD Ryzen Master](https://www.amd.com/en/technologies/ryzen-master)
-  * Engineering Group: Core Software Group
+  **Team:** [AMD Ryzen Master](https://www.amd.com/en/technologies/ryzen-master)  
+  **Engineering Group:** Core Software Group
   """
 
 [[experience]]
-  title = "Software Development Engineer"
+  title = "###### Software Development Engineer"
   company = "Freelance"
   company_url = "https://www.linkedin.com/in/akshayjoshi56/"
   location = "Bangalore, India"
   date_start = "2017-07-01"
   date_end = "2018-01-31"
   description = """
-  Developed [SQLMAP](http://sqlmap.org/) based tools to penetration test websites for a range of zero day exploits, vulnerabilities & information leakages
+  **Tasks:** Developed [SQLMAP](http://sqlmap.org/) based tools to penetration test websites for a range of zero day exploits, vulnerabilities & information leakages.
   """
 
 [[experience]]
-  title = "Engineering Intern"
+  title = "###### Engineering Intern"
   company = "Alstom"
   company_url = "https://www.alstom.com"
   location = "Bangalore, India"
   date_start = "2017-01-01"
   date_end = "2017-03-10"
   description = """
-  Performed EDA to discover sensitive patterns, significance and anomalies in the statistical data
+  **Tasks:** Performed EDA to discover sensitive patterns, significance and anomalies in the statistical data.
   """
   
 +++
