@@ -15,5 +15,5 @@ $ git clone git@github.com:themefisher/academia-hugo.git
 ```
 
 ## Local Execution
-* cd exampleSite
+* cd .\academia-hugo\
 * hugo --themesDir ../../ -p 1315 --i18n-warnings server

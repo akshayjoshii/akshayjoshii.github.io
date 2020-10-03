@@ -17,13 +17,27 @@ date_format = "Jan 2006"
 #   Required fields are `title`, `company`, and `date_start`.
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
+
+[[experience]]
+  title = "Research Assistant"
+  company = "German Research Center for Artificial Intelligence (DFKI)"
+  company_url = "https://www.dfki.de/web/"
+  location = "Saarbrücken, Germany"
+  date_start = "2020-11-01"
+  date_end = ""
+  description = """ 
+  Details:
+  * Research Group: [Institute for Information Systems](https://www.dfki.de/web/forschung/forschungsbereiche/institut-fuer-wirtschaftsinformatik/)
+  * Task: Build Deep Neural Attention-based Language Models & Forecast Systems for Smart Vigilance in Medical Research & Development domain
+  """
+
 [[experience]]
   title = "Graduate Teaching Assistant"
   company = "Universität des Saarlandes"
   company_url = "https://www.uni-saarland.de/start.html"
   location = "Saarbrücken, Germany"
   date_start = "2020-10-01"
-  date_end = ""
+  date_end = "2021-03-31"
   description = """ 
   Details:
   * Lecture: [Architectures for Intelligent Systems](https://cms.sic.saarland/atis_19/)

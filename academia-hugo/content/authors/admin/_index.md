@@ -18,7 +18,7 @@ role: M. Sc. Data Science & Artificial Intelligence
 
 # Organizations/Affiliations
 organizations:
-- name: Universität des Saarlandes
+- name:  Universität des Saarlandes
   url: "https://www.uni-saarland.de/start.html"
 
 # Short bio (displayed in user profile at end of posts)
