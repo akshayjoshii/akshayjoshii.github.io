@@ -21,14 +21,14 @@ date_format = "Jan 2006"
 [[item]]
   organization = "Visvesvaraya Technological University"
   organization_url = "https://vtu.ac.in/en/"
-  title = "Bachelor of Engineering Class Rank"
+  title = "###### Bachelor of Engineering Class Rank"
   url = ""
   # The below tag generates the "See Certificate entry in the section"
   certificate_url = ""
   date_start = "2013-08-01"
   date_end = "2017-06-30"
   description = """
-  Details:
+  **Details:**
   * Ranked in the Top 5% of the graduating class in Computer Science & Engineering department. 
   * Total number of students in the graduating cohort of 2017 were 106.
   """
@@ -36,13 +36,13 @@ date_format = "Jan 2006"
 [[item]]
   organization = "Advanced Micro Devices"
   organization_url = "https://www.amd.com/"
-  title = "Professional Recommendations"
+  title = "###### Professional Recommendations"
   url = "https://www.linkedin.com/in/akshayjoshi56/"
   certificate_url = ""
   date_start = "2018-02-01"
   date_end = "2019-09-23"
   description = """
-  Details:
+  **Details:**
   * Recommended by the Director of Technology & Software Engineering and various Senior Engineers at AMD.
   * Demonstrated solid technical expertise and agile adaptability skills.
   """
@@ -50,13 +50,13 @@ date_format = "Jan 2006"
 [[item]]
   organization = "Visvesvaraya Technological University"
   organization_url = "https://vtu.ac.in/en/"
-  title = "Academic Recommendations"
+  title = "###### Academic Recommendations"
   url = ""
   certificate_url = ""
   date_start = "2013-08-01"
   date_end = "2017-06-30"
   description = """
-  Details:
+  **Details:**
   * Recommended by Prof. Shiva Kumar Dalali, Prof. Manjunatha P.B and Prof. Raghavendra T.S in the Computer Science department.
   * Illustrated exceptional research/course work in Discrete Mathematics, Computer Graphics & Visualization.
   """
@@ -64,13 +64,13 @@ date_format = "Jan 2006"
 [[item]]
   organization = "Pramana Pre-University College"
   organization_url = "https://www.icbse.com/schools/pramana-puc-raichur-67v5qy"
-  title = "Vice-Captain"
+  title = "###### Vice-Captain"
   url = ""
   certificate_url = ""
   date_start = "2012-12-01"
   date_end = "2012-12-10"
   description = """
-  Details:
+  **Details:**
   * Vice-Captain of state-level Throwball team, representing Raichur district, India.
   * The Pre-University tournament was held at Mysore, Karnataka, India.
   """

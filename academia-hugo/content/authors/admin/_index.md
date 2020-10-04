@@ -18,7 +18,7 @@ role: M. Sc. Data Science & Artificial Intelligence
 
 # Organizations/Affiliations
 organizations:
-- name:  Universität des Saarlandes
+- name:   Universität des Saarlandes
   url: "https://www.uni-saarland.de/start.html"
 
 # Short bio (displayed in user profile at end of posts)
@@ -85,6 +85,6 @@ user_groups:
 - Researchers
 - Visitors
 ---
-
 Graduate student with an extensive background in Semiconductors and Software Engineering R&D, currently pursuing research in 3D Scene Reconstruction, Neuro-Symbolic Reasoning, Self-supervised Learning and Multilingual Conversational Question Answering.
+
 
