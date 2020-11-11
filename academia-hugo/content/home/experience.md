@@ -26,7 +26,7 @@ date_format = "Jan 2006"
   date_start = "2020-11-01"
   date_end = ""
   description = """ 
-  **Research Group:** [Institute for Information Systems](https://www.dfki.de/web/forschung/forschungsbereiche/institut-fuer-wirtschaftsinformatik/)  
+  **Research Group:** [Institute for Information Systems](https://www.dfki.de/en/web/research/research-departments/institute-for-information-systems/team-iwi/)  
   **Tasks:** Build Large Deep Neural Attention-based Language Models & Forecast Systems for Smart Vigilance in Medical Product Research & Development domain.
   """
 
@@ -38,7 +38,7 @@ date_format = "Jan 2006"
   date_start = "2020-10-01"
   date_end = "2021-03-31"
   description = """ 
-  **Lecture:** [Architectures for Intelligent Systems](https://cms.sic.saarland/atis_19/)    
+  **Lecture:** [Architectures for Intelligent Systems](https://lms.sulb.uni-saarland.de/moodle/enrol/index.php?id=3991)    
   **Professor:** Prof. Dr. Jana Koehler   
   **Research Group:** Artificial Intelligence Group   
   **Tasks:** Develop course materials for Intelligent Speech Assistants & Deep Reinforcement Learning Agents for Conversational Question Answering, Searching, Planning & Reasoning.
