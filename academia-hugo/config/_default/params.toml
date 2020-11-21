@@ -51,14 +51,14 @@ time_format = "3:04 PM"
 
 # Enter contact details (optional). To hide a field, clear it to "".
 email = "akshayjoshi56@gmail.com"
-phone = "+49 15733643012"
+phone = "+49 1573 364 3012"
 address = "Studentenwohnheim Waldhausweg 15, 66123, Saarbrücken, Germany."
 
 # Office hours: use `<br>` to insert a line break, or set to "" to remove office hours
 office_hours = """Monday - Friday: 10:00 to 17:00"""
 
 # Enter an optional link for booking appointments (e.g. calendly.com).
-appointment_url = "mailto:akshayjoshi56@gmail.com"
+appointment_url = "mailto:contact@akshayjoshi.tech"
 
 # Contact links
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.

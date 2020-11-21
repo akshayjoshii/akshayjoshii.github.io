@@ -27,7 +27,7 @@ date_format = "Jan 2006"
   date_end = ""
   description = """ 
   **Research Group:** [Institute for Information Systems](https://www.dfki.de/en/web/research/research-departments/institute-for-information-systems/team-iwi/)  
-  **Tasks:** Build Large Deep Neural Attention-based Language Models & Forecast Systems for Smart Vigilance in Medical Product Research & Development domain.
+  **Tasks:** Build Large-scale Deep Neural Attention-based Language Models & Forecast Systems for Smart Vigilance in Medical Product Research & Development domain.
   """
 
 [[experience]]

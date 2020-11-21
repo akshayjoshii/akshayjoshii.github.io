@@ -37,7 +37,7 @@ education:
   courses:
   - course: M. Sc. in Data Science & Artificial Intelligence
     institution: Universität des Saarlandes
-    year: 2021
+    year: 2022
   - course: B. Eng. in Computer Science & Engineering
     institution: Visvesvaraya Technological University
     year: 2017
@@ -49,7 +49,7 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: mailto:akshayjoshi56@gmail.com  # For a direct email link, use "mailto:test@example.org".
+  link: mailto:contact@akshayjoshi.tech  # For a direct email link, use "mailto:test@example.org".
 
 - icon: github
   icon_pack: fab
@@ -85,6 +85,6 @@ user_groups:
 - Researchers
 - Visitors
 ---
-Graduate student with an extensive background in Semiconductors and Software Engineering R&D, currently pursuing research in 3D Scene Reconstruction, Neuro-Symbolic Reasoning, Self-supervised Learning and Multilingual Conversational Question Answering.
+Graduate student with an extensive background in Semiconductors and Software Engineering R&D, currently pursuing research in Embodied Vision, 3D Scene Reconstruction, Neuro-Symbolic Reasoning, Self-supervised Learning and Multilingual Conversational Question Answering.
 
 
