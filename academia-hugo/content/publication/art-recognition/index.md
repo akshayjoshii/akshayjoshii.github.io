@@ -28,8 +28,8 @@ featured: true
 
 links:
 # - name: Custom Link
-url: "https://arxiv.org/abs/2012.03377"
-url_pdf: "https://arxiv.org/pdf/2012.03377"
+#url: "https://arxiv.org/abs/2012.03377"
+url_pdf: "https://arxiv.org/pdf/2012.03377.pdf"
 url_code: "https://github.com/akshayjoshii/Deep_Self-Supervised_Art_Style_Recognition"
 url_dataset: "https://archive.org/details/wikiart-dataset"
 # url_poster: '#'
