@@ -36,7 +36,7 @@ url_pdf: "https://www.researchgate.net/profile/Akshay_Joshi7/publication/3467146
 # url_code: '#'
 # url_dataset: '#'
 # url_poster: '#'
-url_project: "https://www.researchgate.net/publication/346714616_Hybrid_Machine_Learning_Approaches_and_Applications_Seminar_Learning_like_Humans_with_Deep_Symbolic_Networks"
+#url_project: "https://www.researchgate.net/publication/346714616_Hybrid_Machine_Learning_Approaches_and_Applications_Seminar_Learning_like_Humans_with_Deep_Symbolic_Networks"
 url_slides: "https://slides.com/akshayjoshi/deck/fullscreen"
 url_source: "https://github.com/akshayjoshii/learning_like_humans/blob/main/Learning_like_humans_paper%20(annotated).pdf"
 # url_video: '#'
