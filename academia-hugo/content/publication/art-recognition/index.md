@@ -39,7 +39,7 @@ url_dataset: "https://archive.org/details/wikiart-dataset"
 # url_poster: '#'
 # url_project: ''
 # url_slides: ''
-url_source: "shorturl.at/wyR05"
+url_source: "https://tinyurl.com/akshay-paper"
 # url_video: '#'
 
 # Featured image
