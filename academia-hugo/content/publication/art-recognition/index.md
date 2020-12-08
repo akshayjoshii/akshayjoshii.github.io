@@ -16,7 +16,7 @@ publication_types: ["3"]
 
 # Publication name and optional abbreviated publication name.
 publication: "arXiv"
-publication_short: ""
+publication_short: "Pattern Recognition & Computer Vision"
 
 abstract: The artistic style of a painting is a rich descriptor that reveals both visual and deep intrinsic knowledge about how an artist uniquely portrays and expresses their creative vision. Accurate categorization of paintings across different artistic movements and styles is critical for large-scale indexing of art databases. However, the automatic extraction and recognition of these highly dense artistic features has received little to no attention in the field of computer vision research. In this paper, we investigate the use of deep self-supervised learning methods to solve the problem of recognizing complex artistic styles with high intra-class and low inter-class variation. Further, we outperform existing approaches by almost 20% on a highly class imbalanced WikiArt dataset with 27 art categories. To achieve this, we train the EnAET semi-supervised learning model (Wang et al., 2019) with limited annotated data samples and supplement it with self-supervised representations learned from an ensemble of spatial and non-spatial transformations.
 
@@ -24,18 +24,22 @@ abstract: The artistic style of a painting is a rich descriptor that reveals bot
 summary: Investigation on the use of deep semi-supervised neural models to extract dense features in complex & ambiguous images spanning across 27 unique artistic styles. Self-supervision enforced to resolve class imbalance of WikiArt dataset.
 
 tags:
+- Deep Learning
+- Pattern Recognition
+- Computer Vision
+- Self-supervised Learning
 featured: true
 
 links:
 # - name: Custom Link
-url: "shorturl.at/wyR05"
+#url: "#"
 url_pdf: "https://arxiv.org/pdf/2012.03377.pdf"
 url_code: "https://github.com/akshayjoshii/Deep_Self-Supervised_Art_Style_Recognition"
 url_dataset: "https://archive.org/details/wikiart-dataset"
 # url_poster: '#'
 # url_project: ''
 # url_slides: ''
-# url_source: '#'
+url_source: "shorturl.at/wyR05"
 # url_video: '#'
 
 # Featured image
