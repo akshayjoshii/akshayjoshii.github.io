@@ -1,6 +1,6 @@
 ---
 title: Event-driven Pedestrian & Vehicle Detection
-summary: Implementation of a real-time ROI-based Vehicle Detection and Counting system using OpenCV & YOLO.
+summary: Implementation of a real-time ROI-based Vehicle Detection and Counting system using OpenCV & YOLO
 tags:
 - Machine and Deep Learning
 - Computer Vision

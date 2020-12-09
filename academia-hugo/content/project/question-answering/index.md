@@ -1,6 +1,6 @@
 ---
 title: Open-domain Question Answering with End-to-End Memory Networks
-summary: Deep neural implementation of a QA system using Knowledge Graphs & Wikipedia Corpus.
+summary: Deep neural implementation of a QA system using Knowledge Graphs & Wikipedia Corpus
 tags:
 - Machine and Deep Learning
 - Natural Language Processing

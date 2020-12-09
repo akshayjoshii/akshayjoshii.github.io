@@ -1,6 +1,6 @@
 ---
-title: COVID19 Tweets Sentiment & Exploratory Data Analysis [In Progress]
-summary: Unsupervised & Deep Transfer Learning based Sentiment Analysis of COVID19 Tweets.
+title: COVID-19 Tweets Sentiment & Exploratory Data Analysis
+summary: Deep Self-supervised Transfer Learning based Sentiment Analysis of COVID19 Tweets
 tags:
 - Natural Language Processing
 - Machine and Deep Learning

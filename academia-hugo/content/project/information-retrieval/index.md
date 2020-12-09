@@ -1,6 +1,6 @@
 ---
-title: Multi-stage Informational Retrieval & Ranking System
-summary: Search Engine implemented using Language Models, BM25 (Okapi, Plus) & TF-IDF.
+title: Multi-stage Information Retrieval & Ranking System
+summary: Search Engine implemented using Language Models, BM25 (Okapi, Plus) & TF-IDF
 tags:
 - Natural Language Processing
 - Information Retrieval and Data Mining

@@ -38,7 +38,7 @@ date_format = "Jan 2006"
   date_start = "2020-10-01"
   date_end = "2021-03-31"
   description = """ 
-  **Lecture:** [Architectures for Intelligent Systems](https://lms.sulb.uni-saarland.de/moodle/enrol/index.php?id=3991)    
+  **Lecture:** [Architectures for Intelligent Systems](https://lms.sulb.uni-saarland.de/moodle/course/index.php?categoryid=1872)    
   **Professor:** Prof. Dr. Jana Koehler   
   **Research Group:** Artificial Intelligence Group   
   **Tasks:** Develop course materials for Intelligent Speech Assistants & Deep Reinforcement Learning Agents for Conversational Question Answering, Searching, Planning & Reasoning.

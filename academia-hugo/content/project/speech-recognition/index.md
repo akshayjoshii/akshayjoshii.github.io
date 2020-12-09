@@ -1,6 +1,6 @@
 ---
 title: Robust Spoken Language Recognition
-summary: Uncover hidden patterns in the phoneme vector space by performing Pairwise Cosine Similarity, Dimensionality Reduction & Spacial Clustering.
+summary: Uncover hidden patterns in the phoneme vector space by performing Pairwise Cosine Similarity, Dimensionality Reduction & Spacial Clustering
 tags:
 - Machine and Deep Learning
 - Natural Language Processing

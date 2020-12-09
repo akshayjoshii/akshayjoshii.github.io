@@ -1,6 +1,6 @@
 ---
 title: Context-aware Intelligent Assistant with Deep Q Learning
-summary: Devising a reinforcement learning based architecture for robust speech assistants.
+summary: Devising a reinforcement learning based architecture for robust speech assistants
 tags:
 - Natural Language Processing
 - Information Retrieval and Data Mining
