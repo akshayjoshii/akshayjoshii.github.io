@@ -59,9 +59,9 @@ social:
   icon_pack: fab
   link: https://www.linkedin.com/in/akshayjoshi56/
 
-- icon: whatsapp
+- icon: scholar
   icon_pack: fab
-  link: https://wa.me/+4915733643012?text=Hello!,%20I%20am%20Akshay%20Joshi.%20Please%20call%20if%20it's%20urgent.
+  link: https://scholar.google.com/citations?user=IFUmjP8AAAAJ&hl=en
   
 - icon: instagram
   icon_pack: fab

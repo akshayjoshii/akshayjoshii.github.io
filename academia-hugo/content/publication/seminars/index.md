@@ -15,7 +15,7 @@ publishDate: "2017-04-01T00:00:00Z"
 publication_types: ["1"]
 
 # Publication name and optional abbreviated publication name.
-publication: ""
+publication: "Computer Society of India"
 publication_short: ""
 
 abstract: During my bachelors degree I have delivered a few seminars and research poster in the field of High Performance Computing (HPC), Quantum Logic Design & Advanced Cryptography. At Computer Society of India (CSI) 2017 conference, I have presented a research poster titled 'Advanced Cryptographic Standards & Security'. Furthermore, delivered bachelor degree seminar on 'High Performance Quantum Computing' & 'Designing a Phased Array Antenna for 5G Mobile Phone Applications'.
