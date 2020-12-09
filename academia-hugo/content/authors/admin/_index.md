@@ -7,7 +7,7 @@ authors:
 - admin
 # resume download button
 btn:
-- url : "files/cv.pdf"
+- url : "files/akshay_cv.pdf"
   label : "Download Résumé/CV"
 
 # Is this the primary user of the site?
@@ -51,6 +51,10 @@ social:
   icon_pack: fas
   link: mailto:contact@akshayjoshi.tech  # For a direct email link, use "mailto:test@example.org".
 
+- icon: researchgate
+  icon_pack: fab
+  link: https://www.researchgate.net/profile/Akshay_Joshi7
+
 - icon: github
   icon_pack: fab
   link: https://github.com/akshayjoshii
@@ -58,10 +62,6 @@ social:
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/akshayjoshi56/
-
-- icon: researchgate
-  icon_pack: fab
-  link: https://www.researchgate.net/profile/Akshay_Joshi7
   
 - icon: instagram
   icon_pack: fab
