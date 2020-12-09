@@ -59,9 +59,9 @@ social:
   icon_pack: fab
   link: https://www.linkedin.com/in/akshayjoshi56/
 
-- icon: scholar
+- icon: researchgate
   icon_pack: fab
-  link: https://scholar.google.com/citations?user=IFUmjP8AAAAJ&hl=en
+  link: https://www.researchgate.net/profile/Akshay_Joshi7
   
 - icon: instagram
   icon_pack: fab
