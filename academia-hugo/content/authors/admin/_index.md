@@ -7,7 +7,7 @@ authors:
 - admin
 # resume download button
 btn:
-- url : "files/akshay_cv.pdf"
+- url : "files/akshay_joshi_cv.pdf"
   label : "Download Résumé/CV"
 
 # Is this the primary user of the site?
@@ -28,10 +28,11 @@ bio:
 display_education: true
 
 interests:
+
+- Explainable Neural LM
+- Automatic Speech Recognition
 - Neuro-Symbolic AI
-- Embodied Vision
 - Visual Scene Understanding
-- Dynamic Simultaneous Localization and Mapping
 
 education:
   courses:
@@ -85,6 +86,6 @@ user_groups:
 - Researchers
 - Visitors
 ---
-Graduate student with an extensive background in Semiconductors and Software Engineering R&D, currently pursuing research in Embodied Vision, 3D Scene Reconstruction, Neuro-Symbolic Reasoning, Self-supervised Learning and Multilingual Conversational Question Answering.
+Graduate student with an extensive background in Semiconductor & Software Engineering R&D, currently pursuing research in Visual Scene Understanding, Explainable Neural Language Modelling with Linear Self-Attention & Automatic Speech Recognition for Low-resource Languages at Universität des Saarlandes & DFKI.
 
 

@@ -42,6 +42,6 @@ hero_media = "akshay_1.png"
   label = "Contact Me"
 
 +++
-## My name is **Akshay Joshi** and I'm a **M. Sc. Student** specializing in **Data Science & Artificial Intelligence**
+## My name is **Akshay Joshi** and I'm a **Deep Learning Research Assistant** at German Research Center for Artificial Intelligence
 
-Research Interests: Visual Scene Understanding, Conversational Question Answering, Dynamic 3D Reconstruction & SLAM.
+Research Interests: Neuro-Symbolic Reasoning, Visual Scene Understanding, Multilingual Language Modelling & Automatic Speech Recognition. 
