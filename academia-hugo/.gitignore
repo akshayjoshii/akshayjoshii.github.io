@@ -8,3 +8,6 @@
 # Node
 node_modules/
 public
+
+# Temp images
+content/home/gallery/temp_images/
