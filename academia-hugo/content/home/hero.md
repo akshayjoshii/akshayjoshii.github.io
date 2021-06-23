@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
-title = "Academia"
+title = "Akshay Joshi"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
 hero_media = "akshay_1.png"
@@ -44,4 +44,4 @@ hero_media = "akshay_1.png"
 +++
 ## My name is **Akshay Joshi** and I'm a **Deep Learning Research Assistant** at German Research Center for Artificial Intelligence
 
-Research Interests: Neuro-Symbolic Reasoning, Visual Scene Understanding, Multilingual Language Modelling & Automatic Speech Recognition. 
+Research Interests: Neuro-Symbolic Reasoning, Visual Scene Understanding, Multilingual Language Modelling & Automatic Speech Recognition.
