@@ -1,7 +1,7 @@
 ---
 # Course title, summary, and position.
-linktitle: An Example Course
-summary: Learn how to use Academia's docs layout for publishing online courses, software documentation, and tutorials.
+linktitle: Reserved Page for Future
+summary: Page reserved to publish online courses, software documentation, and tutorials in the future.
 weight: 1
 
 # Page metadata.
@@ -23,7 +23,7 @@ menu:
 
 ## Flexibility
 
-This feature can be used for publishing content such as:
+This page is planned to be used for publishing content such as:
 
 * **Online courses**
 * **Project or software documentation**
