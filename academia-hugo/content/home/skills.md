@@ -16,7 +16,7 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
 
 [[feature]]
   name = "Python"
-  parcent = "80%"
+  parcent = "90%"
   
 [[feature]]
   name = "C++"
@@ -28,7 +28,7 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
   
 [[feature]]
   name = "PyTorch"
-  parcent = "70%"
+  parcent = "80%"
     
 [[feature]]
   name = "Scikit - learn"
@@ -40,7 +40,7 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
       
 [[feature]]
   name = "CUDA"
-  parcent = "50%"
+  parcent = "60%"
       
 [[feature]]
   name = "MySQL"
@@ -60,7 +60,7 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
       
 [[feature]]
   name = "NLP"
-  parcent = "70%"
+  parcent = "80%"
       
 [[feature]]
   name = "Statistics"
@@ -89,11 +89,11 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
           
 [[feature]]
   name = "Information Retrieval"
-  parcent = "75%"
+  parcent = "85%"
           
 [[feature]]
   name = "Data Mining"
-  parcent = "70%"
+  parcent = "80%"
           
 [[feature]]
   name = "Docker"
@@ -109,7 +109,7 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
   parcent = "80%"
           
 [[feature]]
-  name = "Google Cloud Platform"
+  name = "Kubernetes"
   parcent = "70%"
           
 
