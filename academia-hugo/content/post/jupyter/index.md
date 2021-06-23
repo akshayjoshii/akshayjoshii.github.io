@@ -1,7 +1,7 @@
 ---
-title: Display Jupyter Notebooks with academia
-subtitle: Learn how to blog in academia using Jupyter notebooks
-summary: Learn how to blog in academia using Jupyter notebooks
+title: Display Jupyter Notebooks
+subtitle: This page is reserved to publish Jupyter Notebooks in the future.
+summary: This page is reserved to publish Jupyter Notebooks in the future.
 authors:
 - admin
 tags: []
@@ -59,20 +59,13 @@ from IPython.core.display import Image
 Image('https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png')
 ```
 
-
-
-
 ![png](./academia_0_0.png)
 
-
-
-
 ```python
-print("Welcome to academia!")
+print("Welcome to Akshay Joshi's Website!")
 ```
 
-    Welcome to academia!
-
+    Welcome to Akshay Joshi's Website!
 
 ## Install Python and Jupyter
 
@@ -80,9 +73,9 @@ print("Welcome to academia!")
 
 Otherwise, for advanced users, install Jupyter notebook with `pip3 install jupyter`.
 
-## Create a new blog post [as usual](https://sourcethemes.com/academic/docs/managing-content/#create-a-blog-post)
+## Create a new blog post
 
-Run the following commands in your Terminal, substituting `<MY_WEBSITE_FOLDER>` and `my-post` with the file path to your academia website folder and a name for your blog post (without spaces), respectively:  
+Run the following commands in Terminal, substituting `<MY_WEBSITE_FOLDER>` and `my-post` with the file path to the website folder and a name for the blog post (without spaces), respectively:  
 
 ```bash
 cd <MY_WEBSITE_FOLDER>
@@ -92,7 +85,7 @@ cd <MY_WEBSITE_FOLDER>/content/post/my-post/
 
 ## Create or upload a Jupyter notebook
 
-Run the following command to start Jupyter within your new blog post folder. Then create a new Jupyter notebook (*New > Python Notebook*) or upload a notebook.
+Run the following command to start Jupyter within the new blog post folder. Then create a new Jupyter notebook (*New > Python Notebook*) or upload a notebook.
 
 ```bash
 jupyter notebook
@@ -110,10 +103,10 @@ cat Untitled.md | tee -a index.md
 rm Untitled.md
 ```
 
-## Edit your post metadata
+## Edit the post metadata
 
-Open `index.md` in your text editor and edit the title etc. in the [front matter](https://sourcethemes.com/academic/docs/front-matter/) according to your preference.
+Open `index.md` in the text editor and edit the title etc. in the front matter according to your preference.
 
-To set a [featured image](https://sourcethemes.com/academic/docs/managing-content/#featured-image), place an image named `featured` into your post's folder.
+To set a featured image, place an image named `featured` into the post's folder.
 
-For other tips, such as using math, see the guide on [writing content with academia](https://sourcethemes.com/academic/docs/writing-markdown-latex/). 
+This page also supports Math & LaTeX code.
