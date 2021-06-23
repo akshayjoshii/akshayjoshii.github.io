@@ -1,19 +1,19 @@
 ---
-title: Coding and Analyzing Qualitative Data
-event: academia Theme Conference
+title: Publish at CVPR, NeurIPS, ICLR, ICML, ACL
+event: NeurIPS
 event_url: https://akshayjoshi.tech/
-location: London, United Kingdom
-summary: An example talk using academia's Markdown slides feature.
+location: Saarbrücken, Germany
+summary: An example talk.
 abstract: ""
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2030-06-01T13:00:00Z"
-date_end: "2030-06-01T15:00:00Z"
+date: "2019-04-20T05:00:00Z"
+date_end: "2019-04-20T06:00:00Z"
 all_day: false
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2017-01-01T00:00:00Z"
+publishDate: "2019-04-20T00:00:00Z"
 
 authors: []
 tags: []
@@ -23,7 +23,7 @@ featured: false
 
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/bzdhc5b3Bxs)'
-  focal_point: Right
+  focal_point: Smart
 
 links:
 #- icon: twitter
@@ -58,10 +58,4 @@ math: true
 Click on the **Slides** button above to view the built-in slides feature.
 {{% /alert %}}
 
-Slides can be added in a few ways:
-
-- **Create** slides using academia's [*Slides*](https://sourcethemes.com/academic/docs/managing-content/#create-slides) feature and link using `slides` parameter in the front matter of the talk file
-- **Upload** an existing slide deck to `static/` and link using `url_slides` parameter in the front matter of the talk file
-- **Embed** your slides (e.g. Google Slides) or presentation video on this page using [shortcodes](https://sourcethemes.com/academic/docs/writing-markdown-latex/).
-
-Further talk details can easily be added to this page using *Markdown* and $\rm \LaTeX$ math code.
+This is a placeholder page reserved to add details about future talks at conferences (supports *Markdown* and $\rm \LaTeX$ math code).
