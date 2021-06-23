@@ -27,7 +27,7 @@ date_format = "Jan 2006"
   date_end = ""
   description = """ 
   **Research Group:** [Institute for Information Systems](https://www.dfki.de/en/web/research/research-departments/institute-for-information-systems/team-iwi/)  
-  **Tasks:** Build Large-scale Deep Neural Attention-based Language Models & Forecast Systems for Smart Vigilance in Medical Product Research & Development domain.
+  **Tasks:** Developing novel deep neural Transformer-based BioMedical Language Model architecture with linear self-attention for Semantic Search, Information Retrieval & Recommendation Systems.
   """
 
 [[experience]]
@@ -41,7 +41,7 @@ date_format = "Jan 2006"
   **Lecture:** [Architectures for Intelligent Systems](https://lms.sulb.uni-saarland.de/moodle/course/index.php?categoryid=1872)    
   **Professor:** Prof. Dr. Jana Koehler   
   **Research Group:** Artificial Intelligence Group   
-  **Tasks:** Develop course materials for Intelligent Speech Assistants & Deep Reinforcement Learning Agents for Conversational Question Answering, Searching, Planning & Reasoning.
+  **Tasks:** Developed a reference architecture & corresponding architectural design documents for Amazon Alexa powered Smart Digital Assistants for Conversational Question Answering.
   """
 
 [[experience]]
@@ -53,11 +53,12 @@ date_format = "Jan 2006"
   date_end = "2019-08-23"
   description = """
   **Team:** [Platform Security Processor (PSP) Firmware](https://www.amd.com/en/technologies/pro-security)  
-  **Engineering Group:** Core Software Group
+  **Engineering Group:** Core Software Group  
+  **Tasks:** Instrumental in the design, development & validation of Platform Security Processor firmware for AMD Ryzen, Threadripper & EPYC CPUs.
   """
 
 [[experience]]
-  title = "###### Intern"
+  title = "###### Software Engineering Intern"
   company = "Advanced Micro Devices R&D"
   company_url = "https://www.amd.com/"
   location = "Bangalore, India"
@@ -65,11 +66,12 @@ date_format = "Jan 2006"
   date_end = "2018-08-20"
   description = """
   **Team:** [AMD Ryzen Master](https://www.amd.com/en/technologies/ryzen-master)  
-  **Engineering Group:** Core Software Group
+  **Engineering Group:** Core Software Group  
+  **Tasks:** Maintained & validated AMD Ryzen Master Software Development Kit for CPU & Memory Overclocking (Frequency/Voltage) utilities.
   """
 
 [[experience]]
-  title = "###### Software Development Engineer"
+  title = "###### Software Engineer"
   company = "Freelance"
   company_url = "https://www.linkedin.com/in/akshayjoshi56/"
   location = "Bangalore, India"
@@ -87,7 +89,7 @@ date_format = "Jan 2006"
   date_start = "2017-01-01"
   date_end = "2017-03-10"
   description = """
-  **Tasks:** Performed EDA to discover sensitive patterns, significance and anomalies in the statistical data.
+  **Tasks:** Built Multivariate Regression & Autoregressive Integrated Moving Average (ARIMA) Forecast models for predictive analytics.
   """
   
 +++
