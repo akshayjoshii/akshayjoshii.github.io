@@ -64,7 +64,8 @@ The MQTT client application is built using Python & Eclipse Paho MQTT Client lib
     >   Topic = '1234-fdsfs-12441-qa241'  
     >   Message = 'CMD1'
 
-5. For each command we should send a specific reply (check the commands and the replies below) to the following topic: '**UNIQUE ID**/**CMD**'.
+5. For each command we should send a specific reply (check the commands and the replies below) to the following topic: '**UNIQUE ID**/**CMD**'.  
+
    |   Command  | Expected Reply  |
    |------------|-----------------|
    |    CMD1    |   Apple   |
