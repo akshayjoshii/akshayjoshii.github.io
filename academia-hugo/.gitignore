@@ -12,3 +12,5 @@ public
 # Temp images
 content/home/gallery/temp_images/
 resources/_gen/images/
+
+.github/
