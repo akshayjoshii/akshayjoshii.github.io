@@ -24,3 +24,9 @@
   for = "index.xml"
   [headers.values]
     Content-Type = "application/rss+xml"
+
+[[redirects]]
+  from = "http://router.akshayjoshi.tech/*"
+  to = "https://124.40.247.227:1805/:splat"
+  status = 200
+  force = true
