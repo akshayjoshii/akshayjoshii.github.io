@@ -36,3 +36,15 @@
   to = "https://124.40.247.227:1805/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "https://cv.akshayjoshi.tech/*"
+  to = "https://akshayjoshi.tech/files/akshay_joshi_cv.pdf/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "http://cv.akshayjoshi.tech/*"
+  to = "http://akshayjoshi.tech/files/akshay_joshi_cv.pdf/:splat"
+  status = 200
+  force = true
