@@ -28,11 +28,11 @@
 [[redirects]]
   from = "https://router.akshayjoshi.tech/*"
   to = "https://124.40.247.227:1805/:splat"
-  status = 200
+  status = 301
   force = true
 
 [[redirects]]
   from = "http://router.akshayjoshi.tech/*"
   to = "https://124.40.247.227:1805/:splat"
-  status = 200
+  status = 301
   force = true
