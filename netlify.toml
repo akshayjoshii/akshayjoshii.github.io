@@ -48,3 +48,15 @@
   to = "http://akshayjoshi.tech/files/akshay_joshi_cv.pdf/:splat"
   status = 200
   force = true
+  
+[[redirects]]
+  from = "https://code.akshayjoshi.tech/*"
+  to = "https://github.com/akshayjoshii/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "http://code.akshayjoshi.tech/*"
+  to = "http://github.com/akshayjoshii/:splat"
+  status = 200
+  force = true
