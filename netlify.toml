@@ -26,7 +26,13 @@
     Content-Type = "application/rss+xml"
 
 [[redirects]]
+  from = "https://router.akshayjoshi.tech/*"
+  to = "https://124.40.247.227:1805/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "http://router.akshayjoshi.tech/*"
-  to = "http://124.40.247.229/:splat"
-  status = 301
+  to = "https://124.40.247.227:1805/:splat"
+  status = 200
   force = true
