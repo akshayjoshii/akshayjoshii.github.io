@@ -44,4 +44,4 @@ hero_media = "akshay_1.png"
 +++
 ## My name is **Akshay Joshi** and I'm a **Deep Learning Research Assistant** at German Research Center for Artificial Intelligence
 
-Research Interests: Neuro-Symbolic Reasoning, Visual Scene Understanding, Multilingual Language Modelling & Automatic Speech Recognition.
+Research Interests: Neuro-Symbolic Reasoning, Self-supervised Learning, Visual Scene Understanding, and Multimodal Representation Learning.
