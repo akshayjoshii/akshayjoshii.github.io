@@ -29,8 +29,8 @@ display_education: true
 
 interests:
 
-- Explainable Neural LM
-- Automatic Speech Recognition
+- Foundational Models
+- Multimodal Representation Learning
 - Neuro-Symbolic AI
 - Visual Scene Understanding
 
@@ -86,6 +86,6 @@ user_groups:
 - Researchers
 - Visitors
 ---
-Graduate student with an extensive background in Semiconductor & Software Engineering R&D, currently pursuing research in Visual Scene Understanding, Explainable Neural Language Modelling with Linear Self-Attention & Automatic Speech Recognition for Low-resource Languages at Universität des Saarlandes & DFKI.
+Graduate student with an extensive background in Semiconductor & Software Engineering R&D, currently pursuing research in Visual Scene Understanding, Explainable Neural Language Modelling with Linear Self-Attention at Universität des Saarlandes & DFKI.
 
 
