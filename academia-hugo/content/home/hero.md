@@ -44,4 +44,4 @@ hero_media = "akshay_1.png"
 +++
 ## My name is **Akshay Joshi** and I'm currently pursuing M. Sc. Research Thesis under **Prof. Dr. Mrinmaya Sachan** & **Prof. Dr. Josef van Genabith**
 
-Institutions: ETH Zürich, German Research Center for AI, Universität des Saarlandes
+Institutions: ETH Zürich, German Research Center for AI, Universität des Saarlandes.

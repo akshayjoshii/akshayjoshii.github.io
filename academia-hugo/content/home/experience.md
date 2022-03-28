@@ -26,7 +26,7 @@ date_format = "Jan 2006"
   date_start = "2022-02-02"
   date_end = ""
   description = """ 
-  **Supervisor:** Prof. Dr. Mrinmaya Sachan
+  **Supervisor:** Prof. Dr. Mrinmaya Sachan                              
   **Research Group:** [Mrinmaya's Lab, Institute for Machine Learning](https://ml.inf.ethz.ch/)  
   **Tasks:** Research on Self-Supervised Multimodal Representation Learning on Diagrams
   """
@@ -52,7 +52,7 @@ date_format = "Jan 2006"
   date_start = "2020-11-01"
   date_end = ""
   description = """
-  **Supervisors:** Prof. Dr. Peter Loos, Peter Pfeiffer 
+  **Supervisors:** Prof. Dr. Peter Loos, Peter Pfeiffer    
   **Research Group:** [Institute for Information Systems](https://www.dfki.de/en/web/research/research-departments/institute-for-information-systems/team-iwi/)  
   **Tasks:** Developing novel deep neural Transformer-based BioMedical Language Model architecture with linear self-attention for Semantic Search, Information Retrieval & Recommendation Systems.
   """
