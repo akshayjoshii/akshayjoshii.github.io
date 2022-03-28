@@ -19,13 +19,40 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[experience]]
+  title = "###### M. Sc. Research Thesis"
+  company = "ETH Zürich"
+  company_url = "https://ethz.ch/en.html"
+  location = "Zürich, Switzerland"
+  date_start = "2022-02-02"
+  date_end = ""
+  description = """ 
+  **Supervisor:** Prof. Dr. Mrinmaya Sachan
+  **Research Group:** [Mrinmaya's Lab, Institute for Machine Learning](https://ml.inf.ethz.ch/)  
+  **Tasks:** Research on Self-Supervised Multimodal Representation Learning on Diagrams
+  """
+
+[[experience]]
+  title = "###### M. Sc. Research Thesis"
+  company = "Universität des Saarlandes & German Research Center for Artificial Intelligence"
+  company_url = "https://www.dfki.de/en/web/"
+  location = "Saarbrücken, Germany"
+  date_start = "2022-02-01"
+  date_end = ""
+  description = """ 
+  **Supervisors:** Prof. Dr. Josef van Genabith, Dr. Cristina España-Bonet, Yasser Hamidullah
+  **Research Group:** [Multilinguality and Language Technology](https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology)  
+  **Tasks:** Research on Self-Supervised Multimodal Representation Learning on Diagrams
+  """  
+
+[[experience]]
   title = "###### Research Assistant"
   company = "German Research Center for Artificial Intelligence (DFKI)"
-  company_url = "https://www.dfki.de/web/"
+  company_url = "https://www.dfki.de/en/web/"
   location = "Saarbrücken, Germany"
   date_start = "2020-11-01"
   date_end = ""
-  description = """ 
+  description = """
+  **Supervisors:** Prof. Dr. Peter Loos, Peter Pfeiffer 
   **Research Group:** [Institute for Information Systems](https://www.dfki.de/en/web/research/research-departments/institute-for-information-systems/team-iwi/)  
   **Tasks:** Developing novel deep neural Transformer-based BioMedical Language Model architecture with linear self-attention for Semantic Search, Information Retrieval & Recommendation Systems.
   """
@@ -45,7 +72,7 @@ date_format = "Jan 2006"
   """
 
 [[experience]]
-  title = "###### Software Engineer I"
+  title = "###### Software Engineer"
   company = "Advanced Micro Devices R&D"
   company_url = "https://www.amd.com/"
   location = "Bangalore, India"
@@ -70,16 +97,6 @@ date_format = "Jan 2006"
   **Tasks:** Maintained & validated AMD Ryzen Master Software Development Kit for CPU & Memory Overclocking (Frequency/Voltage) utilities.
   """
 
-[[experience]]
-  title = "###### Software Engineer"
-  company = "Freelance"
-  company_url = "https://www.linkedin.com/in/akshayjoshi56/"
-  location = "Bangalore, India"
-  date_start = "2017-07-01"
-  date_end = "2018-01-31"
-  description = """
-  **Tasks:** Developed [SQLMAP](http://sqlmap.org/) based tools to penetration test websites for a range of zero day exploits, vulnerabilities & information leakages.
-  """
 
 [[experience]]
   title = "###### Engineering Intern"

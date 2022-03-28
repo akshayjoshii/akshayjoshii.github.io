@@ -30,9 +30,9 @@ display_education: true
 interests:
 
 - Foundational Models
+- Vision and Language
+- Visual Reasoning
 - Multimodal Representation Learning
-- Neuro-Symbolic AI
-- Visual Scene Understanding
 
 education:
   courses:
@@ -54,7 +54,7 @@ social:
 
 - icon: researchgate
   icon_pack: fab
-  link: https://www.researchgate.net/profile/Akshay_Joshi7
+  link: https://scholar.google.com/citations?user=IFUmjP8AAAAJ&hl=en
 
 - icon: github
   icon_pack: fab
@@ -86,6 +86,6 @@ user_groups:
 - Researchers
 - Visitors
 ---
-Graduate student with an extensive background in Semiconductor & Software Engineering R&D, currently pursuing research in Visual Scene Understanding, Explainable Neural Language Modelling with Linear Self-Attention at Universität des Saarlandes & DFKI.
+Currently pursuing research in Self-supervised Learning, Visual Scene Understanding, and Multimodal Representation Learning at Universität des Saarlandes, ETH Zürich & DFKI.
 
 

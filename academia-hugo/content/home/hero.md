@@ -42,6 +42,6 @@ hero_media = "akshay_1.png"
   label = "Contact Me"
 
 +++
-## My name is **Akshay Joshi** and I'm a **Deep Learning Research Assistant** at German Research Center for Artificial Intelligence
+## My name is **Akshay Joshi** and I'm currently pursuing M. Sc. Research Thesis under **Prof. Dr. Mrinmaya Sachan** & **Prof. Dr. Josef van Genabith**
 
-Research Interests: Neuro-Symbolic Reasoning, Self-supervised Learning, Visual Scene Understanding, and Multimodal Representation Learning.
+Institutions: ETH Zürich, German Research Center for AI, Universität des Saarlandes
