@@ -60,3 +60,27 @@
   to = "http://github.com/akshayjoshii/:splat"
   status = 301
   force = true
+  
+[[redirects]]
+  from = "https://thesis.akshayjoshi.tech/*"
+  to = "https://github.com/akshayjoshii/thesis/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://thesis.akshayjoshi.tech/*"
+  to = "https://github.com/akshayjoshii/thesis/:splat"
+  status = 301
+  force = true
+  
+[[redirects]]
+  from = "https://status.akshayjoshi.tech/*"
+  to = "https://github.com/users/akshayjoshii/projects/3/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://status.akshayjoshi.tech/*"
+  to = "https://github.com/users/akshayjoshii/projects/3/:splat"
+  status = 301
+  force = true
