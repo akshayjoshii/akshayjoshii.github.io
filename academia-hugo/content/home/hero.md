@@ -42,6 +42,6 @@ hero_media = "akshay_1.png"
   label = "Contact Me"
 
 +++
-## My name is **Akshay Joshi** and I'm currently pursuing M. Sc. Research Thesis under **Prof. Dr. Mrinmaya Sachan** & **Prof. Dr. Josef van Genabith**
+## My name is **Akshay Joshi** and I'm currently pursuing Joint M. Sc. Research Thesis on **Self-Supervised Multimodal Representation Learning**
 
-Institutions: ETH Zürich, German Research Center for AI, Universität des Saarlandes.
+Advising Institutions: ETH Zürich, Google, German Research Center for AI, and Universität des Saarlandes.
