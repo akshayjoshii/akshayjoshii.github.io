@@ -86,6 +86,6 @@ user_groups:
 - Researchers
 - Visitors
 ---
-Currently pursuing research in Self-supervised Learning, Visual Scene Understanding, and Multimodal Representation Learning at Universität des Saarlandes, ETH Zürich & DFKI.
+My research interest spans across Self-supervised Learning, Visual Scene Understanding, and Multimodal Representation Learning.
 
 
