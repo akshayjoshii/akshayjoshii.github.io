@@ -93,7 +93,6 @@ date_format = "Jan 2006"
   description = """
   **Team:** [Platform Security Processor (PSP) Firmware](https://www.amd.com/en/technologies/pro-security)  
   **Engineering Group:** Core Software Group  
-  **Tasks:** Instrumental in the design, development & validation of Platform Security Processor firmware for AMD Ryzen, Threadripper & EPYC CPUs.
   """
 
 [[experience]]
@@ -106,7 +105,6 @@ date_format = "Jan 2006"
   description = """
   **Team:** [AMD Ryzen Master](https://www.amd.com/en/technologies/ryzen-master)  
   **Engineering Group:** Core Software Group  
-  **Tasks:** Maintained & validated AMD Ryzen Master Software Development Kit for CPU & Memory Overclocking (Frequency/Voltage) utilities.
   """
 
 
@@ -118,7 +116,6 @@ date_format = "Jan 2006"
   date_start = "2017-01-01"
   date_end = "2017-03-10"
   description = """
-  **Tasks:** Built Multivariate Regression & Autoregressive Integrated Moving Average (ARIMA) Forecast models for predictive analytics.
   """
   
 +++
