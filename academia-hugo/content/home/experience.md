@@ -25,8 +25,7 @@ date_format = "Jan 2006"
   location = "Zürich, Switzerland"
   date_start = "2022-04-01"
   date_end = ""
-  description = """ 
-  # **Advisors:** Dr. Alessio Tonioni, Dr. Henri Rebecq                                
+  description = """                               
   **Tasks:** Research on Self-Supervised Multimodal Representation Learning on Diagrams
   """
 
@@ -38,8 +37,6 @@ date_format = "Jan 2006"
   date_start = "2022-02-02"
   date_end = ""
   description = """ 
-  # **Advisor:** Prof. Dr. Mrinmaya Sachan                              
-  # **Research Group:** [Mrinmaya's Lab, Institute for Machine Learning](https://ml.inf.ethz.ch/)  
   **Tasks:** Research on Self-Supervised Multimodal Representation Learning on Diagrams
   """
 
@@ -51,8 +48,6 @@ date_format = "Jan 2006"
   date_start = "2022-02-01"
   date_end = ""
   description = """ 
-  **Advisors:** Prof. Dr. Josef van Genabith, Dr. Cristina España-Bonet, Yasser Hamidullah
-  **Research Group:** [Multilinguality and Language Technology](https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology)  
   **Tasks:** Research on Self-Supervised Multimodal Representation Learning on Diagrams
   """  
 
@@ -64,8 +59,6 @@ date_format = "Jan 2006"
   date_start = "2020-11-01"
   date_end = ""
   description = """
-  **Supervisors:** Prof. Dr. Peter Loos, Peter Pfeiffer    
-  **Research Group:** [Institute for Information Systems](https://www.dfki.de/en/web/research/research-departments/institute-for-information-systems/team-iwi/)  
   **Tasks:** Developing novel deep neural Transformer-based BioMedical Language Model architecture with linear self-attention for Semantic Search, Information Retrieval & Recommendation Systems.
   """
 
@@ -77,9 +70,7 @@ date_format = "Jan 2006"
   date_start = "2020-10-01"
   date_end = "2021-03-31"
   description = """ 
-  **Lecture:** [Architectures for Intelligent Systems](https://lms.sulb.uni-saarland.de/moodle/course/index.php?categoryid=1872)    
-  **Professor:** Prof. Dr. Jana Koehler   
-  **Research Group:** Artificial Intelligence Group   
+  **Lecture:** [Architectures for Intelligent Systems](https://lms.sulb.uni-saarland.de/moodle/course/index.php?categoryid=1872)      
   **Tasks:** Developed a reference architecture & corresponding architectural design documents for Amazon Alexa powered Smart Digital Assistants for Conversational Question Answering.
   """
 
