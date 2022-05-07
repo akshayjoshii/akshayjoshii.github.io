@@ -26,7 +26,7 @@ date_format = "Jan 2006"
   date_start = "2022-04-01"
   date_end = ""
   description = """ 
-  **Advisors:** Dr. Alessio Tonioni, Dr. Henri Rebecq                                
+  # **Advisors:** Dr. Alessio Tonioni, Dr. Henri Rebecq                                
   **Tasks:** Research on Self-Supervised Multimodal Representation Learning on Diagrams
   """
 
@@ -38,8 +38,8 @@ date_format = "Jan 2006"
   date_start = "2022-02-02"
   date_end = ""
   description = """ 
-  **Advisor:** Prof. Dr. Mrinmaya Sachan                              
-  **Research Group:** [Mrinmaya's Lab, Institute for Machine Learning](https://ml.inf.ethz.ch/)  
+  # **Advisor:** Prof. Dr. Mrinmaya Sachan                              
+  # **Research Group:** [Mrinmaya's Lab, Institute for Machine Learning](https://ml.inf.ethz.ch/)  
   **Tasks:** Research on Self-Supervised Multimodal Representation Learning on Diagrams
   """
 
