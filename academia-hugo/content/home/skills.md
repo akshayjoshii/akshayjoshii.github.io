@@ -3,7 +3,7 @@
 widget = "featurette"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 40  # Order that this section will appear.
+weight = 30  # Order that this section will appear.
 
 title = "Technical Skills"
 subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
@@ -31,7 +31,7 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
   parcent = "80%"
     
 [[feature]]
-  name = "Scikit - learn"
+  name = "Scikit-learn"
   parcent = "85%"
     
 [[feature]]
