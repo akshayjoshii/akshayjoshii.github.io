@@ -7,8 +7,8 @@ authors:
 - admin
 # resume download button
 btn:
-- url : "files/akshay_joshi_cv.pdf"
-  label : "Download Résumé/CV"
+- url : "https://akshayjoshi.tech/#contact"
+  label : "Request Résumé/CV"
 
 # Is this the primary user of the site?
 superuser: true
