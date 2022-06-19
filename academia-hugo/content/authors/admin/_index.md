@@ -50,7 +50,7 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: mailto:contact@akshayjoshi.tech  # For a direct email link, use "mailto:test@example.org".
+  link: mailto:akjoshi@inf.ethz.ch  # For a direct email link, use "mailto:test@example.org".
 
 - icon: researchgate
   icon_pack: fab

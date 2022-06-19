@@ -12,7 +12,7 @@ day_night = true
 font = "classic"
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = "Graduate student with an extensive background in Semiconductors and Software Engineering R&D, currently pursuing research in 3D Scene Reconstruction, Neuro-Symbolic Reasoning, Self-supervised Learning and Multilingual Conversational Question Answering at Universität des Saarlandes, Saarbrücken, Germany."
+description = "Currently pursuing research in Self-supervised Learning, Visual Scene Understanding, and Multimodal Representation Learning at ETH Zürich, Google, Universität des Saarlandes & DFKI."
 
 # Default image for social sharing and search engines. Place image in `static/img/` folder and specify image name here.
 sharing_image = "akshay_1.png"
@@ -51,20 +51,20 @@ time_format = "3:04 PM"
 
 # Enter contact details (optional). To hide a field, clear it to "".
 email = "akshayjoshi56@gmail.com"
-phone = "+49 163 945 9525"
+phone = "+49 157 5819 3860"
 address = "Studentenwohnheim Waldhausweg 15, 66123, Saarbrücken, Germany."
 
 # Office hours: use `<br>` to insert a line break, or set to "" to remove office hours
 office_hours = """Monday - Friday: 10:00 to 17:00"""
 
 # Enter an optional link for booking appointments (e.g. calendly.com).
-appointment_url = "mailto:contact@akshayjoshi.tech"
+appointment_url = "mailto:akjoshi@inf.ethz.ch"
 
 # Contact links
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.
 contact_links = [
 
-  {icon = "whatsapp", icon_pack = "fab", name = "Message Me", link = "https://wa.me/+4915733643012?text=Hello!,%20I%20am%20Akshay%20Joshi.%20Please%20call%20if%20it's%20urgent."},
+  {icon = "whatsapp", icon_pack = "fab", name = "Message Me", link = "https://wa.me/+919591233552?text=Hello!"},
   {icon = "instagram", icon_pack = "fab", name = "Follow Me", link = "https://www.instagram.com/akkshayjoshii/"},
   {icon = "linkedin", icon_pack = "fab", name = "View My Profile", link = "https://www.linkedin.com/in/akshayjoshi56/"},
   {icon = "telegram", icon_pack = "fab", name = "Telegram Me", link = "https://telegram.me/@Sttarscream"},
@@ -123,7 +123,7 @@ section_pager = false
 docs_section_pager = true  # Display pager in Docs layout (e.g. tutorials)?
 
 # Enable in-built social sharing buttons? (true/false)
-sharing = false
+sharing = true
 
 # Configuration of publication pages.
 [publications]

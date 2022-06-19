@@ -44,4 +44,4 @@ hero_media = "akshay_1.png"
 +++
 ## My name is **Akshay Joshi** and I'm currently pursuing Joint M. Sc. Research Thesis on **Self-Supervised Multimodal Representation Learning**
 
-Advising Institutions: ETH Zürich, Google Research, German Research Center for AI, and Universität des Saarlandes.
+Advising Institutions: ETH Zürich, Google, German Research Center for AI, and Universität des Saarlandes.
