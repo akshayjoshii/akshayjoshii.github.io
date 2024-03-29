@@ -26,14 +26,14 @@
     Content-Type = "application/rss+xml"
 
 [[redirects]]
-  from = "https://router.akjo.tech/*"
-  to = "https://124.40.247.227:1805/:splat"
+  from = "https://stream.akjo.tech/*"
+  to = "http://103.132.16.253:32400/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://router.akjo.tech/*"
-  to = "https://124.40.247.227:1805/:splat"
+  from = "https://download.akjo.tech/*"
+  to = "http://103.132.16.253:42069/:splat"
   status = 301
   force = true
 
