@@ -26,61 +26,61 @@
     Content-Type = "application/rss+xml"
 
 [[redirects]]
-  from = "https://router.akshayjoshi.tech/*"
+  from = "https://router.akjo.tech/*"
   to = "https://124.40.247.227:1805/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://router.akshayjoshi.tech/*"
+  from = "http://router.akjo.tech/*"
   to = "https://124.40.247.227:1805/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://cv.akshayjoshi.tech/*"
+  from = "https://cv.akjo.tech/*"
   to = "https://akshayjoshi.tech/files/akshay_joshi_cv.pdf/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "http://cv.akshayjoshi.tech/*"
+  from = "http://cv.akjo.tech/*"
   to = "http://akshayjoshi.tech/files/akshay_joshi_cv.pdf/:splat"
   status = 200
   force = true
   
 [[redirects]]
-  from = "https://code.akshayjoshi.tech/*"
+  from = "https://code.akjo.tech/*"
   to = "https://github.com/akshayjoshii/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://code.akshayjoshi.tech/*"
+  from = "http://code.akjo.tech/*"
   to = "http://github.com/akshayjoshii/:splat"
   status = 301
   force = true
   
 [[redirects]]
-  from = "https://thesis.akshayjoshi.tech/*"
+  from = "https://thesis.akjo.tech/*"
   to = "https://github.com/akshayjoshii/thesis/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://thesis.akshayjoshi.tech/*"
+  from = "http://thesis.akjo.tech/*"
   to = "https://github.com/akshayjoshii/thesis/:splat"
   status = 301
   force = true
   
 [[redirects]]
-  from = "https://status.akshayjoshi.tech/*"
+  from = "https://status.akjo.tech/*"
   to = "https://github.com/users/akshayjoshii/projects/3/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://status.akshayjoshi.tech/*"
+  from = "http://status.akjo.tech/*"
   to = "https://github.com/users/akshayjoshii/projects/3/:splat"
   status = 301
   force = true
