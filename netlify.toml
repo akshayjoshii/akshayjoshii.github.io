@@ -28,13 +28,13 @@
 [[redirects]]
   from = "https://stream.akjo.tech/*"
   to = "http://103.132.16.253:32400/:splat"
-  status = 301
+  status = 200
   force = true
 
 [[redirects]]
   from = "https://download.akjo.tech/*"
   to = "http://103.132.16.253:42069/:splat"
-  status = 301
+  status = 200
   force = true
 
 [[redirects]]
