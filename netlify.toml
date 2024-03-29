@@ -62,25 +62,25 @@
   force = true
   
 [[redirects]]
-  from = "https://thesis.akjo.tech/*"
-  to = "https://github.com/akshayjoshii/thesis/:splat"
+  from = "https://insta.akjo.tech/*"
+  to = "https://www.instagram.com/akkshayjoshii/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://thesis.akjo.tech/*"
-  to = "https://github.com/akshayjoshii/thesis/:splat"
+  from = "http://insta.akjo.tech/*"
+  to = "https://www.instagram.com/akkshayjoshii/:splat"
   status = 301
   force = true
   
 [[redirects]]
-  from = "https://status.akjo.tech/*"
-  to = "https://github.com/users/akshayjoshii/projects/3/:splat"
+  from = "https://social.akjo.tech/*"
+  to = "https://www.linkedin.com/in/akkshayjoshii/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "http://status.akjo.tech/*"
-  to = "https://github.com/users/akshayjoshii/projects/3/:splat"
+  from = "http://social.akjo.tech/*"
+  to = "https://www.linkedin.com/in/akkshayjoshii/:splat"
   status = 301
   force = true
