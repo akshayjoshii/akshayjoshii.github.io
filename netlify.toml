@@ -39,13 +39,13 @@
 
 [[redirects]]
   from = "https://cv.akjo.tech/*"
-  to = "https://akshayjoshi.tech/files/akshay_joshi_cv.pdf/:splat"
+  to = "https://akjo.tech/files/akshay_joshi_cv.pdf/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "http://cv.akjo.tech/*"
-  to = "http://akshayjoshi.tech/files/akshay_joshi_cv.pdf/:splat"
+  to = "http://akjo.tech/files/akshay_joshi_cv.pdf/:splat"
   status = 200
   force = true
   
