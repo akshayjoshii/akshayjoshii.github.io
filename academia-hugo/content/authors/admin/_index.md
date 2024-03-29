@@ -7,7 +7,7 @@ authors:
 - admin
 # resume download button
 btn:
-- url : "https://akshayjoshi.tech/#contact"
+- url : "https://akjo.tech/#contact"
   label : "Request Résumé/CV"
 
 # Is this the primary user of the site?
@@ -62,7 +62,7 @@ social:
 
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/in/akshayjoshi56/
+  link: https://www.linkedin.com/in/akkshayjoshii/
   
 - icon: instagram
   icon_pack: fab
