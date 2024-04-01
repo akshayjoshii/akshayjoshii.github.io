@@ -18,7 +18,7 @@ role: Senior AI Research Scientist
 
 # Organizations/Affiliations
 organizations:
-- name:  BlinkIn GmbH
+- name: BlinkIn GmbH
   url: "https://www.blinkin.io/"
 
 # Short bio (displayed in user profile at end of posts)

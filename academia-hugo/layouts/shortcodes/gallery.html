@@ -29,7 +29,7 @@
       {{ end }}
     {{ end }}
   <a data-fancybox="gallery-{{$album}}" href="{{ .RelPermalink }}" {{ with $caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }}>
-  <img src="{{ $image.RelPermalink }}" alt="">
+  <img src="{{ $image.RelPermalink }}" alt="Akshay Joshi, Akshay Google, akjoshi, Ankit Agrawal, DJ Agrank, Prajvi Saxena, Shreyas Gururaj, Shreyas Kashyap, Tanvi Gunjal, Tanvi Ajay Gunjal, Poojitha Vijayanarasimha, poojitha sap, Germany, Munich, Saarland University, Frankfurt, Google">
   </a>
   {{end}}
 
@@ -46,7 +46,7 @@
     {{ end }}
   {{ end }}
   <a data-fancybox="gallery{{ with .album }}-{{.}}{{ end }}" {{ with .caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }} href="{{$.Scratch.Get "src"}}">
-    <img src="{{$.Scratch.Get "src"}}" alt="">
+    <img src="{{$.Scratch.Get "src"}}" alt="Akshay Joshi, Akshay Google, akjoshi, Ankit Agrawal, DJ Agrank, Prajvi Saxena, Shreyas Gururaj, Shreyas Kashyap, Tanvi Gunjal, Tanvi Ajay Gunjal, Poojitha Vijayanarasimha, poojitha sap, Germany, Munich, Saarland University, Frankfurt, Google">
   </a>
   {{end}}
   {{else}}

@@ -22,10 +22,10 @@
     <div id="profile">
       {{ if site.Params.gravatar }}
       <img class="portrait img-fluid" src="https://s.gravatar.com/avatar/{{ md5 $person.email }}?s=200')"
-        itemprop="image" alt="Avatar">
+        itemprop="image" alt="Akshay Joshi is a Senior AI Research Scientist - Google, ETH Zurich, AMD, DFKI, Saarland University">
       {{ else }}
       {{ $avatar_image := .page.Params.avatar_image }}
-      <img class="img-fluid" src="{{ printf "img/%s" $avatar_image | relURL }}" itemprop="image" alt="Avatar">
+      <img class="img-fluid" src="{{ printf "img/%s" $avatar_image | relURL }}" itemprop="image" alt="Akshay Joshi is a Senior AI Research Scientist - Google, ETH Zurich, AMD, DFKI, Saarland University">
       {{ end }}
     </div>
     <ul class="network-icon bg-white mx-2 py-2 text-center" aria-hidden="true">
