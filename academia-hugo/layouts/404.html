@@ -20,7 +20,7 @@
   {{ if gt $count 0 }}
   <h2>{{ i18n "user_profile_latest" }}</h2>
   <ul>
-    <li><a href="https://akshayjoshi.tech/files/akshay_joshi_cv.pdf">Akshay Joshi's CV</a></li>
+    <li><a href="https://akjo.tech/files/akshay_joshi_cv.pdf">Akshay Joshi's CV</a></li>
     {{ range last 3 $query }}
       <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
     {{ end }}

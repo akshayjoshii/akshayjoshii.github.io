@@ -1,7 +1,7 @@
 ---
 title: Publish at CVPR, NeurIPS, ICLR, ICML, ACL
 event: NeurIPS
-event_url: https://akshayjoshi.tech/
+event_url: https://akjo.tech/
 location: Saarbrücken, Germany
 summary: An example talk.
 abstract: ""

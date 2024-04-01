@@ -108,4 +108,4 @@ The MQTT client application is built using Python & Eclipse Paho MQTT Client lib
 
 ## Author
 
-[Akshay Joshi](https://akshayjoshi.tech)
+[Akshay Joshi](https://akjo.tech)
