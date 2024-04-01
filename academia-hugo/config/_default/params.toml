@@ -15,7 +15,7 @@ font = "classic"
 description = "Akshay Joshi is a Senior Research Scientist who actively works in the fields of Multimodal AI, Large Vision-Language Models, Natural Language Generation. He has worked at reputed organizations such as AMD, Google, ETH Zürich, German Research Center for AI, and Universität des Saarlandes"
 
 # Default image for social sharing and search engines. Place image in `static/img/` folder and specify image name here.
-sharing_image = "akshay_2.png"
+sharing_image = "akshay_2.webp"
 
 # Twitter username (without @). Used when a vistor shares your site on Twitter.
 twitter = "AkshayJoshi56"

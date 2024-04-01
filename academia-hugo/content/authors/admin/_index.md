@@ -1,7 +1,7 @@
 ---
 # Display name
 name: Akshay Joshi
-avatar_image: "akshay_2.png"
+avatar_image: "akshay_2.webp"
 # Username (this should match the folder name)
 authors:
 - admin
