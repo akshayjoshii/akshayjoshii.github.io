@@ -55,7 +55,7 @@
 
     <div class="portrait-title">
       <h2 itemprop="name">{{ $person.name }}</h2>
-      {{ with $person.role }}<h3 class="d-inline-block" itemprop="jobTitle">{{ . | markdownify | emojify }}, </h3>{{ end }}
+      {{ with $person.role }}<h3 class="d-inline-block" itemprop="jobTitle">{{ . | markdownify | emojify }},&nbsp</h3>{{ end }}
 
       {{ range $person.organizations }}
       <h3 class="d-inline-block" itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
