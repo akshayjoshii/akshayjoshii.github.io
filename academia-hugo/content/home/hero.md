@@ -42,6 +42,6 @@ hero_media = "akshay_1.png"
   label = "Contact Me"
 
 +++
-## My name is **Akshay Joshi** and I'm currently pursuing Joint M. Sc. Research Thesis on **Self-Supervised Multimodal Representation Learning**
+## My name is **Akshay Joshi**, I'm a **Senior Applied Research Scientist** at BlinkIn in Munich, Germany
 
-Advising Institutions: ETH Zürich, Google, German Research Center for AI, and Universität des Saarlandes.
+Previous Affiliations: AMD, Google, ETH Zürich, German Research Center for AI, and Universität des Saarlandes.
