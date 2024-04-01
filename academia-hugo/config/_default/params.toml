@@ -66,7 +66,7 @@ contact_links = [
 
   {icon = "whatsapp", icon_pack = "fab", name = "Message Me", link = "https://wa.me/+919591233552?text=Hello!"},
   {icon = "instagram", icon_pack = "fab", name = "Follow Me", link = "https://www.instagram.com/akkshayjoshii/"},
-  {icon = "linkedin", icon_pack = "fab", name = "View My Profile", link = "https://www.linkedin.com/in/akshayjoshi56/"},
+  {icon = "linkedin", icon_pack = "fab", name = "View My Profile", link = "https://www.linkedin.com/in/akkshayjoshii/"},
   {icon = "telegram", icon_pack = "fab", name = "Telegram Me", link = "https://telegram.me/@Sttarscream"},
   {icon = "twitter", icon_pack = "fab", name = "DM Me", link = "https://twitter.com/AkshayJoshi56"},
   ]
