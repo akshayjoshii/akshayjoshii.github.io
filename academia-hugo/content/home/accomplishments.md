@@ -28,6 +28,7 @@ date_format = "Jan 2006"
   date_start = "2013-08-01"
   date_end = "2017-06-30"
   description = """
+  <br/> &nbsp
   * Ranked in the Top 5% of the graduating class in Computer Science & Engineering department. 
   * Total number of students in the graduating cohort of 2017 were 106.
   """
