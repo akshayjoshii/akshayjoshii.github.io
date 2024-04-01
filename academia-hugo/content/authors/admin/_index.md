@@ -18,7 +18,7 @@ role: Senior AI Research Scientist
 
 # Organizations/Affiliations
 organizations:
-- name: BlinkIn GmbH
+- name:  BlinkIn GmbH
   url: "https://www.blinkin.io/"
 
 # Short bio (displayed in user profile at end of posts)
@@ -85,6 +85,6 @@ user_groups:
 - Researchers
 - Visitors
 ---
-I train LLM & VLMs for various ML tasks such as Machine Comprehension, Cross-modal Retrieval, Multimodal Question Answering & Reasoning.
+I train LLM & VLMs for ML tasks such as Multimodal Question Answering, Cross-modal Retrieval, Dense Image Captioning, Machine Comprehension & Reasoning.
 
 
