@@ -9,4 +9,4 @@ title = "Photography"
 subtitle = "I am an earnest street/portrait photographer, here are some featured images"
 +++
 
-{{< gallery.gallery >}}
+{{< gallery >}}
