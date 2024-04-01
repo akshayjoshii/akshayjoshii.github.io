@@ -64,15 +64,15 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
       
 [[feature]]
   name = "Statistics"
-  parcent = "75%"
+  parcent = "70%"
 
 [[feature]]
   name = "A/B Testing"
-  parcent = "75%"
+  parcent = "72%"
       
 [[feature]]
-  name = "R"
-  parcent = "60%"
+  name = "FastAPI"
+  parcent = "75%"
       
       
 [[feature]]
@@ -80,19 +80,19 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
   parcent = "80%"
         
 [[feature]]
-  name = "Tableau"
-  parcent = "60%"
+  name = "Qdrant"
+  parcent = "80%"
           
 [[feature]]
-  name = "Apache Spark"
-  parcent = "55%"
-          
-[[feature]]
-  name = "Information Retrieval"
+  name = "LLaMaIndex"
   parcent = "85%"
           
 [[feature]]
-  name = "Data Mining"
+  name = "AWS/GCP"
+  parcent = "65%"
+          
+[[feature]]
+  name = "Pandas"
   parcent = "80%"
           
 [[feature]]
@@ -102,11 +102,11 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
           
 [[feature]]
   name = "Git SCM"
-  parcent = "80%"
+  parcent = "70%"
           
 [[feature]]
-  name = "Agile Development"
-  parcent = "80%"
+  name = "Transformers"
+  parcent = "95%"
           
 [[feature]]
   name = "Kubernetes"
