@@ -27,10 +27,10 @@
   {{ $avatar := (.Resources.ByType "image").GetMatch "*avatar*" }}
   <div class="media author-card" itemscope itemtype="http://schema.org/Person">
     {{ if and site.Params.gravatar .Params.email }}
-      <img class="portrait mr-3" src="https://s.gravatar.com/avatar/{{ md5 .Params.email }}?s=200')" itemprop="image" alt="Avatar">
+      <img class="portrait mr-3" src="https://s.gravatar.com/avatar/{{ md5 .Params.email }}?s=200')" itemprop="image" alt="Akshay Joshi, Akshay Joshi Google, AI Research Scientist">
     {{ else if $avatar }}
       {{ $avatar_image := $avatar.Fill "250x250 Center" }}
-      <img class="portrait mr-3" src="{{ $avatar_image.RelPermalink }}" itemprop="image" alt="Avatar">
+      <img class="portrait mr-3" src="{{ $avatar_image.RelPermalink }}" itemprop="image" alt="Akshay Joshi, Google, AI Research Scientist">
     {{ end }}
 
     <div class="media-body">
