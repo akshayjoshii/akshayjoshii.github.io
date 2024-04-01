@@ -35,7 +35,7 @@
 
 [[main]]
   name = "Photography"
-  url = "#photography"
+  url = "content/home/gallery/index"
   weight = 55
 
 [[main]]
