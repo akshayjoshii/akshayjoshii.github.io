@@ -8,7 +8,7 @@ weight = 10  # Order that this section will appear.
 title = "Akshay Joshi"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
-hero_media = "akshay_2.webp"
+hero_media = "akshay_2.jpg"
 
 [design.background]
   # Apply a background color, gradient, or image.
