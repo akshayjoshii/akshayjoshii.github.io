@@ -42,6 +42,6 @@ hero_media = "akshay_1.png"
   label = "Contact Me"
 
 +++
-## My name is **Akshay Joshi**, I'm a **Senior Applied Research Scientist** at BlinkIn in Munich, Germany
+## My name is **Akshay Joshi**, I'm a **Senior AI Research Scientist** at BlinkIn
 
 Previous Affiliations: AMD, Google, ETH Zürich, German Research Center for AI, and Universität des Saarlandes.
