@@ -12,7 +12,7 @@ day_night = true
 font = "classic"
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = "Currently pursuing research in Self-supervised Learning, Visual Scene Understanding, and Multimodal Representation Learning at ETH Zürich, Google, Universität des Saarlandes & DFKI."
+description = "Akshay Joshi is a Senior Research Scientist who actively works in the fields of Multimodal AI, Large Vision-Language Models, Natural Language Generation. He has worked at reputed organizations such as AMD, Google, ETH Zürich, German Research Center for AI, and Universität des Saarlandes"
 
 # Default image for social sharing and search engines. Place image in `static/img/` folder and specify image name here.
 sharing_image = "akshay_1.png"
