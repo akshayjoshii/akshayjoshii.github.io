@@ -44,4 +44,4 @@ hero_media = "akshay_2.jpg"
 +++
 ## My name is **Akshay Joshi**, I'm a **Senior AI Research Scientist** at BlinkIn
 
-Previous Affiliations: AMD, Google, ETH Zürich, German Research Center for AI, and Universität des Saarlandes.
+**Previous Affiliations:** AMD, Google, ETH Zürich, German Research Center for AI, and Universität des Saarlandes.
