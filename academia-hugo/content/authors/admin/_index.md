@@ -38,7 +38,7 @@ education:
   - course: M. S in Data Science & AI
     institution: Universität des Saarlandes & ETH Zürich
     year: 2023
-  - course: B. Eng. in Computer Science & Engineering
+  - course: B. Eng. in Computer Science
     institution: Visvesvaraya Technological University
     year: 2017
 
@@ -85,6 +85,6 @@ user_groups:
 - Researchers
 - Visitors
 ---
-I train LLM & VLMs for ML tasks such as Multimodal Question Answering, Cross-modal Retrieval, Dense Image Captioning, Machine Comprehension & Reasoning.
+I train LLM & VLMs for various ML tasks such as Multimodal Question Answering, Cross-modal Retrieval, Dense Image Captioning, Machine Comprehension & Reasoning.
 
 
