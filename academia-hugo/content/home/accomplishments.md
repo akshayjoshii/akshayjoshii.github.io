@@ -42,7 +42,7 @@ date_format = "Jan 2006"
   date_start = "2018-02-01"
   date_end = "2019-09-23"
   description = """
-  **Details:**
+  <br/> &nbsp
   * Recommended by the Director of Technology & Software Engineering and various Senior Engineers at AMD.
   * Demonstrated solid technical expertise and agile adaptability skills.
   """
@@ -56,7 +56,7 @@ date_format = "Jan 2006"
   date_start = "2013-08-01"
   date_end = "2017-06-30"
   description = """
-  **Details:**
+  <br/> &nbsp
   * Recommended by Prof. Shiva Kumar Dalali, Prof. Manjunatha P.B and Prof. Raghavendra T.S in the Computer Science department.
   * Illustrated exceptional research/course work in Discrete Mathematics, Computer Graphics & Visualization.
   """
@@ -70,7 +70,7 @@ date_format = "Jan 2006"
   date_start = "2012-12-01"
   date_end = "2012-12-10"
   description = """
-  **Details:**
+  <br/> &nbsp
   * Vice-Captain of state-level Throwball team, representing Raichur district, India.
   * The Pre-University tournament was held at Mysore, Karnataka, India.
   """
