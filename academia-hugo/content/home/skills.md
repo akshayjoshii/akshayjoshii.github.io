@@ -19,8 +19,8 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
   parcent = "90%"
   
 [[feature]]
-  name = "C++"
-  parcent = "75%"  
+  name = "LLM"
+  parcent = "95%"  
   
 [[feature]]
   name = "NumPy"
@@ -39,8 +39,8 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
   parcent = "60%"
       
 [[feature]]
-  name = "CUDA"
-  parcent = "60%"
+  name = "C/C++"
+  parcent = "65%"
       
 [[feature]]
   name = "MySQL"
@@ -48,23 +48,23 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
       
 [[feature]]
   name = "Computer Vision"
-  parcent = "70%"
+  parcent = "80%"
 
 [[feature]]
   name = "Image Processing"
-  parcent = "65%"
+  parcent = "70%"
 
 [[feature]]
   name = "Computer Graphics"
-  parcent = "70%"
+  parcent = "60%"
       
 [[feature]]
   name = "NLP"
-  parcent = "80%"
+  parcent = "90%"
       
 [[feature]]
   name = "Statistics"
-  parcent = "70%"
+  parcent = "75%"
 
 [[feature]]
   name = "A/B Testing"
@@ -72,7 +72,7 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
       
 [[feature]]
   name = "R"
-  parcent = "70%"
+  parcent = "60%"
       
       
 [[feature]]
