@@ -14,12 +14,12 @@ btn:
 superuser: true
 
 # Role/position
-role: M. Sc. Data Science & Artificial Intelligence
+role: Senior AI Research Scientist
 
 # Organizations/Affiliations
 organizations:
-- name: Universität des Saarlandes
-  url: "https://www.uni-saarland.de/start.html"
+- name: BlinkIn GmbH
+  url: "https://www.blinkin.io/"
 
 # Short bio (displayed in user profile at end of posts)
 bio:
@@ -29,16 +29,15 @@ display_education: true
 
 interests:
 
-- Foundational Models
-- Vision and Language
-- Visual Reasoning
-- Multimodal Representation Learning
+- Vision-Language Models
+- Self-supervised Learning
+- Multimodal Grounding and Reasoning
 
 education:
   courses:
-  - course: M. Sc. in Data Science & Artificial Intelligence
-    institution: Universität des Saarlandes
-    year: 2022
+  - course: M. S in Data Science & AI
+    institution: Universität des Saarlandes & ETH Zürich
+    year: 2023
   - course: B. Eng. in Computer Science & Engineering
     institution: Visvesvaraya Technological University
     year: 2017
@@ -50,7 +49,7 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: mailto:akjoshi@inf.ethz.ch  # For a direct email link, use "mailto:test@example.org".
+  link: mailto:akshay@blinkin.io  # For a direct email link, use "mailto:test@example.org".
 
 - icon: researchgate
   icon_pack: fab
@@ -86,6 +85,6 @@ user_groups:
 - Researchers
 - Visitors
 ---
-My research interest spans across Self-supervised Learning, Visual Scene Understanding, and Multimodal Representation Learning.
+I train LLM & VLMs for various ML tasks such as Machine Comprehension, Cross-modal Retrieval, Multimodal Question Answering & Reasoning.
 
 
