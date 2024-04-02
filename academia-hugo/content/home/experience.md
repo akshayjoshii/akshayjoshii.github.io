@@ -19,6 +19,17 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[experience]]
+  title = "###### Senior Research Engineer"
+  company = "Hyde GmbH"
+  company_url = "https://www.hyde.to/"
+  location = "Munich, Germany"
+  date_start = "2022-04-01"
+  date_end = ""
+  description = """                               
+  **Tasks:** Research on Self-Supervised Multimodal Representation Learning on Diagrams
+  """
+
+[[experience]]
   title = "###### Joint M. Sc. Research Thesis"
   company = "Google Zürich"
   company_url = "https://research.google/"
@@ -79,22 +90,10 @@ date_format = "Jan 2006"
   company = "Advanced Micro Devices R&D"
   company_url = "https://www.amd.com/"
   location = "Bangalore, India"
-  date_start = "2018-08-01"
+  date_start = "2018-02-01"
   date_end = "2019-08-23"
   description = """
-  **Team:** [Platform Security Processor (PSP) Firmware](https://www.amd.com/en/technologies/pro-security)  
-  **Engineering Group:** Core Software Group  
-  """
-
-[[experience]]
-  title = "###### Software Engineering Intern"
-  company = "Advanced Micro Devices R&D"
-  company_url = "https://www.amd.com/"
-  location = "Bangalore, India"
-  date_start = "2018-02-01"
-  date_end = "2018-08-20"
-  description = """
-  **Team:** [AMD Ryzen Master](https://www.amd.com/en/technologies/ryzen-master)  
+  **Team:** [Platform Security Processor (PSP) Firmware](https://www.amd.com/en/technologies/pro-security) & [Ryzen Master](https://www.amd.com/en/technologies/ryzen-master) 
   **Engineering Group:** Core Software Group  
   """
 
