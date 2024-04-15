@@ -84,3 +84,11 @@
   to = "https://www.linkedin.com/in/akkshayjoshii/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "https://ocr.akjo.tech/*"
+  to = "http://35.225.38.189/:splat"
+  status = 200
+  force = true
+
+
