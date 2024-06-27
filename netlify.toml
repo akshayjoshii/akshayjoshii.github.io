@@ -91,4 +91,10 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "https://mystuff.akjo.tech/*"
+  to = "http://35.225.38.189:8501/:splat"
+  status = 200
+  force = true
+
 
