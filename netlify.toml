@@ -97,4 +97,8 @@
   status = 200
   force = true
 
-
+[[redirects]]
+  from = "https://videorag.akjo.tech/*"
+  to = "http://35.225.38.189:8505/:splat"
+  status = 200
+  force = true
