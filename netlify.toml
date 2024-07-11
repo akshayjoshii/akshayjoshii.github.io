@@ -94,11 +94,11 @@
 [[redirects]]
   from = "https://mystuff.akjo.tech/*"
   to = "http://35.225.38.189:8501/:splat"
-  status = 200
+  status = 301
   force = true
 
 [[redirects]]
   from = "https://videorag.akjo.tech/*"
   to = "http://35.225.38.189:8505/:splat"
-  status = 200
+  status = 301
   force = true
