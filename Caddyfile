@@ -1,0 +1,175 @@
+# This is an example Caddyfile used on my personal VMs before
+
+:80 {
+	# Set this path to your site's directory.
+	root * /usr/share/caddy
+
+	# Enable the static file server.
+	file_server
+
+	# Another common task is to set up a reverse proxy:
+	# reverse_proxy localhost:8080
+
+	# Or serve a PHP site through php-fpm:
+	# php_fastcgi localhost:9000
+}
+
+vpn.akjo.tech {
+	reverse_proxy localhost:51821
+}
+
+monitor.akjo.tech {
+	reverse_proxy localhost:3001
+}
+
+zendesk.akjo.tech {
+	reverse_proxy localhost:8501
+}
+
+transcode.akjo.tech {
+	reverse_proxy localhost:12000
+}
+
+# Refer to the Caddy docs for more information:
+# https://caddyserver.com/docs/caddyfile
+
+cv.akjo.tech, cv.akjo.eu {
+	# 1. Rewrite the requested path to the path of the actual file on the origin server
+	#    Any request to resume.akjo.tech/* will be rewritten internally.
+	rewrite * /files/akshay_joshi_cv.pdf
+
+	# 2. Reverse proxy the request to the server hosting the file (Netlify via akjo.tech)
+	reverse_proxy https://akjo.tech {
+		# 3. Set the Host header correctly for the upstream server.
+		#    Netlify needs the 'Host: akjo.tech' header to know which site to serve.
+		#    {http.reverse_proxy.upstream.host} will automatically use 'akjo.tech'.
+		header_up Host {http.reverse_proxy.upstream.host}
+
+		# Optional but good practice: Pass through the original Host header 
+		# in X-Forwarded-Host, though Netlify might not need it for serving a static file.
+		# header_up X-Forwarded-Host {host} 
+	}
+
+	# Optional: Add headers for better security/privacy if desired
+	header {
+		#     # Prevents the PDF from being embedded in frames on other sites
+		X-Frame-Options "SAMEORIGIN"
+		#     # More modern equivalent of X-Frame-Options
+		Content-Security-Policy "frame-ancestors 'self'"
+		#     # Prevent content type sniffing
+		X-Content-Type-Options "nosniff"
+	}
+}
+
+# Caddyfile - For use when backend container has SECURE_CONNECTION=1
+browser.akjo.tech {
+	reverse_proxy /websockify* https://127.0.0.1:5800 {
+		transport http {
+			# Add this because the container's cert is likely self-signed/untrusted
+			tls_insecure_skip_verify
+			# Optional: read_idle_timeout 86400s
+			# Optional: write_idle_timeout 86400s
+		}
+	}
+
+	reverse_proxy /websockify-audio* https://127.0.0.1:5800 {
+		transport http {
+			tls_insecure_skip_verify
+			# Optional: read_idle_timeout 86400s
+			# Optional: write_idle_timeout 86400s
+		}
+	}
+
+	reverse_proxy https://127.0.0.1:5800 {
+		transport http {
+			tls_insecure_skip_verify
+		}
+	}
+}
+
+#vc.akjo.tech {
+#        root * /srv/ai-analyzer-page # IS THIS 100% THE CORRECT PATH?
+#        file_server
+#        try_files {path} {path}/ /index.html
+#        encode gzip
+#}
+
+vc.akjo.tech {
+	reverse_proxy localhost:13000
+}
+
+research.blinkin.io {
+	reverse_proxy localhost:13000
+}
+
+akjo.eu, eu.akjo.tech {
+    # Optional: Specify your email for ACME account (for SSL certificate notifications)
+    # This is recommended for managing certificates for multiple domains.
+    # tls your-email@example.com [[2]]
+
+    # 1. Reverse proxy requests to your main site (akjo.tech)
+    #    All paths requested on akjo.eu or eu.akjo.tech will be proxied to akjo.tech
+    #    e.g., akjo.eu/somepage -> https://akjo.tech/somepage
+    #    e.g., eu.akjo.tech/anotherpage -> https://akjo.tech/anotherpage
+    reverse_proxy https://akjo.tech {
+        # 2. Set the Host header correctly for the upstream server.
+        #    This ensures akjo.tech knows which site to serve if it hosts multiple domains.
+        #    {http.reverse_proxy.upstream.host} will automatically use 'akjo.tech'.
+        header_up Host {http.reverse_proxy.upstream.host}
+
+        # Optional but good practice: Pass through the original Host header 
+        # in X-Forwarded-Host. This can be useful for the upstream server's logs
+        # or analytics to know the original domain requested by the client.
+        # {host} will be either 'akjo.eu' or 'eu.akjo.tech' depending on what the user visited.
+        # header_up X-Forwarded-Host {host}
+    }
+
+    # Optional: Add headers for better security/privacy if desired
+    # These headers will be applied to responses sent from Caddy to the client.
+    header {
+        # Prevents the site from being embedded in iframes on other domains
+        X-Frame-Options "SAMEORIGIN"
+        # More modern equivalent of X-Frame-Options, offering more granular control
+        Content-Security-Policy "frame-ancestors 'self'"
+        # Prevents browsers from MIME-sniffing the content-type
+        X-Content-Type-Options "nosniff"
+        # Example: Enforce HTTPS for 1 year, include subdomains, and allow preloading
+        # Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        # Example: Control what referrer information is sent
+        # Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
+}
+
+inspection.akjo.tech {
+	reverse_proxy localhost:9977
+}
+
+search.akjo.eu {
+    # Enable access logging. Check these logs for errors or unexpected behavior.
+    log {
+        output file /var/log/caddy/search.akjo.eu.access.log { # Ensure Caddy can write here
+            roll_size 10mb
+            roll_keep 5
+        }
+        level INFO
+    }
+
+    # If the user requests the root path "/", redirect them to "/app/"
+    # This ensures the initial load gets the index.html from the correct path.
+    @rootPath {
+        path /
+    }
+    redir @rootPath /app/ 302 # Use 301 for permanent redirect once confirmed working
+
+    # For all other requests (which will now include /app/ in their path
+    # thanks to the redirect or because the HTML links to them directly),
+    # proxy them to your backend.
+    reverse_proxy localhost:8123 {
+        header_up Host {http.request.host}
+        header_up X-Real-IP {http.request.remote}
+        header_up X-Forwarded-For {http.request.remote}
+        header_up X-Forwarded-Proto {scheme}
+    }
+}
+
