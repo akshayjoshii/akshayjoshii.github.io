@@ -1,10 +1,14 @@
 [build]
   command = "hugo --themesDir ../ --gc --minify -b $URL"
   # publish = "public"
+  functions = "netlify/functions"
 
 [build.environment]
   HUGO_VERSION = "0.74.3"
   HUGO_ENABLEGITINFO = "true"
+
+[functions]
+  timeout = 15
 
 [context.production.environment]
   HUGO_ENV = "production"
