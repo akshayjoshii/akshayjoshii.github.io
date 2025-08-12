@@ -1,5 +1,4 @@
 exports.handler = async (event, context) => {
-  // Handle CORS preflight requests
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
@@ -13,7 +12,7 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Extract IP from Netlify headers
+    // Extract IP from multiple possible headers
     const forwardedFor = event.headers['x-forwarded-for'];
     const realIP = event.headers['x-real-ip'];
     const clientIP = event.headers['client-ip'];
@@ -27,17 +26,54 @@ exports.handler = async (event, context) => {
       visitorIP = clientIP;
     }
 
+    // Comprehensive visitor data collection
     const visitorData = {
+      // IP Information
       ip: visitorIP,
-      userAgent: event.headers['user-agent'] || 'unknown',
-      referer: event.headers['referer'] || 'direct',
+      ipSource: forwardedFor ? 'x-forwarded-for' : (realIP ? 'x-real-ip' : 'client-ip'),
+      
+      // Geographic Information (Netlify provides these)
       country: event.headers['x-country'] || 'unknown',
+      countryRegion: event.headers['x-country-region'] || 'unknown',
+      city: event.headers['x-city'] || 'unknown',
+      timezone: event.headers['x-timezone'] || 'unknown',
+      
+      // Browser & Device Information  
+      userAgent: event.headers['user-agent'] || 'unknown',
+      acceptLanguage: event.headers['accept-language'] || 'unknown',
+      acceptEncoding: event.headers['accept-encoding'] || 'unknown',
+      
+      // Traffic Source Information
+      referer: event.headers['referer'] || event.headers['referrer'] || 'direct',
+      origin: event.headers['origin'] || 'unknown',
+      
+      // Technical Details
+      host: event.headers['host'] || 'unknown',
+      protocol: event.headers['x-forwarded-proto'] || 'unknown',
+      method: event.httpMethod || 'unknown',
+      
+      // Connection Information
+      connection: event.headers['connection'] || 'unknown',
+      upgrade: event.headers['upgrade-insecure-requests'] || 'unknown',
+      
+      // Additional Netlify-specific headers
+      netlifyIP: event.headers['x-nf-client-connection-ip'] || 'unknown',
+      netlifyRequestID: event.headers['x-nf-request-id'] || 'unknown',
+      
+      // Timestamps
       timestamp: new Date().toISOString(),
-      method: 'server-side-netlify'
+      serverTimestamp: Date.now(),
+      
+      // Request Details
+      path: event.path || '/',
+      queryParams: event.queryStringParameters || {},
+      
+      // Method identifier
+      method: 'server-side-enhanced'
     };
 
-    // Send to your existing analytics endpoint
-    const response = await fetch('https://inference.blinkin.io/analytics', {
+    // Send comprehensive data to your analytics
+    await fetch('https://inference.blinkin.io/analytics', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -53,15 +89,14 @@ exports.handler = async (event, context) => {
       },
       body: JSON.stringify({ 
         success: true, 
-        ip: visitorIP 
+        ip: visitorIP,
+        dataPoints: Object.keys(visitorData).length
       })
     };
 
   } catch (error) {
-    console.error('Function error:', error);
-    
     return {
-      statusCode: 200,
+      statusCode: 500,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
