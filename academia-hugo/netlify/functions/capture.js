@@ -12,67 +12,66 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Extract IP from multiple possible headers
-    const forwardedFor = event.headers['x-forwarded-for'];
-    const realIP = event.headers['x-real-ip'];
-    const clientIP = event.headers['client-ip'];
-    
+    // CORRECTED: Proper IP extraction order for Cloudflare/Netlify
     let visitorIP = 'unknown';
-    if (forwardedFor) {
-      visitorIP = forwardedFor.split(',')[0].trim();
-    } else if (realIP) {
-      visitorIP = realIP;
-    } else if (clientIP) {
-      visitorIP = clientIP;
+    let ipSource = 'unknown';
+    
+    // Check headers in the correct priority order
+    if (event.headers['cf-connecting-ip']) {
+      // Cloudflare's real visitor IP header (most reliable)
+      visitorIP = event.headers['cf-connecting-ip'];
+      ipSource = 'cf-connecting-ip';
+    } else if (event.headers['x-forwarded-for']) {
+      // Parse x-forwarded-for correctly (first IP is the real visitor)
+      const forwardedIPs = event.headers['x-forwarded-for'].split(',');
+      visitorIP = forwardedIPs[0].trim();
+      ipSource = 'x-forwarded-for';
+    } else if (event.headers['x-real-ip']) {
+      visitorIP = event.headers['x-real-ip'];
+      ipSource = 'x-real-ip';
+    } else if (event.headers['x-client-ip']) {
+      visitorIP = event.headers['x-client-ip'];
+      ipSource = 'x-client-ip';
     }
 
-    // Comprehensive visitor data collection
     const visitorData = {
-      // IP Information
+      // Use the correctly extracted IP
       ip: visitorIP,
-      ipSource: forwardedFor ? 'x-forwarded-for' : (realIP ? 'x-real-ip' : 'client-ip'),
+      ipSource: ipSource,
       
-      // Geographic Information (Netlify provides these)
-      country: event.headers['x-country'] || 'unknown',
+      // Add all the IPs for debugging
+      debug_all_ips: {
+        'cf-connecting-ip': event.headers['cf-connecting-ip'] || 'not_present',
+        'x-forwarded-for': event.headers['x-forwarded-for'] || 'not_present', 
+        'x-real-ip': event.headers['x-real-ip'] || 'not_present',
+        'x-client-ip': event.headers['x-client-ip'] || 'not_present'
+      },
+      
+      // Geographic data
+      country: event.headers['cf-ipcountry'] || event.headers['x-country'] || 'unknown',
       countryRegion: event.headers['x-country-region'] || 'unknown',
       city: event.headers['x-city'] || 'unknown',
       timezone: event.headers['x-timezone'] || 'unknown',
       
-      // Browser & Device Information  
+      // Browser and device data  
       userAgent: event.headers['user-agent'] || 'unknown',
       acceptLanguage: event.headers['accept-language'] || 'unknown',
-      acceptEncoding: event.headers['accept-encoding'] || 'unknown',
       
-      // Traffic Source Information
+      // Traffic source
       referer: event.headers['referer'] || event.headers['referrer'] || 'direct',
-      origin: event.headers['origin'] || 'unknown',
       
-      // Technical Details
+      // Technical details
       host: event.headers['host'] || 'unknown',
       protocol: event.headers['x-forwarded-proto'] || 'unknown',
-      method: event.httpMethod || 'unknown',
-      
-      // Connection Information
-      connection: event.headers['connection'] || 'unknown',
-      upgrade: event.headers['upgrade-insecure-requests'] || 'unknown',
-      
-      // Additional Netlify-specific headers
-      netlifyIP: event.headers['x-nf-client-connection-ip'] || 'unknown',
-      netlifyRequestID: event.headers['x-nf-request-id'] || 'unknown',
       
       // Timestamps
       timestamp: new Date().toISOString(),
-      serverTimestamp: Date.now(),
-      
-      // Request Details
-      path: event.path || '/',
-      queryParams: event.queryStringParameters || {},
       
       // Method identifier
-      method: 'server-side-enhanced'
+      method: 'server-side-fixed-ip'
     };
 
-    // Send comprehensive data to your analytics
+    // Send to analytics
     await fetch('https://inference.blinkin.io/analytics', {
       method: 'POST',
       headers: {
@@ -90,7 +89,7 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ 
         success: true, 
         ip: visitorIP,
-        dataPoints: Object.keys(visitorData).length
+        source: ipSource
       })
     };
 
