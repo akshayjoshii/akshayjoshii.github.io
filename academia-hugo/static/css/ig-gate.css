@@ -1,0 +1,169 @@
+/* Instagram Gate Overlay — matches Instagram's dark UI */
+
+.ig-gate-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  animation: igGateFadeIn 0.3s ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ig-gate-overlay.ig-gate-hidden {
+  animation: igGateFadeOut 0.3s ease-in forwards;
+  pointer-events: none;
+}
+
+.ig-gate-card {
+  background: #262626;
+  border-radius: 12px;
+  padding: 40px 32px;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.ig-gate-logo {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ig-gate-logo svg {
+  width: 36px;
+  height: 36px;
+  fill: #fff;
+}
+
+.ig-gate-title {
+  color: #fafafa;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.ig-gate-subtitle {
+  color: #a8a8a8;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 24px;
+  line-height: 1.4;
+}
+
+.ig-gate-input-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.ig-gate-input-wrapper .ig-gate-at {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a8a8a8;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.ig-gate-input {
+  width: 100%;
+  padding: 14px 14px 14px 30px;
+  background: #363636;
+  border: 1px solid #363636;
+  border-radius: 8px;
+  color: #fafafa;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+.ig-gate-input::placeholder {
+  color: #737373;
+}
+
+.ig-gate-input:focus {
+  border-color: #dbdbdb;
+}
+
+.ig-gate-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #833AB4, #C13584, #E1306C, #F56040, #FCAF45);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  -webkit-appearance: none;
+}
+
+.ig-gate-btn:active {
+  opacity: 0.85;
+}
+
+.ig-gate-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ig-gate-error {
+  color: #ED4956;
+  font-size: 13px;
+  margin-top: 8px;
+  min-height: 18px;
+}
+
+.ig-gate-skip {
+  color: #363636;
+  font-size: 10px;
+  margin-top: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 4px;
+  -webkit-appearance: none;
+  letter-spacing: -0.2px;
+  opacity: 0.5;
+}
+
+.ig-gate-skip:active {
+  color: #525252;
+}
+
+/* Scroll lock */
+body.ig-gate-locked {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+@keyframes igGateFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes igGateFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

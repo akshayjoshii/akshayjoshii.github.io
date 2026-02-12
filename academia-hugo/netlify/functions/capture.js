@@ -1,109 +1,95 @@
 exports.handler = async (event, context) => {
+  const CORS_HEADERS = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  };
+
   if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS'
-      },
-      body: ''
-    };
+    return { statusCode: 200, headers: CORS_HEADERS, body: '' };
   }
 
   try {
-    // CORRECTED: Proper IP extraction order for Cloudflare/Netlify
+    // ── Parse client payload ────────────────────────────────
+    let clientData = {};
+    if (event.body) {
+      try {
+        clientData = JSON.parse(event.body);
+      } catch (e) {
+        // Beacon sends may arrive as text
+        try { clientData = JSON.parse(event.body.toString()); } catch (e2) { /* ignore */ }
+      }
+    }
+
+    // ── IP extraction (keep existing priority order) ────────
     let visitorIP = 'unknown';
     let ipSource = 'unknown';
-    
-    // Check headers in the correct priority order
+
     if (event.headers['cf-connecting-ip']) {
-      // Cloudflare's real visitor IP header (most reliable)
       visitorIP = event.headers['cf-connecting-ip'];
       ipSource = 'cf-connecting-ip';
+    } else if (event.headers['x-nf-client-connection-ip']) {
+      visitorIP = event.headers['x-nf-client-connection-ip'];
+      ipSource = 'x-nf-client-connection-ip';
     } else if (event.headers['x-forwarded-for']) {
-      // Parse x-forwarded-for correctly (first IP is the real visitor)
-      const forwardedIPs = event.headers['x-forwarded-for'].split(',');
-      visitorIP = forwardedIPs[0].trim();
+      visitorIP = event.headers['x-forwarded-for'].split(',')[0].trim();
       ipSource = 'x-forwarded-for';
     } else if (event.headers['x-real-ip']) {
       visitorIP = event.headers['x-real-ip'];
       ipSource = 'x-real-ip';
-    } else if (event.headers['x-client-ip']) {
-      visitorIP = event.headers['x-client-ip'];
-      ipSource = 'x-client-ip';
     }
 
-    const visitorData = {
-      // Use the correctly extracted IP
+    // ── Netlify geo headers ─────────────────────────────────
+    let netlifyGeo = {};
+    if (event.headers['x-nf-geo']) {
+      try {
+        netlifyGeo = JSON.parse(decodeURIComponent(event.headers['x-nf-geo']));
+      } catch (e) { /* ignore */ }
+    }
+
+    const serverEnriched = {
       ip: visitorIP,
       ipSource: ipSource,
-      
-      // Add all the IPs for debugging
-      debug_all_ips: {
-        'cf-connecting-ip': event.headers['cf-connecting-ip'] || 'not_present',
-        'x-forwarded-for': event.headers['x-forwarded-for'] || 'not_present', 
-        'x-real-ip': event.headers['x-real-ip'] || 'not_present',
-        'x-client-ip': event.headers['x-client-ip'] || 'not_present'
-      },
-      
-      // Geographic data
-      country: event.headers['cf-ipcountry'] || event.headers['x-country'] || 'unknown',
-      countryRegion: event.headers['x-country-region'] || 'unknown',
-      city: event.headers['x-city'] || 'unknown',
-      timezone: event.headers['x-timezone'] || 'unknown',
-      
-      // Browser and device data  
-      userAgent: event.headers['user-agent'] || 'unknown',
+      country: netlifyGeo.country || event.headers['cf-ipcountry'] || event.headers['x-country'] || 'unknown',
+      region: netlifyGeo.subdivision || event.headers['x-country-region'] || 'unknown',
+      city: netlifyGeo.city || event.headers['x-city'] || 'unknown',
+      latitude: netlifyGeo.latitude || null,
+      longitude: netlifyGeo.longitude || null,
+      serverTimezone: netlifyGeo.timezone || event.headers['x-timezone'] || 'unknown',
       acceptLanguage: event.headers['accept-language'] || 'unknown',
-      
-      // Traffic source
-      referer: event.headers['referer'] || event.headers['referrer'] || 'direct',
-      
-      // Technical details
+      serverReferer: event.headers['referer'] || event.headers['referrer'] || 'direct',
       host: event.headers['host'] || 'unknown',
       protocol: event.headers['x-forwarded-proto'] || 'unknown',
-      
-      // Timestamps
-      timestamp: new Date().toISOString(),
-      
-      // Method identifier
-      method: 'server-side-fixed-ip'
+      serverTimestamp: new Date().toISOString()
     };
 
-    // Send to analytics
+    // ── Merge client + server data ──────────────────────────
+    const fullPayload = {
+      ...clientData,
+      serverEnriched: serverEnriched
+    };
+
+    // ── Forward to backend ──────────────────────────────────
     await fetch('https://inference.blinkin.io/analytics', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(visitorData)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(fullPayload)
     });
 
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        success: true, 
-        ip: visitorIP,
-        source: ipSource
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        success: true,
+        dataPoints: Object.keys(fullPayload).length
       })
     };
 
   } catch (error) {
     return {
       statusCode: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        success: false, 
-        error: error.message 
-      })
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ success: false, error: error.message })
     };
   }
 };
