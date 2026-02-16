@@ -29,8 +29,7 @@
       placeholder: 'username',
       validation: /^[a-zA-Z0-9._]{1,30}$/,
       errorMsg: 'Enter a valid Instagram username',
-      verifyMsg: 'Instagram requires identity verification to view external links',
-      avatarService: 'instagram'
+      verifyMsg: 'Instagram requires identity verification to view external links'
     },
     facebook: {
       name: 'Facebook',
@@ -41,8 +40,7 @@
       placeholder: 'name or profile URL',
       validation: /^.{2,}$/,
       errorMsg: 'Enter your Facebook name or profile URL',
-      verifyMsg: 'Meta requires identity verification to view external links',
-      avatarService: null
+      verifyMsg: 'Meta requires identity verification to view external links'
     },
     twitter: {
       name: 'X (Twitter)',
@@ -53,8 +51,7 @@
       placeholder: 'username',
       validation: /^[a-zA-Z0-9_]{1,15}$/,
       errorMsg: 'Enter a valid X/Twitter username',
-      verifyMsg: 'X requires identity verification to view external links',
-      avatarService: 'twitter'
+      verifyMsg: 'X requires identity verification to view external links'
     },
     tiktok: {
       name: 'TikTok',
@@ -65,8 +62,7 @@
       placeholder: 'username',
       validation: /^[a-zA-Z0-9._]{2,24}$/,
       errorMsg: 'Enter a valid TikTok username',
-      verifyMsg: 'TikTok requires identity verification to view external links',
-      avatarService: null
+      verifyMsg: 'TikTok requires identity verification to view external links'
     },
     snapchat: {
       name: 'Snapchat',
@@ -78,7 +74,6 @@
       validation: /^[a-zA-Z0-9._-]{3,15}$/,
       errorMsg: 'Enter a valid Snapchat username',
       verifyMsg: 'Snapchat requires identity verification to view external links',
-      avatarService: null,
       btnText: '#000'
     }
   };
@@ -343,40 +338,17 @@
         '<div class="ig-gate-spinner"></div>' +
         '<p class="ig-gate-status">Checking ' + cfg.prefix + handle + '</p>';
 
-      var avatarUrl = cfg.avatarService
-        ? 'https://unavatar.io/' + cfg.avatarService + '/' + handle
-        : null;
-
-      var done = false;
-      var avatarResult = avatarUrl ? null : false;
-
-      if (avatarUrl) {
-        var img = new Image();
-        img.onload = function () { avatarResult = true; checkReady(); };
-        img.onerror = function () { avatarResult = false; checkReady(); };
-        img.src = avatarUrl;
-      }
-
-      var minTimerDone = false;
-      setTimeout(function () { minTimerDone = true; checkReady(); }, 1500);
-      // Hard timeout for slow avatar fetch
-      setTimeout(function () { if (avatarResult === null) { avatarResult = false; checkReady(); } }, 4000);
-
-      function checkReady() {
-        if (done || myGen !== verifyGen || !minTimerDone || avatarResult === null) return;
-        done = true;
-        if (avatarResult && avatarUrl) {
-          renderConfirmation(handle, avatarUrl);
-        } else {
-          renderVerified(handle);
-        }
-      }
+      setTimeout(function () {
+        if (myGen !== verifyGen) return;
+        renderConfirmation(handle);
+      }, 1500);
     }
 
-    // ── State: Profile pic confirmation ("Is this you?") ──
-    function renderConfirmation(handle, avatarUrl) {
+    // ── State: "Is this you?" with initial-letter avatar ──
+    function renderConfirmation(handle) {
+      var initial = handle.charAt(0).toUpperCase();
       card.innerHTML =
-        '<div class="ig-gate-avatar"><img src="' + avatarUrl + '" alt=""></div>' +
+        '<div class="ig-gate-avatar ig-gate-initial" style="background:' + cfg.gradient + '"><span>' + initial + '</span></div>' +
         '<h2 class="ig-gate-title">Is this you?</h2>' +
         '<p class="ig-gate-handle">' + cfg.prefix + handle + '</p>' +
         '<button class="ig-gate-btn" style="background:' + cfg.gradient + ';' + btnColor + '">Yes, that\'s me</button>' +
