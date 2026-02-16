@@ -202,11 +202,11 @@
   fill: #fff;
 }
 
-/* Skip / "Maybe later" button */
-.ig-gate-skip {
-  color: #737373;
+/* "Not me" retry button */
+.ig-gate-retry {
+  color: #a8a8a8;
   font-size: 13px;
-  margin-top: 16px;
+  margin-top: 12px;
   cursor: pointer;
   background: none;
   border: none;
@@ -215,8 +215,8 @@
   -webkit-appearance: none;
 }
 
-.ig-gate-skip:active {
-  color: #a8a8a8;
+.ig-gate-retry:active {
+  color: #fafafa;
 }
 
 /* Scroll lock */
