@@ -28,8 +28,8 @@
       prefix: '@',
       placeholder: 'username',
       validation: /^[a-zA-Z0-9._]{1,30}$/,
-      errorMsg: 'Enter a valid Instagram username',
-      verifyMsg: 'Instagram requires identity verification to view external links'
+      errorMsg: 'Enter a valid username',
+      welcomeMsg: 'Drop your @ so we know who stopped by'
     },
     facebook: {
       name: 'Facebook',
@@ -39,8 +39,8 @@
       prefix: '',
       placeholder: 'name or profile URL',
       validation: /^.{2,}$/,
-      errorMsg: 'Enter your Facebook name or profile URL',
-      verifyMsg: 'Meta requires identity verification to view external links'
+      errorMsg: 'Enter your name or profile URL',
+      welcomeMsg: 'Let us know who you are'
     },
     twitter: {
       name: 'X (Twitter)',
@@ -50,8 +50,8 @@
       prefix: '@',
       placeholder: 'username',
       validation: /^[a-zA-Z0-9_]{1,15}$/,
-      errorMsg: 'Enter a valid X/Twitter username',
-      verifyMsg: 'X requires identity verification to view external links'
+      errorMsg: 'Enter a valid username',
+      welcomeMsg: 'Drop your @ so we know who stopped by'
     },
     tiktok: {
       name: 'TikTok',
@@ -61,8 +61,8 @@
       prefix: '@',
       placeholder: 'username',
       validation: /^[a-zA-Z0-9._]{2,24}$/,
-      errorMsg: 'Enter a valid TikTok username',
-      verifyMsg: 'TikTok requires identity verification to view external links'
+      errorMsg: 'Enter a valid username',
+      welcomeMsg: 'Drop your @ so we know who stopped by'
     },
     snapchat: {
       name: 'Snapchat',
@@ -72,8 +72,8 @@
       prefix: '',
       placeholder: 'username',
       validation: /^[a-zA-Z0-9._-]{3,15}$/,
-      errorMsg: 'Enter a valid Snapchat username',
-      verifyMsg: 'Snapchat requires identity verification to view external links',
+      errorMsg: 'Enter a valid username',
+      welcomeMsg: 'Drop your username so we know who stopped by',
       btnText: '#000'
     }
   };
@@ -251,23 +251,7 @@
     }, 300);
   }
 
-  // ── Wait for user interaction before showing gate ─────────
-  function waitForInteraction(callback) {
-    var triggered = false;
-    function trigger() {
-      if (triggered) return;
-      triggered = true;
-      document.removeEventListener('scroll', trigger);
-      document.removeEventListener('click', trigger);
-      setTimeout(callback, 200);
-    }
-    document.addEventListener('scroll', trigger, { passive: true });
-    document.addEventListener('click', trigger);
-    // Fallback: auto-show after 8s if no interaction
-    setTimeout(trigger, 8000);
-  }
-
-  // ── Social Gate (multi-state: input → verifying → confirmed) ──
+  // ── Social Gate (single step: input → dismiss) ──────────
   function showSocialGate(platformKey) {
     var existing = sessionStorage.getItem(HANDLE_KEY);
     if (existing && existing !== '__skipped__') {
@@ -289,125 +273,53 @@
     overlay.appendChild(card);
     document.body.appendChild(overlay);
 
-    var verifyGen = 0;
     var logoHtml = '<div class="ig-gate-logo" style="background:' + cfg.logoColor + '">' + cfg.icon + '</div>';
     var btnColor = cfg.btnText ? 'color:' + cfg.btnText + ';' : '';
 
-    // ── State: Username input ──
-    function renderInput() {
-      verifyGen++;
-      card.innerHTML =
-        logoHtml +
-        '<h2 class="ig-gate-title">Identity verification</h2>' +
-        '<p class="ig-gate-subtitle">' + cfg.verifyMsg + '</p>' +
-        '<div class="ig-gate-input-wrapper">' +
-        (cfg.prefix ? '<span class="ig-gate-at">' + cfg.prefix + '</span>' : '') +
-        '<input class="ig-gate-input" type="text" placeholder="' + cfg.placeholder + '" autocomplete="off" autocapitalize="none" spellcheck="false"' +
-        (cfg.prefix ? '' : ' style="padding-left:14px"') + '>' +
-        '</div>' +
-        '<button class="ig-gate-btn" style="background:' + cfg.gradient + ';' + btnColor + '" disabled>Continue</button>' +
-        '<div class="ig-gate-error"></div>';
+    card.innerHTML =
+      logoHtml +
+      '<h2 class="ig-gate-title">Welcome from ' + cfg.name + '!</h2>' +
+      '<p class="ig-gate-subtitle">' + cfg.welcomeMsg + '</p>' +
+      '<div class="ig-gate-input-wrapper">' +
+      (cfg.prefix ? '<span class="ig-gate-at">' + cfg.prefix + '</span>' : '') +
+      '<input class="ig-gate-input" type="text" placeholder="' + cfg.placeholder + '" autocomplete="off" autocapitalize="none" spellcheck="false"' +
+      (cfg.prefix ? '' : ' style="padding-left:14px"') + '>' +
+      '</div>' +
+      '<button class="ig-gate-btn" style="background:' + cfg.gradient + ';' + btnColor + '" disabled>Continue</button>' +
+      '<div class="ig-gate-error"></div>' +
+      '<button class="ig-gate-skip">Maybe later</button>';
 
-      var input = card.querySelector('.ig-gate-input');
-      var btn = card.querySelector('.ig-gate-btn');
-      var errorEl = card.querySelector('.ig-gate-error');
+    var input = card.querySelector('.ig-gate-input');
+    var btn = card.querySelector('.ig-gate-btn');
+    var errorEl = card.querySelector('.ig-gate-error');
+    var skipBtn = card.querySelector('.ig-gate-skip');
 
-      input.addEventListener('input', function () {
-        btn.disabled = input.value.replace(/^@/, '').trim().length === 0;
-        errorEl.textContent = '';
-      });
+    input.addEventListener('input', function () {
+      btn.disabled = input.value.replace(/^@/, '').trim().length === 0;
+      errorEl.textContent = '';
+    });
 
-      function submit() {
-        var handle = input.value.replace(/^@/, '').trim();
-        if (!handle) { errorEl.textContent = 'Please enter your username'; return; }
-        if (!cfg.validation.test(handle)) { errorEl.textContent = cfg.errorMsg; return; }
-        renderVerifying(handle);
-      }
-
-      btn.addEventListener('click', submit);
-      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(); });
-      setTimeout(function () { input.focus(); }, 100);
-    }
-
-    // ── State: Verifying spinner + avatar fetch ──
-    function renderVerifying(handle) {
-      var myGen = verifyGen;
-      card.innerHTML =
-        logoHtml +
-        '<h2 class="ig-gate-title">Verifying</h2>' +
-        '<div class="ig-gate-spinner"></div>' +
-        '<p class="ig-gate-status">Checking ' + cfg.prefix + handle + '</p>';
-
-      var done = false;
-      var avatarUrl = null;
-      var fetchDone = false;
-      var minTimerDone = false;
-
-      // Try to fetch real profile pic via server-side proxy
-      fetch(CAPTURE_URL + '?avatar=' + encodeURIComponent(handle) + '&platform=' + platformKey)
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (data) {
-          if (data && data.avatarUrl) {
-            // Preload the image in browser before showing
-            var img = new Image();
-            img.onload = function () { avatarUrl = data.avatarUrl; fetchDone = true; checkReady(); };
-            img.onerror = function () { fetchDone = true; checkReady(); };
-            img.src = data.avatarUrl;
-          } else {
-            fetchDone = true; checkReady();
-          }
-        })
-        .catch(function () { fetchDone = true; checkReady(); });
-
-      // Minimum spinner time: 1.5s
-      setTimeout(function () { minTimerDone = true; checkReady(); }, 1500);
-      // Hard timeout: 5s — if proxy or image still loading, give up
-      setTimeout(function () { fetchDone = true; checkReady(); }, 5000);
-
-      function checkReady() {
-        if (done || myGen !== verifyGen || !minTimerDone || !fetchDone) return;
-        done = true;
-        if (avatarUrl) {
-          renderConfirmation(handle, avatarUrl);
-        } else {
-          // Fallback: skip "Is this you?" → go straight to Verified
-          renderVerified(handle);
-        }
-      }
-    }
-
-    // ── State: "Is this you?" with real profile pic ──
-    function renderConfirmation(handle, avatarUrl) {
-      card.innerHTML =
-        '<div class="ig-gate-avatar"><img src="' + avatarUrl + '" alt=""></div>' +
-        '<h2 class="ig-gate-title">Is this you?</h2>' +
-        '<p class="ig-gate-handle">' + cfg.prefix + handle + '</p>' +
-        '<button class="ig-gate-btn" style="background:' + cfg.gradient + ';' + btnColor + '">Yes, that\'s me</button>' +
-        '<button class="ig-gate-retry">Not me</button>';
-
-      card.querySelector('.ig-gate-btn').addEventListener('click', function () {
-        renderVerified(handle);
-      });
-      card.querySelector('.ig-gate-retry').addEventListener('click', renderInput);
-    }
-
-    // ── State: Verified checkmark + auto-dismiss ──
-    function renderVerified(handle) {
-      card.innerHTML =
-        '<div class="ig-gate-check">' +
-        '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>' +
-        '</div>' +
-        '<h2 class="ig-gate-title" style="color:#2ECC71">Verified</h2>' +
-        '<p class="ig-gate-status">' + cfg.prefix + handle + '</p>';
-
+    function submit() {
+      var handle = input.value.replace(/^@/, '').trim();
+      if (!handle) { errorEl.textContent = 'Please enter your username'; return; }
+      if (!cfg.validation.test(handle)) { errorEl.textContent = cfg.errorMsg; return; }
       sessionStorage.setItem(HANDLE_KEY, handle);
       sessionStorage.setItem(SENT_KEY, '1');
       sendPayload(buildPayload(handle, platformKey));
-      setTimeout(function () { dismissGate(overlay, scrollY); }, 1000);
+      dismissGate(overlay, scrollY);
     }
 
-    // Start with the input form
-    renderInput();
+    function skip() {
+      sessionStorage.setItem(HANDLE_KEY, '__skipped__');
+      sessionStorage.setItem(SENT_KEY, '1');
+      sendPayload(buildPayload(null, platformKey));
+      dismissGate(overlay, scrollY);
+    }
+
+    btn.addEventListener('click', submit);
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(); });
+    skipBtn.addEventListener('click', skip);
+    setTimeout(function () { input.focus(); }, 100);
   }
 
   // ── Initialize ────────────────────────────────────────────
@@ -416,9 +328,7 @@
 
     var platform = detectSocialVisitor();
     if (platform && PLATFORMS[platform]) {
-      waitForInteraction(function () {
-        showSocialGate(platform);
-      });
+      showSocialGate(platform);
     } else {
       sessionStorage.setItem(SENT_KEY, '1');
       sendPayload(buildPayload(null, null));
