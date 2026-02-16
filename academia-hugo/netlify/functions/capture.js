@@ -2,11 +2,16 @@ exports.handler = async (event, context) => {
   const CORS_HEADERS = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
   };
 
   if (event.httpMethod === 'OPTIONS') {
     return { statusCode: 200, headers: CORS_HEADERS, body: '' };
+  }
+
+  // ── Avatar proxy: GET ?avatar=username&platform=instagram ──
+  if (event.httpMethod === 'GET' && event.queryStringParameters && event.queryStringParameters.avatar) {
+    return handleAvatarProxy(event.queryStringParameters, CORS_HEADERS);
   }
 
   try {
@@ -118,3 +123,67 @@ exports.handler = async (event, context) => {
     };
   }
 };
+
+// ── Avatar proxy: fetch profile pic from social platform server-side ──
+async function handleAvatarProxy(params, CORS_HEADERS) {
+  const username = (params.avatar || '').replace(/[^a-zA-Z0-9._-]/g, '');
+  const platform = params.platform || 'instagram';
+
+  if (!username || username.length > 30) {
+    return { statusCode: 400, headers: CORS_HEADERS, body: '{"error":"invalid username"}' };
+  }
+
+  const PROFILE_URLS = {
+    instagram: `https://www.instagram.com/${username}/`,
+    twitter: `https://x.com/${username}`,
+    tiktok: `https://www.tiktok.com/@${username}`
+  };
+
+  const profileUrl = PROFILE_URLS[platform];
+  if (!profileUrl) {
+    return { statusCode: 404, headers: CORS_HEADERS, body: '{"error":"unsupported platform"}' };
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 3000);
+
+    const resp = await fetch(profileUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+        'Accept': 'text/html,application/xhtml+xml',
+        'Accept-Language': 'en-US,en;q=0.9'
+      },
+      signal: controller.signal,
+      redirect: 'follow'
+    });
+    clearTimeout(timeout);
+
+    if (!resp.ok) {
+      return { statusCode: 404, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' }, body: '{"error":"profile not found"}' };
+    }
+
+    const html = await resp.text();
+
+    // Extract og:image from HTML (handles both attribute orderings)
+    const ogMatch = html.match(/<meta[^>]*property=["']og:image["'][^>]*content=["']([^"']+)["']/i) ||
+                    html.match(/<meta[^>]*content=["']([^"']+)["'][^>]*property=["']og:image["']/i);
+
+    if (!ogMatch || !ogMatch[1]) {
+      return { statusCode: 404, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' }, body: '{"error":"no image found"}' };
+    }
+
+    return {
+      statusCode: 200,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600' },
+      body: JSON.stringify({ avatarUrl: ogMatch[1] })
+    };
+
+  } catch (err) {
+    return {
+      statusCode: 500,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: err.name === 'AbortError' ? 'timeout' : err.message })
+    };
+  }
+}
