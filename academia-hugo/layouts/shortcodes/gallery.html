@@ -13,24 +13,43 @@
   {{ $resource_page = $.Page }}
 {{ end }}
 
-<div class="gallery">
+<div class="gallery gallery-editorial" role="list">
 
   {{/* Attempt to automatically load gallery images from page bundle */}}
   {{ $images := ($resource_page.Resources.ByType "image").Match $album_path }}
   {{ with $images }}
   {{ range $images }}
-    {{ $image := .Resize "x190" }}
+    {{ $image_sm := .Resize "x520" }}
+    {{ $image_md := .Resize "x860" }}
     {{/* Check if the user set a caption for this image */}}
     {{ $filename := path.Base .Name }}
+    {{ $filename_no_ext := replace $filename (path.Ext $filename) "" }}
     {{ $caption := "" }}
     {{ if $.Page.Params.gallery_item }}
       {{ range (where (where $.Page.Params.gallery_item "album" $album) "image" $filename) }}
         {{ $caption = .caption }}
       {{ end }}
     {{ end }}
-  <a data-fancybox="gallery-{{$album}}" href="{{ .RelPermalink }}" {{ with $caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }}>
-  <img src="{{ $image.RelPermalink }}" alt="Akshay Joshi, Akshay Google, akjoshi, Ankit Agrawal, DJ Agrank, Prajvi Saxena, Shreyas Gururaj, Shreyas Kashyap, Tanvi Gunjal, Tanvi Ajay Gunjal, Poojitha Vijayanarasimha, poojitha sap, Germany, Munich, Saarland University, Frankfurt, Google">
-  </a>
+    {{ $alt := humanize (replace $filename_no_ext "-" " ") }}
+    {{ if $caption }}
+      {{ $alt = $caption | markdownify | plainify }}
+    {{ end }}
+  <figure class="gallery-card" role="listitem">
+    <a class="gallery-link" data-fancybox="gallery-{{$album}}" href="{{ .RelPermalink }}" {{ with $caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }}>
+      <img
+        class="gallery-image"
+        src="{{ $image_md.RelPermalink }}"
+        srcset="{{ $image_sm.RelPermalink }} 520w, {{ $image_md.RelPermalink }} 860w"
+        sizes="(max-width: 767.98px) 92vw, (max-width: 1199.98px) 46vw, 30vw"
+        width="{{ $image_md.Width }}"
+        height="{{ $image_md.Height }}"
+        loading="lazy"
+        decoding="async"
+        alt="{{ $alt }}">
+      <span class="gallery-glow" aria-hidden="true"></span>
+    </a>
+    {{ with $caption }}<figcaption class="gallery-caption">{{ . | markdownify | emojify }}</figcaption>{{ end }}
+  </figure>
   {{end}}
 
   {{else}}
@@ -45,9 +64,24 @@
       {{ $.Scratch.Set "src" (printf "img/%s" .image | relURL) }}
     {{ end }}
   {{ end }}
-  <a data-fancybox="gallery{{ with .album }}-{{.}}{{ end }}" {{ with .caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }} href="{{$.Scratch.Get "src"}}">
-    <img src="{{$.Scratch.Get "src"}}" alt="Akshay Joshi, Akshay Google, akjoshi, Ankit Agrawal, DJ Agrank, Prajvi Saxena, Shreyas Gururaj, Shreyas Kashyap, Tanvi Gunjal, Tanvi Ajay Gunjal, Poojitha Vijayanarasimha, poojitha sap, Germany, Munich, Saarland University, Frankfurt, Google">
-  </a>
+  {{ $filename := path.Base .image }}
+  {{ $filename_no_ext := replace $filename (path.Ext $filename) "" }}
+  {{ $alt := humanize (replace $filename_no_ext "-" " ") }}
+  {{ with .caption }}
+    {{ $alt = . | markdownify | plainify }}
+  {{ end }}
+  <figure class="gallery-card" role="listitem">
+    <a class="gallery-link" data-fancybox="gallery{{ with .album }}-{{.}}{{ end }}" {{ with .caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }} href="{{$.Scratch.Get "src"}}">
+      <img
+        class="gallery-image"
+        src="{{$.Scratch.Get "src"}}"
+        loading="lazy"
+        decoding="async"
+        alt="{{ $alt }}">
+      <span class="gallery-glow" aria-hidden="true"></span>
+    </a>
+    {{ with .caption }}<figcaption class="gallery-caption">{{ . | markdownify | emojify }}</figcaption>{{ end }}
+  </figure>
   {{end}}
   {{else}}
     {{ errorf "Unable to load gallery in %s." .Page.File.Filename }}

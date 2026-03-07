@@ -14,6 +14,7 @@
 {{ errorf "Could not find an author page at `%s`. Please check the value of `author` in your About widget and create an associated author page if one does not already exist. See https://sourcethemes.com/academic/docs/page-builder/#about " $person_page_path }}
 {{end}}
 {{ $person := $person_page.Params }}
+{{ $profile_alt := printf "Portrait of %s" $person.name }}
 
 <!-- About widget -->
 <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person"
@@ -21,11 +22,31 @@
   <div class="col-lg-5">
     <div id="profile">
       {{ if site.Params.gravatar }}
-      <img class="portrait img-fluid" src="https://s.gravatar.com/avatar/{{ md5 $person.email }}?s=200')"
-        itemprop="image" alt="Akshay Joshi is a Senior AI Research Scientist - Google, ETH Zurich, AMD, DFKI, Saarland University">
+      <img class="portrait img-fluid" src="https://s.gravatar.com/avatar/{{ md5 $person.email }}?s=200"
+        itemprop="image" alt="{{ $profile_alt }}">
       {{ else }}
       {{ $avatar_image := .page.Params.avatar_image }}
-      <img class="img-fluid" src="{{ printf "img/%s" $avatar_image | relURL }}" itemprop="image" alt="Akshay Joshi is a Senior AI Research Scientist - Google, ETH Zurich, AMD, DFKI, Saarland University">
+      {{ $profile_image_base := .page.Params.profile_image_base }}
+      {{ if $profile_image_base }}
+      <picture class="profile-picture">
+        <source type="image/avif" srcset="{{ printf "img/%s-800.avif" $profile_image_base | relURL }} 800w, {{ printf "img/%s-1200.avif" $profile_image_base | relURL }} 1200w" sizes="(max-width: 991.98px) 92vw, 420px">
+        <source type="image/webp" srcset="{{ printf "img/%s-800.webp" $profile_image_base | relURL }} 800w, {{ printf "img/%s-1200.webp" $profile_image_base | relURL }} 1200w" sizes="(max-width: 991.98px) 92vw, 420px">
+        <img
+          class="img-fluid profile-photo"
+          src="{{ printf "img/%s-1200.jpg" $profile_image_base | relURL }}"
+          srcset="{{ printf "img/%s-800.jpg" $profile_image_base | relURL }} 800w, {{ printf "img/%s-1200.jpg" $profile_image_base | relURL }} 1200w"
+          sizes="(max-width: 991.98px) 92vw, 420px"
+          width="1200"
+          height="1500"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
+          itemprop="image"
+          alt="{{ $profile_alt }}">
+      </picture>
+      {{ else }}
+      <img class="img-fluid profile-photo" src="{{ printf "img/%s" $avatar_image | relURL }}" itemprop="image" alt="{{ $profile_alt }}">
+      {{ end }}
       {{ end }}
     </div>
     <ul class="network-icon bg-white mx-2 py-2 text-center" aria-hidden="true">

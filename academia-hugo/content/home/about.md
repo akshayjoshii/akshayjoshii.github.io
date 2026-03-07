@@ -8,5 +8,8 @@ weight = 15  # Order that this section will appear in.
 # This should be the username of a profile in your `content/authors/` folder.
 # See https://sourcethemes.com/academic/docs/get-started/#introduce-yourself
 author = "admin"
-avatar_image= "akshay_1.jpg"
+# Fallback image for legacy templates and social previews.
+avatar_image = "profile/akshay-aurora-profile-1200.jpg"
+# Base path for responsive profile image variants in static/img/.
+profile_image_base = "profile/akshay-aurora-profile"
 +++
