@@ -8,6 +8,9 @@ weight = 50  # Order that this section will appear.
 title = "Projects"
 subtitle = "Featured projects spanning across different research areas in Vision, NLP & Data Mining"
 
+[mobile]
+  preview_count = 4
+
 [content]
   # Page type to display. E.g. project.
   page_type = "project"
@@ -81,4 +84,3 @@ subtitle = "Featured projects spanning across different research areas in Vision
  # CSS class.
  css_class = ""
 +++
-

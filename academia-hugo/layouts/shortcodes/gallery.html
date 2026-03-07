@@ -21,16 +21,17 @@
   {{ range $images }}
     {{ $image_sm := .Resize "x520" }}
     {{ $image_md := .Resize "x860" }}
+    {{ $image_lg := .Resize "x1600 q85" }}
     {{ $filename := path.Base .Name }}
     {{ $filename_no_ext := replace $filename (path.Ext $filename) "" }}
     {{ $alt := humanize (replace $filename_no_ext "-" " ") }}
   <figure class="gallery-card" role="listitem">
-    <a class="gallery-link" data-fancybox="gallery-{{$album}}" href="{{ .RelPermalink }}">
+    <a class="gallery-link" data-fancybox="gallery-{{$album}}" href="{{ $image_lg.RelPermalink }}">
       <img
         class="gallery-image"
         src="{{ $image_md.RelPermalink }}"
         srcset="{{ $image_sm.RelPermalink }} 520w, {{ $image_md.RelPermalink }} 860w"
-        sizes="(max-width: 767.98px) 92vw, (max-width: 1199.98px) 46vw, 30vw"
+        sizes="(max-width: 767.98px) 92vw, (max-width: 1024px) 46vw, 30vw"
         width="{{ $image_md.Width }}"
         height="{{ $image_md.Height }}"
         loading="lazy"

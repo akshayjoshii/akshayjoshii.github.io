@@ -45,7 +45,13 @@
           alt="{{ $profile_alt }}">
       </picture>
       {{ else }}
-      <img class="img-fluid profile-photo" src="{{ printf "img/%s" $avatar_image | relURL }}" itemprop="image" alt="{{ $profile_alt }}">
+      <img
+        class="img-fluid profile-photo"
+        src="{{ printf "img/%s" $avatar_image | relURL }}"
+        loading="lazy"
+        decoding="async"
+        itemprop="image"
+        alt="{{ $profile_alt }}">
       {{ end }}
       {{ end }}
     </div>
@@ -99,36 +105,55 @@
 
 
     {{ if $person.display_education }}
-    <div class="row">
+    {{ $collapse_on_phone := site.Params.mobile.collapse_on_phone | default true }}
+    {{ $collapse_about := $page.Params.mobile.collapse_about | default $collapse_on_phone }}
+    <div
+      class="about-mobile-disclosure"
+      data-mobile-disclosure
+      data-collapse-on-phone="{{ if $collapse_about }}true{{ else }}false{{ end }}"
+      data-preview-count="{{ if $collapse_about }}0{{ else }}1{{ end }}"
+      data-toggle-more="Show education and interests"
+      data-toggle-less="Show fewer details">
+      <div class="row about-extra-details" data-disclosure-item>
+        {{ with $person.education }}
+        <div class="col-md-7">
+          <h3>{{ i18n "education" | markdownify }}</h3>
+          <ul class="ul-edu fa-ul">
+            {{ range .courses }}
+            <li>
+              <i class="fa-li fas fa-graduation-cap"></i>
+              <div class="description">
+                <p class="course">{{ .course }}{{ with .year }}, {{ . }}{{ end }}</p>
+                <p class="institution">{{ .institution }}</p>
+              </div>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
 
-      {{ with $person.education }}
-      <div class="col-md-7">
-        <h3>{{ i18n "education" | markdownify }}</h3>
-        <ul class="ul-edu fa-ul">
-          {{ range .courses }}
-          <li>
-            <i class="fa-li fas fa-graduation-cap"></i>
-            <div class="description">
-              <p class="course">{{ .course }}{{ with .year }}, {{ . }}{{ end }}</p>
-              <p class="institution">{{ .institution }}</p>
-            </div>
-          </li>
-          {{ end }}
-        </ul>
+        {{ with $person.interests }}
+        <div class="col-md-5">
+          <h3>{{ i18n "interests" | markdownify }}</h3>
+          <ul class="ul-interests">
+            {{ range . }}
+            <li>{{ . | markdownify | emojify }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
+      {{ if $collapse_about }}
+      <div class="text-center text-md-left mt-3">
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-sm"
+          data-mobile-disclosure-toggle
+          aria-expanded="false">
+          Show education and interests
+        </button>
       </div>
       {{ end }}
-
-      {{ with $person.interests }}
-      <div class="col-md-5">
-        <h3>{{ i18n "interests" | markdownify }}</h3>
-        <ul class="ul-interests">
-          {{ range . }}
-          <li>{{ . | markdownify | emojify }}</li>
-          {{ end }}
-        </ul>
-      </div>
-      {{ end }}
-
     </div>
     {{ end }}
   </div>

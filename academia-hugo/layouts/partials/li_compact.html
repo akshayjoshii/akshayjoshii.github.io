@@ -27,7 +27,7 @@
 {{ $summary = $item.Summary }}
 {{ end }}
 
-  <div class="col-md-10 col-lg-8">
+  <div class="col-md-10 col-lg-8" data-disclosure-item>
     <div class="media stream-item shadow p-4" itemscope itemtype="http://schema.org/{{$microdata_type}}">
       <div class="media-body">
 
@@ -83,7 +83,14 @@
         {{ with $resource }}
         {{ $image := .Resize "250x" }}
         <a href="{{ $item.RelPermalink }}">
-          <img src="{{ $image.RelPermalink }}" itemprop="image">
+          <img
+            src="{{ $image.RelPermalink }}"
+            width="{{ $image.Width }}"
+            height="{{ $image.Height }}"
+            loading="lazy"
+            decoding="async"
+            itemprop="image"
+            alt="{{ $item.Title }}">
         </a>
         {{end}}
       </div>

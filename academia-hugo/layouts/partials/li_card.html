@@ -30,9 +30,20 @@
     {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
     {{ $anchor := $item.Params.image.focal_point | default "Smart" }}
     {{ with $resource }}
-    {{ $image := .Fill (printf "918x517 q90 %s" $anchor) }}
+    {{ $image_sm := .Fill (printf "540x304 q82 %s" $anchor) }}
+    {{ $image_lg := .Fill (printf "918x517 q85 %s" $anchor) }}
     <a href="{{ $item.RelPermalink }}">
-      <img src="{{ $image.RelPermalink }}" class="article-banner" itemprop="image" alt="">
+      <img
+        src="{{ $image_sm.RelPermalink }}"
+        srcset="{{ $image_sm.RelPermalink }} 540w, {{ $image_lg.RelPermalink }} 918w"
+        sizes="(max-width: 767.98px) 92vw, (max-width: 1024px) 46vw, 30vw"
+        width="{{ $image_lg.Width }}"
+        height="{{ $image_lg.Height }}"
+        loading="lazy"
+        decoding="async"
+        class="article-banner"
+        itemprop="image"
+        alt="{{ $item.Title }}">
     </a>
     {{end}}
 

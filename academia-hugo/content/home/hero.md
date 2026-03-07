@@ -41,6 +41,10 @@ hero_media = "profile/akshay-aurora-profile-1200.jpg"
   url = "#contact"
   label = "Contact Me"
 
+[mobile]
+  cta_stack = true
+  primary_cta_full_width = true
+
 +++
 ## My name is **Akshay Joshi**, I'm a **Senior AI Research Scientist** at BlinkIn
 

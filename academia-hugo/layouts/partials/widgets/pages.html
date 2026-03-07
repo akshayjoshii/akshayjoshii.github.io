@@ -12,6 +12,8 @@
 {{ $items_count = $items_count | default 5 }}
 {{ end }}
 {{ $items_sort := $st.Params.content.order | default "desc" }}
+{{ $collapse_on_phone := site.Params.mobile.collapse_on_phone | default true }}
+{{ $mobile_preview := $st.Params.mobile.preview_count | default site.Params.mobile.preview_publications | default 3 }}
 
 {{/* Query */}}
 {{ $query := where site.RegularPages "Type" $items_type }}
@@ -64,6 +66,12 @@
 {{ else }}
 {{ $i18n = "more_pages" }}
 {{ end }}
+{{ $show_more_label := "Show more" }}
+{{ $show_less_label := "Show less" }}
+{{ if eq $items_type "publication" }}
+{{ $show_more_label = "Show more publications" }}
+{{ $show_less_label = "Show fewer publications" }}
+{{ end }}
 
 <div class="row">
   <div class="col-12 section-heading text-center">
@@ -72,12 +80,18 @@
     {{ with $st.Content }}<p>{{ . }}</p>{{ end }}
   </div>
   <div class="col-12">
-    <div class="row justify-content-center">
+    <div
+      class="row justify-content-center mobile-disclosure"
+      data-mobile-disclosure
+      data-collapse-on-phone="{{ if $collapse_on_phone }}true{{ else }}false{{ end }}"
+      data-preview-count="{{ $mobile_preview }}"
+      data-toggle-more="{{ $show_more_label }}"
+      data-toggle-less="{{ $show_less_label }}">
       {{ range $post := $query }}
       {{ if eq $st.Params.design.view 1 }}
       {{ partial "li_list" . }}
       {{ else if eq $st.Params.design.view 3 }}
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 col-md-6 mb-4" data-disclosure-item>
       {{ partial "li_card" . }}
       </div>
       {{ else if eq $st.Params.design.view 4 | and (eq $items_type "publication") }}
@@ -93,6 +107,18 @@
           {{ i18n $i18n | default "See all" }}
           <i class="fas fa-angle-right"></i>
         </a>
+      </div>
+      {{ end }}
+
+      {{ if and $collapse_on_phone (gt (len $query) $mobile_preview) }}
+      <div class="col-12 text-center mt-2">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          data-mobile-disclosure-toggle
+          aria-expanded="false">
+          {{ $show_more_label }}
+        </button>
       </div>
       {{ end }}
 

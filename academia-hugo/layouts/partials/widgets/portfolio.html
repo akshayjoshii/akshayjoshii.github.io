@@ -5,6 +5,9 @@
 {{ $st := .page }}
 {{ $items_type := $st.Params.content.page_type | default "project" }}
 {{ $columns := $st.Params.design.columns | default "2" }}
+{{ $items := where site.RegularPages "Type" $items_type }}
+{{ $collapse_on_phone := site.Params.mobile.collapse_on_phone | default true }}
+{{ $mobile_preview := $st.Params.mobile.preview_count | default site.Params.mobile.preview_projects | default 4 }}
 
 {{ if ne $columns "1" }}
 {{/* Standard dual-column layout. */}}
@@ -64,8 +67,15 @@
       {{ end }}
       {{ end }}
 
-      <div class="{{ if or $st.Params.content.filter_button (eq $st.Params.design.view 3) }}isotope projects-container{{end}} {{if eq $st.Params.design.view 3}}js-layout-masonry{{else}}row js-layout-row{{end}} {{ if eq $st.Params.design.view 5 }}project-showcase mt-5{{end}}">
-        {{ range $idx, $item := where site.RegularPages "Type" $items_type }}
+      <div
+        class="mobile-disclosure"
+        data-mobile-disclosure
+        data-collapse-on-phone="{{ if $collapse_on_phone }}true{{ else }}false{{ end }}"
+        data-preview-count="{{ $mobile_preview }}"
+        data-toggle-more="Show more projects"
+        data-toggle-less="Show fewer projects">
+        <div class="{{ if or $st.Params.content.filter_button (eq $st.Params.design.view 3) }}isotope projects-container{{end}} {{if eq $st.Params.design.view 3}}js-layout-masonry{{else}}row js-layout-row{{end}} {{ if eq $st.Params.design.view 5 }}project-showcase mt-5{{end}}">
+        {{ range $idx, $item := $items }}
         {{ $link := $item.RelPermalink }}
         {{ $target := "" }}
         {{ if $item.Params.external_link }}
@@ -79,6 +89,18 @@
         {{ else }}
         {{ partial "project_li_showcase" (dict "widget" $st "index" $idx "item" $item "link" $link "target" $target) }}
         {{ end }}
+        {{ end }}
+        </div>
+        {{ if and $collapse_on_phone (gt (len $items) $mobile_preview) }}
+        <div class="text-center mt-4">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            data-mobile-disclosure-toggle
+            aria-expanded="false">
+            Show more projects
+          </button>
+        </div>
         {{ end }}
       </div>
     </div>

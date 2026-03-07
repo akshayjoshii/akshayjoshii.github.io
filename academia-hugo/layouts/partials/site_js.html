@@ -1,4 +1,5 @@
     {{ $scr := $.Scratch }}
+    {{ $is_home := .IsHome }}
 
     {{/* Config LaTeX math rendering. */}}
     {{ if or .Params.math site.Params.math }}
@@ -8,13 +9,16 @@
 
     {{/* Attempt to load local vendor JS, otherwise load from CDN. */}}
     {{ $js := site.Data.assets.js }}
+    {{ $css := site.Data.assets.css }}
     {{ if not ($scr.Get "use_cdn") }}
       <script src="{{ printf "/js/vendor/%s" ($scr.Get "vendor_js_filename") | relURL }}"></script>
     {{ else }}
       {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.jQuery.url $js.jQuery.version) $js.jQuery.sri | safeHTML }}
       {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.imagesLoaded.url $js.imagesLoaded.version) $js.imagesLoaded.sri | safeHTML }}
       {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.isotope.url $js.isotope.version) $js.isotope.sri | safeHTML }}
-      {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.fancybox.url $js.fancybox.version) $js.fancybox.sri | safeHTML }}
+      {{ if not $is_home }}
+        {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.fancybox.url $js.fancybox.version) $js.fancybox.sri | safeHTML }}
+      {{ end }}
 
       {{ if or .Params.diagram site.Params.diagram }}
         {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"mermaid\"></script>" (printf $js.mermaid.url $js.mermaid.version) $js.mermaid.sri | safeHTML }}
@@ -34,14 +38,48 @@
       {{ end }}
     {{ end }}
 
-    {{/* Maps JS. */}}
-    {{ if eq site.Params.map 1 }}
-      <script async defer src="//maps.googleapis.com/maps/api/js?key={{ site.Params.map_api_key }}"></script>
-      {{ if ($scr.Get "use_cdn") }}
-      {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.gmaps.url $js.gmaps.version) $js.gmaps.sri | safeHTML }}
+    <script>
+      window.academiaAssetConfig = {
+        lazyFancybox: {{ if and $is_home ($scr.Get "use_cdn") }}true{{ else }}false{{ end }},
+        fancyboxCssUrl: "{{ printf $css.fancybox.url $css.fancybox.version }}",
+        fancyboxCssIntegrity: "{{ $css.fancybox.sri }}",
+        fancyboxJsUrl: "{{ printf $js.fancybox.url $js.fancybox.version }}",
+        fancyboxJsIntegrity: "{{ $js.fancybox.sri }}"
+      };
+
+      window.academiaMobileConfig = {
+        collapseOnPhone: {{ if (site.Params.mobile.collapse_on_phone | default true) }}true{{ else }}false{{ end }},
+        overflowDebugParam: "{{ site.Params.mobile.overflow_debug_param | default "debugOverflow" }}"
+      };
+    </script>
+
+    {{/* Maps JS (supports mobile lazy loading). */}}
+    {{ $map_lazy := site.Params.mobile.map_lazy_load | default true }}
+    <script>
+      window.academiaMapConfig = {
+        provider: {{ site.Params.map | default 0 }},
+        lazy: {{ if $map_lazy }}true{{ else }}false{{ end }},
+        trigger: "{{ site.Params.mobile.map_lazy_trigger | default "proximity" }}",
+        rootMargin: "{{ site.Params.mobile.map_root_margin | default "240px" }}",
+        useCdn: {{ if ($scr.Get "use_cdn") }}true{{ else }}false{{ end }},
+        gmapsApiUrl: "//maps.googleapis.com/maps/api/js?key={{ site.Params.map_api_key }}",
+        gmapsLibUrl: "{{ printf $js.gmaps.url $js.gmaps.version }}",
+        gmapsLibIntegrity: "{{ $js.gmaps.sri }}",
+        leafletCssUrl: "{{ printf $css.leaflet.url $css.leaflet.version }}",
+        leafletCssIntegrity: "{{ $css.leaflet.sri }}",
+        leafletUrl: "{{ printf $js.leaflet.url $js.leaflet.version }}",
+        leafletIntegrity: "{{ $js.leaflet.sri }}"
+      };
+    </script>
+    {{ if not $map_lazy }}
+      {{ if eq site.Params.map 1 }}
+        <script async defer src="//maps.googleapis.com/maps/api/js?key={{ site.Params.map_api_key }}"></script>
+        {{ if ($scr.Get "use_cdn") }}
+        {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.gmaps.url $js.gmaps.version) $js.gmaps.sri | safeHTML }}
+        {{ end }}
+      {{ else if and (or (eq site.Params.map 2) (eq site.Params.map 3)) ($scr.Get "use_cdn") }}
+        {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.leaflet.url $js.leaflet.version) $js.leaflet.sri | safeHTML }}
       {{ end }}
-    {{ else if and (or (eq site.Params.map 2) (eq site.Params.map 3)) ($scr.Get "use_cdn") }}
-      {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.leaflet.url $js.leaflet.version) $js.leaflet.sri | safeHTML }}
     {{ end }}
 
     {{/* Comments JS. */}}

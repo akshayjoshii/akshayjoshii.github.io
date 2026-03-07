@@ -8,6 +8,9 @@ weight = 25  # Order that this section will appear.
 title = "Technical Skills"
 subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
 
+[mobile]
+  preview_count = 8
+
 # Showcase personal skills or business features.
 # 
 # Add/remove as many `[[feature]]` blocks below as you like.

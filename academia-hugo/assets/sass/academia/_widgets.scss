@@ -13,7 +13,7 @@
 
 .home-section {
   background-color: $sta-home-section-odd;
-  padding: 110px 0 110px 0;
+  padding: clamp(3rem, 7vw, 6.5rem) 0;
   animation: intro 0.3s both;
   animation-delay: 0.15s;
 }
@@ -65,7 +65,7 @@
 }
 
 .home-section:first-of-type {
-  padding-top: 50px;
+  padding-top: clamp(2.25rem, 6vw, 3.25rem);
 }
 
 .home-section:nth-of-type(even) {
@@ -80,27 +80,28 @@
   background-color: $sta-dark-home-section-even;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $bp-sm-max) {
   .home-section {
-    padding: 60px 0 60px 0;
+    padding: clamp(2.5rem, 9vw, 4rem) 0;
   }
   .home-section:first-of-type {
-    padding-top: 40px;
+    padding-top: clamp(2rem, 7vw, 2.5rem);
   }
 }
 
 .section-heading{
-  margin-bottom: 40px;
+  margin-bottom: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 .section-heading h1 {
-  margin: 0 0 10px 0;
+  margin: 0 0 clamp(0.4rem, 1.2vw, 0.75rem) 0;
 }
 
 .section-heading p {
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   color: #b2b2b2;
+  overflow-wrap: anywhere;
 }
 
 /*************************************************
@@ -109,7 +110,7 @@
 
 .see-all {
   margin-top: 2rem;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* Reset code highlighting style in Alerts when Alert is child of a `.dark` widget, but Alert should be light.` */
@@ -125,7 +126,7 @@
  **************************************************/
 
 .wg-hero {
-  padding: 3em 0;
+  padding: clamp(1.5rem, 5vw, 3rem) 0;
   clear: both;
   background-size: cover;
   background-repeat: no-repeat;
@@ -136,14 +137,29 @@
 }
 
 .hero-title {
-  font-size: 2.7rem;
+  font-size: clamp(1.7rem, 5vw, 2.7rem);
   margin-top: 0;
-  line-height: 1;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.wg-hero h1,
+.wg-hero h2 {
+  font-size: clamp(1.75rem, 5.4vw, 2.85rem);
+  line-height: 1.08;
+  margin-top: 0;
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.85rem);
+  text-wrap: balance;
+}
+
+.wg-hero p {
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
 }
 
 .hero-lead {
-  max-width: 768px;
-  font-size: 1.35rem;
+  max-width: 50ch;
+  font-size: clamp(1rem, 2.6vw, 1.35rem);
+  line-height: 1.45;
 }
 
 .wg-hero.dark .hero-title,
@@ -165,7 +181,9 @@
   line-height: 0;
 }
 .wg-hero .btn {
-  padding: .6em 2.1em;
+  padding: .72em 1.5em;
+  min-height: 44px;
+  min-width: 44px;
 }
 
 .wg-hero.dark .btn {
@@ -188,7 +206,7 @@ a.hero-cta-alt:hover {
 }
 
 .wg-hero .btn-lg {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
 }
 
 .wg-hero .hero-note {
@@ -201,6 +219,42 @@ a.hero-cta-alt:hover {
   justify-content: center;
   height: 100%;
   text-align: center;
+}
+
+.hero-picture {
+  width: 100%;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hero-cta-group .hero-cta-btn {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@media screen and (max-width: $bp-sm-max) {
+  .wg-hero {
+    padding-top: clamp(1.25rem, 5vw, 2.2rem);
+    padding-bottom: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  .hero-cta-group.hero-cta-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .hero-cta-group.hero-cta-stack .hero-cta-btn {
+    width: 100%;
+  }
+
+  .hero-cta-group.hero-cta-stack .hero-cta-primary-fluid {
+    order: -1;
+  }
 }
 
 /*************************************************
@@ -428,12 +482,12 @@ ul.ul-edu li .description p.institution {
   position: relative;
   width: calc(33.3% - 2*20px); /* Fluid 3 columns (inc. 20px gutter) */
 }
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: $bp-md-max) {
   .project-card {
     width: calc(50% - 20px); /* Fluid 2 columns (inc. 20px gutter) */
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $bp-sm-max) {
   .project-card {
     width: 100%; /* 1 column */
   }
@@ -547,7 +601,72 @@ ul.ul-edu li .description p.institution {
   margin-bottom: 0;
 }
 
-#map {
-  height: 350px;
+.contact-primary-actions {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.contact-action-btn {
   width: 100%;
+  min-height: 44px;
+}
+
+#map {
+  height: clamp(260px, 42vw, 350px);
+  width: 100%;
+}
+
+.map-shell {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.map-shell-lazy #map {
+  filter: saturate(0.85) contrast(0.95);
+}
+
+.map-shell.is-map-ready #map {
+  filter: none;
+}
+
+.map-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  padding: 1rem;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(248, 250, 253, 0.9), rgba(238, 243, 248, 0.92));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.25rem;
+}
+
+.mobile-disclosure [data-disclosure-item].is-mobile-hidden {
+  display: none !important;
+}
+
+[data-mobile-disclosure-toggle] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.about-mobile-disclosure {
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: $bp-sm-max) {
+  .contact-widget .fa-ul {
+    margin-left: 2.5rem;
+  }
+
+  .contact-widget .fa-li {
+    left: -2.5rem;
+    width: 1.75rem;
+  }
+
+  .contact-widget li {
+    padding-top: 0.55rem;
+  }
 }

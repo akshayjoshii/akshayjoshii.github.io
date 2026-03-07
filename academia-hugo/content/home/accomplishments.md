@@ -8,6 +8,9 @@ weight = 65  # Order that this section will appear.
 title = "HONOURS & ACHIEVEMENTS"
 subtitle = "ACCOMPLISHMENTS THAT BOLSTERED MY ACADEMIC & LEADERSHIP FINESSE"
 
+[mobile]
+  preview_count = 2
+
 # Date format
 #   Refer to https://sourcethemes.com/academic/docs/customization/#date-format
 date_format = "Jan 2006"

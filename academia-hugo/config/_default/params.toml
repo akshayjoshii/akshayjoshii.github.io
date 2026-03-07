@@ -103,6 +103,25 @@ plugins_css = []
 plugins_js  = []
 
 ############################
+## Mobile UX              ##
+############################
+
+[mobile]
+  # Global mobile/tablet UX toggles and defaults.
+  collapse_on_phone = true
+  cta_stack_default = true
+  map_lazy_load = true
+  map_lazy_trigger = "proximity"
+  map_root_margin = "240px"
+  overflow_debug_param = "debugOverflow"
+
+  # Default preview counts used by section-level progressive disclosure.
+  preview_featurette = 8
+  preview_projects = 4
+  preview_publications = 3
+  preview_accomplishments = 2
+
+############################
 ## Advanced options       ##
 ############################
 

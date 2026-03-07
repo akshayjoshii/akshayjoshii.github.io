@@ -1,6 +1,7 @@
 {{ $ := .root }}
 {{ $page := .page }}
 {{ $autolink := default true $page.Params.autolink }}
+{{ $map_lazy := site.Params.mobile.map_lazy_load | default true }}
 
 <!-- Contact widget -->
 <div class="row contact-widget">
@@ -11,9 +12,59 @@
   <div class="col-12">
     {{ with $page.Content }}<p>{{ . | markdownify }}</p>{{ end }}
   </div>
-  <div class="col-md-6">
-    {{ if $page.Params.email_form }}
 
+  <div class="col-md-6 order-1 order-md-2 contact-actions">
+    <div class="contact-primary-actions">
+      {{ with site.Params.email }}
+      <a class="btn btn-primary contact-action-btn" href="mailto:{{ . }}">Email</a>
+      {{ end }}
+      {{ with site.Params.phone }}
+      <a class="btn btn-outline-primary contact-action-btn" href="tel:{{ . }}">Call</a>
+      {{ end }}
+      {{ with site.Params.appointment_url }}
+      <a class="btn btn-outline-primary contact-action-btn" href="{{ . }}" target="_blank" rel="noopener">
+        {{ i18n "book_appointment" | default "Book an appointment" }}
+      </a>
+      {{ end }}
+    </div>
+
+    <ul class="fa-ul" itemscope>
+      {{ with site.Params.email }}
+      <li>
+        <i class="fa-li fas fa-envelope mt-2" aria-hidden="true"></i>
+        <span id="person-email" itemprop="email">
+          {{- if $autolink }}<a href="mailto:{{ . }}">{{ . }}</a>{{ else }}{{ . }}{{ end -}}
+        </span>
+      </li>
+      {{ end }}
+
+      {{ with site.Params.phone }}
+      <li>
+        <i class="fa-li fas fa-phone mt-2" aria-hidden="true"></i>
+        <span id="person-telephone" itemprop="telephone">
+          {{- if $autolink }}<a href="tel:{{ . }}">{{ . }}</a>{{ else }}{{ . }}{{ end -}}
+        </span>
+      </li>
+      {{ end }}
+
+      {{ with site.Params.address }}
+      <li>
+        <i class="fa-li fas fa-map-marker-alt mt-2" aria-hidden="true"></i>
+        <span id="person-address" itemprop="address">{{ . | markdownify | emojify }}</span>
+      </li>
+      {{ end }}
+
+      {{ with site.Params.office_hours }}
+      <li>
+        <i class="fa-li fas fa-clock mt-2" aria-hidden="true"></i>
+        <span>{{ . | markdownify | emojify }}</span>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+
+  <div class="col-md-6 order-2 order-md-1">
+    {{ if $page.Params.email_form }}
     {{ $post_action := "" }}
     {{ if eq $page.Params.email_form 1 }}
     {{ $post_action = "netlify" }}
@@ -46,54 +97,9 @@
       </form>
     </div>
     {{end}}
-
   </div>
-  <div class="col-md-6">
-    <ul class="fa-ul" itemscope>
-      {{ if and site.Params.email (not $page.Params.email_form) }}
-      <li>
-        <i class="fa-li fas fa-envelope mt-2" aria-hidden="true"></i>
-        <span id="person-email" itemprop="email">
-          {{- if $autolink }}<a
-            href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a>{{ else }}{{ site.Params.email }}{{ end -}}
-        </span>
-      </li>
-      {{ end }}
 
-      {{ with site.Params.phone }}
-      <li>
-        <i class="fa-li fas fa-phone mt-2" aria-hidden="true"></i>
-        <span id="person-telephone" itemprop="telephone">
-          {{- if $autolink }}<a href="tel:{{ . }}">{{ . }}</a>{{ else }}{{ . }}{{ end -}}
-        </span>
-      </li>
-      {{ end }}
-
-      {{ with site.Params.address }}
-      <li>
-        <i class="fa-li fas fa-map-marker-alt mt-2" aria-hidden="true"></i>
-        <span id="person-address" itemprop="address">{{ . | markdownify | emojify }}</span>
-      </li>
-      {{ end }}
-
-      {{ with site.Params.office_hours }}
-      <li>
-        <i class="fa-li fas fa-clock mt-2" aria-hidden="true"></i>
-        <span>{{ . | markdownify | emojify }}</span>
-      </li>
-      {{ end }}
-
-      {{ with site.Params.appointment_url }}
-      <li>
-        <i class="fa-li fas fa-calendar-check mt-2" aria-hidden="true"></i>
-        <a href="{{ . }}" target="_blank"
-          rel="noopener">{{ i18n "book_appointment" | default "Book an appointment" }}</a>
-      </li>
-      {{ end }}
-
-    </ul>
-  </div>
-  <div class="col-12">
+  <div class="col-12 order-3">
     {{ if site.Params.map }}
     <div class="d-none">
       <input id="map-provider" value="{{ site.Params.map }}">
@@ -103,7 +109,15 @@
       <input id="map-zoom" value="{{ site.Params.zoom | default "15" }}">
       <input id="map-api-key" value="{{ site.Params.map_api_key }}">
     </div>
-    <div id="map"></div>
+    <div class="map-shell{{ if $map_lazy }} map-shell-lazy{{ end }}">
+      {{ if $map_lazy }}
+      <div class="map-placeholder" data-map-placeholder>
+        <p class="mb-2">Map loads on demand for a faster mobile experience.</p>
+        <button type="button" class="btn btn-outline-primary" data-map-load>Load map</button>
+      </div>
+      {{ end }}
+      <div id="map" data-map-lazy="{{ if $map_lazy }}true{{ else }}false{{ end }}" aria-label="Location map"></div>
+    </div>
     {{ end }}
   </div>
 </div>

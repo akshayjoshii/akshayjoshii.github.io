@@ -1,6 +1,9 @@
 {{ $ := .root }}
 {{ $page := .page }}
 {{ $bg := $page.Params.design.background }}
+{{ $mobile_stack_default := site.Params.mobile.cta_stack_default | default true }}
+{{ $mobile_stack := $page.Params.mobile.cta_stack | default $mobile_stack_default }}
+{{ $primary_full_width := $page.Params.mobile.primary_cta_full_width | default true }}
 
 {{ if $page.Params.hero_media }}
 <div class="row">
@@ -26,8 +29,8 @@
       {{ else if in (slice "http" "https") $scheme }}
         {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
       {{ end }}
-    <p class="mt-4">
-      <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }} class="btn {{if $bg.text_color_light}}btn-light{{else}}btn-primary{{end}} btn-lg  page-scroll">{{ if $page.Params.btn.icon }}<i class="{{ $pack }} {{ $pack_prefix }}-{{ $page.Params.btn.icon }} mr-2" aria-hidden="true"></i>{{end}}{{ $page.Params.btn.label | markdownify | emojify | safeHTML }}</a>
+    <div class="hero-cta-group mt-4{{ if $mobile_stack }} hero-cta-stack{{ end }}">
+      <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }} class="btn {{if $bg.text_color_light}}btn-light{{else}}btn-primary{{end}} btn-lg page-scroll hero-cta-btn{{ if $primary_full_width }} hero-cta-primary-fluid{{ end }}">{{ if $page.Params.btn.icon }}<i class="{{ $pack }} {{ $pack_prefix }}-{{ $page.Params.btn.icon }} mr-2" aria-hidden="true"></i>{{end}}{{ $page.Params.btn.label | markdownify | emojify | safeHTML }}</a>
 
       {{/* Alternative Call-to-action link */}}
       {{ if $page.Params.btn_alt.url }}
@@ -39,16 +42,47 @@
         {{ else if in (slice "http" "https") $scheme }}
           {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
         {{ end }}
-      <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }} class="btn btn-lg {{if $bg.text_color_light}}btn-outline-light{{else}}btn-outline-primary{{end}} page-scroll">{{ if $page.Params.btn_alt.icon }}<i class="{{ $pack }} {{ $pack_prefix }}-{{ $page.Params.btn_alt.icon }} mr-2" aria-hidden="true"></i>{{end}}{{ $page.Params.btn_alt.label | markdownify | emojify | safeHTML }}</a>
+      <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }} class="btn btn-lg {{if $bg.text_color_light}}btn-outline-light{{else}}btn-outline-primary{{end}} page-scroll hero-cta-btn">{{ if $page.Params.btn_alt.icon }}<i class="{{ $pack }} {{ $pack_prefix }}-{{ $page.Params.btn_alt.icon }} mr-2" aria-hidden="true"></i>{{end}}{{ $page.Params.btn_alt.label | markdownify | emojify | safeHTML }}</a>
       {{ end }}
-    </p>
+    </div>
     {{ end }}
 
   {{/* Hero image */}}
   {{ if $page.Params.hero_media }}
   </div>
   <div class="col-10 mx-auto col-md-6 order-md-2 hero-media">
-    <img class="hero-img img-fluid" src="{{ printf "img/%s" $page.Params.hero_media | relURL }}" alt="Akshay Joshi is a Senior AI Research Scientist - Google, ETH Zurich, AMD, DFKI, Saarland University">
+    {{ $hero_media := $page.Params.hero_media }}
+    {{ $hero_ext := path.Ext $hero_media }}
+    {{ $hero_base := replace $hero_media $hero_ext "" }}
+    {{ $hero_variant_base := replaceRE "-1200$" "" $hero_base }}
+    {{ $hero_alt := $page.Params.hero_media_alt | default "Akshay Joshi profile portrait" }}
+    {{ $has_responsive_jpg := and (fileExists (printf "static/img/%s-800.jpg" $hero_variant_base)) (fileExists (printf "static/img/%s-1200.jpg" $hero_variant_base)) }}
+    {{ $has_responsive_webp := and (fileExists (printf "static/img/%s-800.webp" $hero_variant_base)) (fileExists (printf "static/img/%s-1200.webp" $hero_variant_base)) }}
+    {{ $has_responsive_avif := and (fileExists (printf "static/img/%s-800.avif" $hero_variant_base)) (fileExists (printf "static/img/%s-1200.avif" $hero_variant_base)) }}
+    {{ $has_responsive := $has_responsive_jpg }}
+    {{ if $has_responsive }}
+    <picture class="hero-picture">
+      {{ if $has_responsive_avif }}
+      <source type="image/avif" srcset="{{ printf "img/%s-800.avif" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.avif" $hero_variant_base | relURL }} 1200w" sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px">
+      {{ end }}
+      {{ if $has_responsive_webp }}
+      <source type="image/webp" srcset="{{ printf "img/%s-800.webp" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.webp" $hero_variant_base | relURL }} 1200w" sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px">
+      {{ end }}
+      <img
+        class="hero-img img-fluid"
+        src="{{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }}"
+        srcset="{{ printf "img/%s-800.jpg" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }} 1200w"
+        sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px"
+        width="1200"
+        height="1500"
+        decoding="async"
+        fetchpriority="high"
+        loading="eager"
+        alt="{{ $hero_alt }}">
+    </picture>
+    {{ else }}
+    <img class="hero-img img-fluid" src="{{ printf "img/%s" $hero_media | relURL }}" loading="eager" decoding="async" fetchpriority="high" alt="{{ $hero_alt }}">
+    {{ end }}
   </div>
 </div>
 {{ end }}

@@ -10,6 +10,9 @@ weight = 48  # Order that this section will appear.
 title = "Publications"
 subtitle = "Seminars, Conferences & Publications that I have delivered/currently working on"
 
+[mobile]
+  preview_count = 3
+
 [content]
   # Page type to display. E.g. post, talk, or publication.
   page_type = "publication"

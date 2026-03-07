@@ -7,12 +7,22 @@
 {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
 {{ $js_tag_classes := delimit (apply (apply $item.Params.tags "replace" "." " " "-") "printf" "js-id-%s" ".") " " }}
 
-<div class="project-card project-item isotope-item {{ $js_tag_classes | safeHTMLAttr }}">
+<div class="project-card project-item isotope-item {{ $js_tag_classes | safeHTMLAttr }}" data-disclosure-item>
   <div class="card rounded-0 shadow-sm">
     {{ with $resource }}
-    {{ $image := .Resize (printf "550x q90 %s") }}
+    {{ $image_sm := .Resize (printf "360x q82 %s") }}
+    {{ $image_md := .Resize (printf "550x q85 %s") }}
     <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="card-image">
-      <img src="{{ $image.RelPermalink }}" alt="Akshay Joshi, Akshay Joshi Google - WikiArt, Covid, Object detection, yolo, car counting, speech recognition, reinforcement learning, cnn, gnn, socket programming" class="img-responsive">
+      <img
+        src="{{ $image_sm.RelPermalink }}"
+        srcset="{{ $image_sm.RelPermalink }} 360w, {{ $image_md.RelPermalink }} 550w"
+        sizes="(max-width: 767.98px) 92vw, (max-width: 1024px) 46vw, 30vw"
+        width="{{ $image_md.Width }}"
+        height="{{ $image_md.Height }}"
+        loading="lazy"
+        decoding="async"
+        alt="{{ $item.Title }}"
+        class="img-responsive">
     </a>
     {{ end }}
     <div class="card-body">

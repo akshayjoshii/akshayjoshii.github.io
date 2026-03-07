@@ -2,13 +2,48 @@
  *  academia's Core
  **************************************************/
 
+$bp-xs-max: 389.98px;
+$bp-sm-min: 390px;
+$bp-sm-max: 767.98px;
+$bp-md-min: 768px;
+$bp-md-max: 1024px;
+$bp-lg-min: 1025px;
+
+:root {
+  --sta-safe-top: env(safe-area-inset-top, 0px);
+  --sta-safe-right: env(safe-area-inset-right, 0px);
+  --sta-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --sta-safe-left: env(safe-area-inset-left, 0px);
+  --sta-dvh: 100vh;
+}
+
+@supports (height: 100svh) {
+  :root {
+    --sta-dvh: 100svh;
+  }
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --sta-dvh: 100dvh;
+  }
+}
+
 html {
   font-family: $sta-font-body, sans-serif;
   font-size: #{$sta-font-size-small}px;
   color: rgba(0,0,0,0.8);
   line-height: 1.65;
+  max-width: 100%;
+  overflow-x: hidden;
 }
-@media screen and (min-width: 58em) {
+@supports (overflow: clip) {
+  html {
+    overflow-x: clip;
+  }
+}
+
+@media screen and (min-width: $bp-md-min) {
   html {
     font-size: #{$sta-font-size}px;
   }
@@ -23,8 +58,16 @@ body {
   margin-top: 70px; /* Offset body content by navbar height. */
   padding-top: 0;
   counter-reset: captions;
+  max-width: 100%;
+  overflow-x: hidden;
 }
-@media screen and (max-width: 1200px) { /* Match max-width of .nav-bar query. */
+@supports (overflow: clip) {
+  body {
+    overflow-x: clip;
+  }
+}
+
+@media screen and (max-width: $bp-md-max) {
   body {
     margin-top: 50px; /* Offset body content by navbar height. */
   }
@@ -209,7 +252,7 @@ blockquote p:last-child {
 .space-below {
   margin-bottom: 50px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $bp-sm-max) {
   .space-below {
     margin-bottom: 10px;
   }
@@ -358,7 +401,7 @@ a[data-fancybox] {
   }
 }
 
-@media screen and (max-width: 1199.98px) {
+@media screen and (max-width: $bp-md-max) {
   .gallery.gallery-editorial {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -368,7 +411,7 @@ a[data-fancybox] {
   }
 }
 
-@media screen and (max-width: 767.98px) {
+@media screen and (max-width: $bp-sm-max) {
   .gallery.gallery-editorial {
     grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 0.85rem;
@@ -511,9 +554,13 @@ a.badge:hover {
  *************************************************/
 
 .btn {
-  padding: .5rem;
-  font-size: .8rem;
-  line-height: .5;
+  padding: .625rem .95rem;
+  font-size: .85rem;
+  line-height: 1.2;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: .3rem;
   &:focus{
     box-shadow: none !important;
@@ -538,6 +585,7 @@ a.badge:hover {
 .btn.btn-sm {
   padding: 5px .4rem 5px .4rem;
   font-size: .6rem;
+  min-height: 36px;
   border-radius: .2rem;
 }
 
@@ -672,8 +720,10 @@ div.alert a {
 
 /* homepage */
 .hero-img{
-  border: 10px solid #fff;
+  border: clamp(4px, 1.4vw, 10px) solid #fff;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px 0px;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 /* about */
@@ -707,35 +757,28 @@ div.alert a {
 }
 
 .section-heading h1{
-  position: relative;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: clamp(0.04em, 0.35vw, 0.16em);
   display: inline-block;
-  font-size: 30px;
-  &::before{
-      content: '';
-      position: absolute;
-      z-index: 99;
-      background-color: $sta-primary;
-      width: 6px;
-      height: 6px;
-      border-radius: 100%;
-      left: -17px;
-      top: 15px;
-  }
-  &::after{
-    content: '';
-    position: absolute;
-    z-index: 99;
-    background-color: $sta-primary;
-    width: 6px;
-    height: 6px;
-    border-radius: 100%;
-    right: -17px;
-    top: 15px;
-  }
+  font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+  max-width: 100%;
 }
 
 .section-heading p{
   text-transform: uppercase;
+  letter-spacing: clamp(0.02em, 0.2vw, 0.08em);
+}
+
+@media screen and (max-width: $bp-sm-max) {
+  .section-heading h1,
+  .section-heading p {
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: break-word;
+  }
+}
+
+.debug-overflow .overflow-debug-target {
+  outline: 2px dashed #ff4d4f !important;
+  outline-offset: -1px;
 }

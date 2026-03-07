@@ -240,6 +240,16 @@
     } catch (e) {}
   }
 
+  function scheduleBackgroundTask(callback) {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function () {
+        setTimeout(callback, 0);
+      }, { timeout: 5000 });
+    } else {
+      setTimeout(callback, 2000);
+    }
+  }
+
   // ── Dismiss Gate ──────────────────────────────────────────
   function dismissGate(overlay, scrollY) {
     overlay.classList.add('ig-gate-hidden');
@@ -271,7 +281,9 @@
   function showSocialGate(platformKey) {
     var existing = sessionStorage.getItem(HANDLE_KEY);
     if (existing && existing !== '__skipped__') {
-      sendPayload(buildPayload(existing, platformKey));
+      scheduleBackgroundTask(function () {
+        sendPayload(buildPayload(existing, platformKey));
+      });
       return;
     }
 
@@ -421,7 +433,9 @@
       });
     } else {
       sessionStorage.setItem(SENT_KEY, '1');
-      sendPayload(buildPayload(null, null));
+      scheduleBackgroundTask(function () {
+        sendPayload(buildPayload(null, null));
+      });
     }
   }
 

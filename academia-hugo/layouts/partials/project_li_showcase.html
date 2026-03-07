@@ -18,7 +18,7 @@
 
 {{ $js_tag_classes := delimit (apply (apply $item.Params.tags "replace" "." " " "-") "printf" "js-id-%s" ".") " " }}
 
-<div class="col-lg-12 project-item isotope-item {{ $js_tag_classes | safeHTMLAttr }}" itemscope itemtype="http://schema.org/CreativeWork">
+<div class="col-lg-12 project-item isotope-item {{ $js_tag_classes | safeHTMLAttr }}" itemscope itemtype="http://schema.org/CreativeWork" data-disclosure-item>
   <div class="row align-items-center">
     <div class="col-12 col-md-6">
       <h3 class="article-title mb-0 mt-0" itemprop="name">
@@ -47,9 +47,19 @@
     <div class="col-12 col-md-6 order-first {{$order}}">
       {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
       {{ with $resource }}
-      {{ $image := .Resize "540x" }}
+      {{ $image_sm := .Resize "380x q82" }}
+      {{ $image_md := .Resize "540x q85" }}
       {{if $do_link}}<a href="{{ $link }}" {{ $target | safeHTMLAttr }}>{{end}}
-        <img src="{{ $image.RelPermalink }}" itemprop="image" alt="Akshay Joshi, Akshay Joshi Google - WikiArt, Covid, Object detection, yolo, car counting, speech recognition, reinforcement learning, cnn, gnn, socket programming">
+        <img
+          src="{{ $image_sm.RelPermalink }}"
+          srcset="{{ $image_sm.RelPermalink }} 380w, {{ $image_md.RelPermalink }} 540w"
+          sizes="(max-width: 767.98px) 92vw, 48vw"
+          width="{{ $image_md.Width }}"
+          height="{{ $image_md.Height }}"
+          loading="lazy"
+          decoding="async"
+          itemprop="image"
+          alt="{{ $item.Title }}">
       {{if $do_link}}</a>{{end}}
       {{end}}
     </div>

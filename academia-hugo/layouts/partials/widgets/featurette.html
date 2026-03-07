@@ -1,7 +1,16 @@
 {{ $ := .root }}
 {{ $page := .page }}
+{{ $collapse_on_phone := site.Params.mobile.collapse_on_phone | default true }}
+{{ $mobile_preview := $page.Params.mobile.preview_count | default site.Params.mobile.preview_featurette | default 8 }}
+{{ $feature_count := len $page.Params.feature }}
 
-<div class="row featurette">
+<div
+  class="row featurette mobile-disclosure"
+  data-mobile-disclosure
+  data-collapse-on-phone="{{ if $collapse_on_phone }}true{{ else }}false{{ end }}"
+  data-preview-count="{{ $mobile_preview }}"
+  data-toggle-more="Show more skills"
+  data-toggle-less="Show fewer skills">
   {{ with $page.Title }}
   <div class="col-12 section-heading">
     <h1>{{ . | markdownify | emojify }}</h1>
@@ -15,19 +24,31 @@
   </div>
   {{ end }}
 
-  {{ range $page.Params.feature }}
+  {{ range $idx, $feature := $page.Params.feature }}
   {{ $pack := or .icon_pack "fas" }}
   {{ $pack_prefix := $pack }}
   {{ if in (slice "fab" "fas" "far" "fal") $pack }}
   {{ $pack_prefix = "fa" }}
   {{ end }}
-  <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+  <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0" data-disclosure-item>
     <div class="position-relative py-2 shadow featurette-margin">
-      <div class="progress-bar" style="width:{{ .parcent }}"></div>
-      {{ with .icon }}<div class="featurette-icon"><i class="{{ $pack }} {{ $pack_prefix }}-{{ . }}"></i></div>{{ end }}
-      <h3>{{ .name | markdownify | emojify }}</h3>
-      {{ with .parcent }}{{ end }}
+      <div class="progress-bar" style="width:{{ $feature.parcent }}"></div>
+      {{ with $feature.icon }}<div class="featurette-icon"><i class="{{ $pack }} {{ $pack_prefix }}-{{ . }}"></i></div>{{ end }}
+      <h3>{{ $feature.name | markdownify | emojify }}</h3>
+      {{ with $feature.parcent }}{{ end }}
     </div>
+  </div>
+  {{ end }}
+
+  {{ if and $collapse_on_phone (gt $feature_count $mobile_preview) }}
+  <div class="col-12 text-center mt-2">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      data-mobile-disclosure-toggle
+      aria-expanded="false">
+      Show more skills
+    </button>
   </div>
   {{ end }}
 </div>
