@@ -21,21 +21,11 @@
   {{ range $images }}
     {{ $image_sm := .Resize "x520" }}
     {{ $image_md := .Resize "x860" }}
-    {{/* Check if the user set a caption for this image */}}
     {{ $filename := path.Base .Name }}
     {{ $filename_no_ext := replace $filename (path.Ext $filename) "" }}
-    {{ $caption := "" }}
-    {{ if $.Page.Params.gallery_item }}
-      {{ range (where (where $.Page.Params.gallery_item "album" $album) "image" $filename) }}
-        {{ $caption = .caption }}
-      {{ end }}
-    {{ end }}
     {{ $alt := humanize (replace $filename_no_ext "-" " ") }}
-    {{ if $caption }}
-      {{ $alt = $caption | markdownify | plainify }}
-    {{ end }}
   <figure class="gallery-card" role="listitem">
-    <a class="gallery-link" data-fancybox="gallery-{{$album}}" href="{{ .RelPermalink }}" {{ with $caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }}>
+    <a class="gallery-link" data-fancybox="gallery-{{$album}}" href="{{ .RelPermalink }}">
       <img
         class="gallery-image"
         src="{{ $image_md.RelPermalink }}"
@@ -46,9 +36,7 @@
         loading="lazy"
         decoding="async"
         alt="{{ $alt }}">
-      <span class="gallery-glow" aria-hidden="true"></span>
     </a>
-    {{ with $caption }}<figcaption class="gallery-caption">{{ . | markdownify | emojify }}</figcaption>{{ end }}
   </figure>
   {{end}}
 
@@ -67,20 +55,15 @@
   {{ $filename := path.Base .image }}
   {{ $filename_no_ext := replace $filename (path.Ext $filename) "" }}
   {{ $alt := humanize (replace $filename_no_ext "-" " ") }}
-  {{ with .caption }}
-    {{ $alt = . | markdownify | plainify }}
-  {{ end }}
   <figure class="gallery-card" role="listitem">
-    <a class="gallery-link" data-fancybox="gallery{{ with .album }}-{{.}}{{ end }}" {{ with .caption }}data-caption="{{.|markdownify|emojify|safeHTMLAttr}}"{{ end }} href="{{$.Scratch.Get "src"}}">
+    <a class="gallery-link" data-fancybox="gallery{{ with .album }}-{{.}}{{ end }}" href="{{$.Scratch.Get "src"}}">
       <img
         class="gallery-image"
         src="{{$.Scratch.Get "src"}}"
         loading="lazy"
         decoding="async"
         alt="{{ $alt }}">
-      <span class="gallery-glow" aria-hidden="true"></span>
     </a>
-    {{ with .caption }}<figcaption class="gallery-caption">{{ . | markdownify | emojify }}</figcaption>{{ end }}
   </figure>
   {{end}}
   {{else}}
