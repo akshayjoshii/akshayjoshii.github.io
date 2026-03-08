@@ -2,23 +2,20 @@
   'use strict';
 
   var OPEN_CLASS = 'hero-media-modal-open';
+  var ICON_PLAY = '\u25B6';
+  var ICON_PAUSE = '\u23F8';
 
   function parseNumber(value, fallback) {
     var parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : fallback;
   }
 
-  function formatSeconds(value) {
-    var total = Math.max(0, Math.floor(value));
-    var minutes = Math.floor(total / 60);
-    var seconds = total % 60;
-    return minutes + ':' + String(seconds).padStart(2, '0');
-  }
-
   function syncToggleLabel(toggleBtn, audio) {
     if (!toggleBtn) return;
     var isPlaying = !!audio && !audio.paused;
-    toggleBtn.textContent = isPlaying ? 'Pause Music' : 'Play Music';
+    toggleBtn.textContent = isPlaying ? ICON_PAUSE : ICON_PLAY;
+    toggleBtn.setAttribute('aria-label', isPlaying ? 'Pause music' : 'Play music');
+    toggleBtn.setAttribute('title', isPlaying ? 'Pause music' : 'Play music');
     toggleBtn.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
   }
 
@@ -35,7 +32,6 @@
     var dialog = modal.querySelector('.hero-media-modal__dialog');
     var closeButtons = modal.querySelectorAll('[data-hero-media-close]');
     var toggleButton = modal.querySelector('[data-hero-media-toggle]');
-    var statusEl = modal.querySelector('[data-hero-media-status]');
     var audio = modal.querySelector('[data-hero-media-audio]');
 
     if (!dialog) return;
@@ -44,15 +40,7 @@
     var loopEnd = parseNumber(modal.getAttribute('data-loop-end'), 42);
     if (loopEnd <= loopStart) loopEnd = loopStart + 26;
 
-    if (statusEl) {
-      statusEl.textContent = 'Looping ' + formatSeconds(loopStart) + '-' + formatSeconds(loopEnd);
-    }
-
     var lastFocused = null;
-
-    function setStatus(text) {
-      if (statusEl) statusEl.textContent = text;
-    }
 
     function resetAudio() {
       if (!audio) return;
@@ -79,7 +67,10 @@
     function playSegment() {
       if (!audio || !audio.getAttribute('src')) {
         if (toggleButton) toggleButton.disabled = true;
-        setStatus('No audio source configured');
+        if (toggleButton) {
+          toggleButton.setAttribute('aria-label', 'Music unavailable');
+          toggleButton.setAttribute('title', 'Music unavailable');
+        }
         return;
       }
 
@@ -92,7 +83,6 @@
         if (playAttempt && typeof playAttempt.catch === 'function') {
           playAttempt.catch(function () {
             syncToggleLabel(toggleButton, audio);
-            setStatus('Tap Play Music to start audio');
           });
         }
       }
@@ -110,7 +100,6 @@
       }
 
       syncToggleLabel(toggleButton, audio);
-      setStatus('Looping ' + formatSeconds(loopStart) + '-' + formatSeconds(loopEnd));
     }
 
     function openModal() {
@@ -203,7 +192,6 @@
           playSegment();
         } else {
           audio.pause();
-          setStatus('Music paused');
         }
       });
     }

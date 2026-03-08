@@ -148,7 +148,7 @@
   <div class="hero-media-modal__backdrop" data-hero-media-close></div>
   <div class="hero-media-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="{{ $hero_media_modal_id }}-title">
     <h3 id="{{ $hero_media_modal_id }}-title" class="sr-only">{{ $hero_alt }}</h3>
-    <button type="button" class="hero-media-modal__close" data-hero-media-close aria-label="Close viewer">Close</button>
+    <button type="button" class="hero-media-modal__close" data-hero-media-close aria-label="Close viewer">&times;</button>
 
     <div class="hero-media-modal__stage" style="--hero-overlay-vh: {{ $hero_media_overlay_vh }};">
       {{ if $has_responsive_jpg }}
@@ -168,8 +168,7 @@
     </div>
 
     <div class="hero-media-modal__controls">
-      <button type="button" class="hero-media-modal__toggle" data-hero-media-toggle aria-pressed="true">Pause Music</button>
-      <span class="hero-media-modal__status" data-hero-media-status aria-live="polite">Looping 0:16-0:42</span>
+      <button type="button" class="hero-media-modal__toggle" data-hero-media-toggle aria-pressed="true" aria-label="Pause music">&#9209;</button>
     </div>
 
     <audio

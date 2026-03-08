@@ -318,18 +318,23 @@ a.hero-cta-alt:hover {
 
 .hero-media-modal__close,
 .hero-media-modal__toggle {
+  width: 48px;
+  height: 48px;
   min-height: 44px;
   min-width: 44px;
+  padding: 0;
   border: 0;
   border-radius: 999px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-media-modal__close {
   align-self: flex-end;
-  padding: 0.58rem 1.15rem;
   color: #f5f8ff;
   background: rgba(18, 26, 40, 0.82);
 }
@@ -362,25 +367,16 @@ a.hero-cta-alt:hover {
 
 .hero-media-modal__controls {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem;
-  padding: 0.6rem 0.7rem;
-  border-radius: 14px;
-  background: rgba(14, 18, 28, 0.84);
+  justify-content: flex-start;
+  gap: 0.4rem;
+  padding: 0;
 }
 
 .hero-media-modal__toggle {
-  padding: 0.58rem 1.2rem;
-  color: #10131b;
-  background: #ffffff;
-}
-
-.hero-media-modal__status {
-  color: rgba(238, 244, 255, 0.9);
-  font-size: 0.88rem;
-  line-height: 1.35;
+  color: #f5f8ff;
+  background: rgba(18, 26, 40, 0.82);
 }
 
 .hero-cta-group {
@@ -439,13 +435,7 @@ a.hero-cta-alt:hover {
   }
 
   .hero-media-modal__controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-media-modal__toggle,
-  .hero-media-modal__close {
-    width: 100%;
+    justify-content: flex-start;
   }
 }
 
