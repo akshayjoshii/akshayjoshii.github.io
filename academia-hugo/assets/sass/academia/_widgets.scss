@@ -285,7 +285,7 @@ a.hero-cta-alt:hover {
 .hero-media-modal {
   position: fixed;
   inset: 0;
-  z-index: 1100;
+  z-index: 4000;
   display: grid;
   place-items: center;
   padding: clamp(0.75rem, 2.4vw, 1.5rem);

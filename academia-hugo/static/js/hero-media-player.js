@@ -28,6 +28,9 @@
 
     var modal = document.getElementById(targetId);
     if (!modal) return;
+    if (modal.parentElement !== document.body) {
+      document.body.appendChild(modal);
+    }
 
     var dialog = modal.querySelector('.hero-media-modal__dialog');
     var closeButtons = modal.querySelectorAll('[data-hero-media-close]');
