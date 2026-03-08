@@ -9,7 +9,6 @@ weight = 15  # Order that this section will appear in.
 # See https://sourcethemes.com/academic/docs/get-started/#introduce-yourself
 author = "admin"
 avatar_image = "akshay_2.jpg"
-profile_image_base = "profile/akshay-aurora-profile"
 
 [mobile]
 collapse_about = true

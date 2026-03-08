@@ -4,6 +4,8 @@
 {{ $mobile_stack_default := site.Params.mobile.cta_stack_default | default true }}
 {{ $mobile_stack := $page.Params.mobile.cta_stack | default $mobile_stack_default }}
 {{ $primary_full_width := $page.Params.mobile.primary_cta_full_width | default true }}
+{{ $hero_width := $page.Params.hero_media_width | default 1200 }}
+{{ $hero_height := $page.Params.hero_media_height | default 1500 }}
 
 {{ if $page.Params.hero_media }}
 <div class="row">
@@ -73,8 +75,8 @@
         src="{{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }}"
         srcset="{{ printf "img/%s-800.jpg" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }} 1200w"
         sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px"
-        width="1200"
-        height="1500"
+        width="{{ $hero_width }}"
+        height="{{ $hero_height }}"
         decoding="async"
         fetchpriority="high"
         loading="eager"

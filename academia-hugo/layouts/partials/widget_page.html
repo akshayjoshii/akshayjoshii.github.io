@@ -15,7 +15,8 @@
 {{ end }}
 
 {{/* Load page sections */}}
-{{ range $index, $st := where ( $headless_bundle.Resources.ByType "page" ) ".Params.active" "!=" false }}
+{{ $active_pages := where ( $headless_bundle.Resources.ByType "page" ) ".Params.active" "!=" false }}
+{{ range $index, $st := sort $active_pages ".Params.weight" "asc" }}
   {{/* Begin widget styling */}}
   {{ $bg := $st.Params.design.background }}
   {{ $style := "" }}
