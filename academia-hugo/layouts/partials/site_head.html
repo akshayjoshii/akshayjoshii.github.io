@@ -137,8 +137,7 @@
     <link rel="stylesheet" href="{{ $css_bundle.RelPermalink }}">
   {{ end }}
 
-  {{ if not hugo.IsServer }}
-  {{ with site.Config.Services.GoogleAnalytics.ID }}
+  {{ with site.GoogleAnalytics }}
     <script>
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
       ga('create', '{{ . }}', 'auto');
@@ -152,7 +151,6 @@
     {{ if ($scr.Get "use_cdn") }}
     {{ printf "<script async src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.autotrack.url $js.autotrack.version) $js.autotrack.sri | safeHTML }}
     {{ end }}
-  {{ end }}
   {{ end }}
 
   {{ with .OutputFormats.Get "RSS" }}
