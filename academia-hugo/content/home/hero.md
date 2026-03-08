@@ -55,6 +55,4 @@ hero_media_height = 900
 
 Senior AI Research Scientist at BlinkIn
 
-Applied ML Engineer working on multimodal and vision-language intelligence.
-
 **Previously:** AMD, Google, ETH Zurich, DFKI, and Saarland University.
