@@ -48,6 +48,8 @@ hero_media_height = 900
   primary_cta_full_width = true
 
 +++
-## My name is **Akshay Joshi**, I'm a **Senior AI Research Scientist** at BlinkIn
+## My name is **Akshay Joshi**, I'm a **Senior AI Research Scientist & Applied ML Engineer** at BlinkIn
 
+**Focus:** Multimodal AI, Vision-Language Models, LLM/VLM fine-tuning, RLHF/DPO alignment, RAG, semantic search, and agentic AI systems.
+  
 **Previous Affiliations:** AMD, Google, ETH Zürich, German Research Center for AI, and Universität des Saarlandes.

@@ -3,6 +3,8 @@
 {{ $collapse_on_phone := site.Params.mobile.collapse_on_phone | default true }}
 {{ $mobile_preview := $page.Params.mobile.preview_count | default site.Params.mobile.preview_featurette | default 8 }}
 {{ $feature_count := len $page.Params.feature }}
+{{ $section_classes := $page.Params.advanced.css_class | default "" }}
+{{ $is_modern_skills := in $section_classes "skills-modern" }}
 
 <div
   class="row featurette mobile-disclosure"
@@ -31,11 +33,19 @@
   {{ $pack_prefix = "fa" }}
   {{ end }}
   <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0" data-disclosure-item>
-    <div class="position-relative py-2 shadow featurette-margin">
+    <div class="position-relative py-2 shadow featurette-margin{{ if $is_modern_skills }} featurette-skill-card{{ end }}">
+      {{ if and (not $is_modern_skills) $feature.parcent }}
       <div class="progress-bar" style="width:{{ $feature.parcent }}"></div>
+      {{ end }}
       {{ with $feature.icon }}<div class="featurette-icon"><i class="{{ $pack }} {{ $pack_prefix }}-{{ . }}"></i></div>{{ end }}
+      {{ if and $is_modern_skills $feature.track }}
+      <div class="featurette-track">{{ $feature.track }}</div>
+      {{ end }}
       <h3>{{ $feature.name | markdownify | emojify }}</h3>
-      {{ with $feature.parcent }}{{ end }}
+      {{ with $feature.description }}<div class="featurette-description">{{ . | markdownify | emojify }}</div>{{ end }}
+      {{ if $is_modern_skills }}
+      <span class="featurette-skill-pill">{{ $feature.pill | default "Core 2026" }}</span>
+      {{ end }}
     </div>
   </div>
   {{ end }}

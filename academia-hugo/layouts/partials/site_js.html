@@ -83,9 +83,10 @@
     {{ end }}
 
     {{/* Comments JS. */}}
-    {{ $comments_enabled := and site.DisqusShortname (not (or site.Params.disable_comments $.Params.disable_comments)) }}
+    {{ $disqus_shortname := site.Config.Services.Disqus.Shortname }}
+    {{ $comments_enabled := and $disqus_shortname (not (or site.Params.disable_comments $.Params.disable_comments)) }}
     {{ if and $comments_enabled (site.Params.comment_count | default true) }}
-    <script id="dsq-count-scr" src="//{{ site.DisqusShortname }}.disqus.com/count.js" async></script>
+    <script id="dsq-count-scr" src="//{{ $disqus_shortname }}.disqus.com/count.js" async></script>
     {{ end }}
 
     {{/* Initialise code highlighting. */}}

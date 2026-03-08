@@ -35,6 +35,9 @@
     {{ $desc = $superuser_role }}
   {{ end }}
   <meta name="description" content="{{ $desc }}">
+  {{ with site.Params.seo.keywords }}
+  <meta name="keywords" content="{{ delimit . ", " }}">
+  {{ end }}
 
   {{ range .Translations }}
   <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
@@ -134,11 +137,11 @@
     <link rel="stylesheet" href="{{ $css_bundle.RelPermalink }}">
   {{ end }}
 
-  {{ if not site.IsServer }}
-  {{ if site.GoogleAnalytics }}
+  {{ if not hugo.IsServer }}
+  {{ with site.Config.Services.GoogleAnalytics.ID }}
     <script>
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', '{{ site.GoogleAnalytics }}', 'auto');
+      ga('create', '{{ . }}', 'auto');
       {{ if site.Params.privacy_pack }}ga('set', 'anonymizeIp', true);{{ end }}
       ga('require', 'eventTracker');
       ga('require', 'outboundLinkTracker');
@@ -204,6 +207,13 @@
   {{ partial "cookie_consent" . }}
 
   {{ partial "custom_head" . }}
+
+  {{ if and .IsHome site.Params.seo.keywords }}
+  {{ $schema_name := $superuser_name | default site.Title }}
+  {{ $schema_job_title := $superuser_role | default "AI Research Scientist" }}
+  {{ $person_schema := dict "@context" "https://schema.org" "@type" "Person" "name" $schema_name "url" site.BaseURL "jobTitle" $schema_job_title "description" site.Params.description "knowsAbout" site.Params.seo.keywords }}
+  <script type="application/ld+json">{{ $person_schema | jsonify | safeJS }}</script>
+  {{ end }}
 
   <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ site.Title }}</title>
 

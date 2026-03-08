@@ -12,7 +12,7 @@ day_night = true
 font = "classic"
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = "Akshay Joshi is a Senior Research Scientist who actively works in the fields of Multimodal AI, Large Vision-Language Models, Natural Language Generation. He has worked at reputed organizations such as AMD, Google, ETH Zürich, German Research Center for AI, and Universität des Saarlandes"
+description = "Akshay Joshi is a Senior AI Research Scientist and Applied ML Engineer specializing in multimodal AI, vision-language models, LLM/VLM fine-tuning, RLHF/DPO alignment, RAG, semantic search, and agentic AI systems using PyTorch, Hugging Face, FastAPI, Docker, Kubernetes, and AWS/GCP/Azure."
 
 # Default image for social sharing and search engines. Place image in `static/img/` folder and specify image name here.
 sharing_image = "akshay_2.jpg"
@@ -101,6 +101,65 @@ zoom = 15
 #   E.g. To load `/assets/js/custom.js`, set `plugins_js = ["custom"]`.
 plugins_css = []
 plugins_js  = []
+
+############################
+## SEO                    ##
+############################
+
+[seo]
+  # Recruiter-oriented role and stack keywords derived from CV skills.
+  keywords = [
+    "Senior AI Research Scientist",
+    "AI Research Scientist",
+    "Applied AI Scientist",
+    "Machine Learning Researcher",
+    "Applied ML Engineer",
+    "LLM Engineer",
+    "Large Language Models",
+    "Multimodal AI",
+    "Vision Language Models",
+    "Video Understanding",
+    "LLM Fine-Tuning",
+    "VLM Fine-Tuning",
+    "Self-Supervised Learning",
+    "Representation Learning",
+    "Cross-Modal Reasoning",
+    "RAG",
+    "Semantic Search",
+    "Recommendation Systems",
+    "Agentic AI",
+    "Model Context Protocol",
+    "LangGraph",
+    "LangChain",
+    "PyTorch",
+    "Hugging Face Transformers",
+    "RLHF",
+    "DPO",
+    "PEFT",
+    "LoRA",
+    "SFT",
+    "vLLM",
+    "NVIDIA TensorRT",
+    "DeepSpeed",
+    "Vector Database",
+    "Qdrant",
+    "Milvus",
+    "FAISS",
+    "MLOps",
+    "MLflow",
+    "Weights and Biases",
+    "FastAPI",
+    "Kubernetes",
+    "Docker",
+    "AWS",
+    "GCP",
+    "Azure",
+    "SQL",
+    "Elasticsearch",
+    "Redis",
+    "Git",
+    "CI/CD"
+  ]
 
 ############################
 ## Mobile UX              ##

@@ -86,6 +86,5 @@ user_groups:
 - Researchers
 - Visitors
 ---
-I train LLM & VLMs for various ML tasks such as Multimodal Question Answering, Cross-modal Retrieval, Dense Image Captioning, Machine Comprehension & Reasoning.
-
+I am a Senior AI Research Scientist and Applied ML Engineer building multimodal AI systems for enterprise products. My work focuses on vision-language models, LLM/VLM fine-tuning, RLHF/DPO alignment, RAG and semantic search, and agentic AI workflows. I take models from research to production using PyTorch, Hugging Face, FastAPI, Docker, Kubernetes, and AWS/GCP/Azure.
 

@@ -6,10 +6,13 @@ active = true  # Activate this widget? true/false
 weight = 25  # Order that this section will appear.
 
 title = "Technical Skills"
-subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
+subtitle = "CV-backed core stack for AI research and ML engineering roles in 2026"
 
 [mobile]
   preview_count = 8
+
+[advanced]
+  css_class = "skills-modern"
 
 # Showcase personal skills or business features.
 # 
@@ -19,102 +22,86 @@ subtitle = "I AM proficient in THE FOLLOWING technologies/frameworks"
 
 [[feature]]
   name = "Python"
-  parcent = "90%"
-  
-[[feature]]
-  name = "LLM"
-  parcent = "95%"  
-  
-[[feature]]
-  name = "NumPy"
-  parcent = "65%"
-  
+  parcent = "100%"
+  track = "Model Engineering"
+  pill = "Core Language"
+  description = "Primary language for model training, evaluation pipelines, and production AI systems."
+
 [[feature]]
   name = "PyTorch"
-  parcent = "80%"
-    
-[[feature]]
-  name = "Scikit-learn"
-  parcent = "85%"
-    
-[[feature]]
-  name = "OpenCV"
-  parcent = "60%"
-      
-[[feature]]
-  name = "C/C++"
-  parcent = "65%"
-      
-[[feature]]
-  name = "MySQL"
-  parcent = "65%"
-      
-[[feature]]
-  name = "Computer Vision"
-  parcent = "80%"
+  parcent = "100%"
+  track = "Model Engineering"
+  pill = "Foundation Framework"
+  description = "Core deep learning framework for large-scale LLM and multimodal model development."
 
 [[feature]]
-  name = "Image Processing"
-  parcent = "70%"
+  name = "Transformers (Hugging Face)"
+  parcent = "100%"
+  track = "Model Engineering"
+  pill = "Foundation Models"
+  description = "Transformers, Tokenizers, and Accelerate stack for foundation model development."
 
 [[feature]]
-  name = "Computer Graphics"
-  parcent = "60%"
-      
-[[feature]]
-  name = "NLP"
-  parcent = "90%"
-      
-[[feature]]
-  name = "Statistics"
-  parcent = "70%"
-
-[[feature]]
-  name = "A/B Testing"
-  parcent = "72%"
-      
-[[feature]]
-  name = "FastAPI"
-  parcent = "75%"
-      
-      
-[[feature]]
-  name = "Deep Learning"
-  parcent = "80%"
-        
-[[feature]]
-  name = "Qdrant"
-  parcent = "80%"
-          
-[[feature]]
-  name = "LLaMaIndex"
-  parcent = "85%"
-          
-[[feature]]
-  name = "AWS/GCP"
-  parcent = "65%"
-          
-[[feature]]
-  name = "Pandas"
-  parcent = "80%"
-          
-[[feature]]
-  name = "Docker"
-  parcent = "90%"
-          
-          
-[[feature]]
-  name = "Git SCM"
-  parcent = "70%"
-          
-[[feature]]
-  name = "Transformers"
+  name = "LLM/VLM Fine-Tuning (PEFT, LoRA, SFT)"
   parcent = "95%"
-          
-[[feature]]
-  name = "Kubernetes"
-  parcent = "70%"
-          
+  track = "Research"
+  pill = "High Demand 2026"
+  description = "Parameter-efficient adaptation of language and vision-language models for domain tasks."
 
+[[feature]]
+  name = "RLHF & DPO"
+  parcent = "92%"
+  track = "Research"
+  pill = "Alignment Stack"
+  description = "Alignment pipelines to reduce hallucination and improve instruction-following quality."
+
+[[feature]]
+  name = "Multimodal AI (Vision-Language + Video)"
+  parcent = "95%"
+  track = "Research"
+  pill = "VLM + Video"
+  description = "Vision-language modeling, cross-modal reasoning, and video understanding systems."
+
+[[feature]]
+  name = "RAG & Semantic Search"
+  parcent = "95%"
+  track = "Production"
+  pill = "Enterprise AI"
+  description = "Retrieval-augmented generation and semantic retrieval for knowledge-intensive AI products."
+
+[[feature]]
+  name = "Vector Retrieval (Qdrant, Milvus, FAISS)"
+  parcent = "92%"
+  track = "Production"
+  pill = "Retrieval Infra"
+  description = "Scalable vector indexing and retrieval layers for search and recommendation workloads."
+
+[[feature]]
+  name = "Agentic AI & MCP (LangGraph/LangChain)"
+  parcent = "90%"
+  track = "Production"
+  pill = "Agent Workflows"
+  description = "Tool-using AI workflows with LangGraph, LangChain, and Model Context Protocol."
+
+[[feature]]
+  name = "Inference Optimization (vLLM, TensorRT, DeepSpeed)"
+  parcent = "90%"
+  track = "Model Engineering"
+  pill = "Low-Latency Serving"
+  description = "Serving and optimization stack for throughput, memory efficiency, and response latency."
+
+[[feature]]
+  name = "FastAPI + Docker + Kubernetes"
+  parcent = "90%"
+  track = "Production"
+  pill = "Deployment Stack"
+  description = "Model-serving APIs and container orchestration for production AI deployment."
+
+[[feature]]
+  name = "Cloud/Data/Experiment Stack"
+  parcent = "90%"
+  track = "Production"
+  pill = "Scale & Ops"
+  description = "AWS/GCP/Azure, SQL/Elasticsearch/Redis, MLflow/W&B, and Git/CI-CD workflows."
 
 +++
