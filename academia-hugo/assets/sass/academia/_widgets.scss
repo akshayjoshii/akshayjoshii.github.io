@@ -375,8 +375,20 @@ a.hero-cta-alt:hover {
 }
 
 .hero-media-modal__toggle {
+  position: relative;
+  font-size: 0;
   color: #f5f8ff;
   background: rgba(18, 26, 40, 0.82);
+}
+
+.hero-media-modal__toggle::before {
+  content: "\25B6";
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.hero-media-modal__toggle[aria-pressed="true"]::before {
+  content: "\23F8";
 }
 
 .hero-cta-group {
@@ -953,7 +965,7 @@ ul.ul-edu li .description p.institution {
   border-radius: 0.25rem;
 }
 
-.mobile-disclosure [data-disclosure-item].is-mobile-hidden {
+[data-mobile-disclosure] [data-disclosure-item].is-mobile-hidden {
   display: none !important;
 }
 
