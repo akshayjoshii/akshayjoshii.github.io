@@ -6,6 +6,19 @@
 {{ $primary_full_width := $page.Params.mobile.primary_cta_full_width | default true }}
 {{ $hero_width := $page.Params.hero_media_width | default 1200 }}
 {{ $hero_height := $page.Params.hero_media_height | default 1500 }}
+{{ $hero_media_interaction_enabled := false }}
+{{ $hero_media_audio_src := "" }}
+{{ $hero_media_loop_start := 16 }}
+{{ $hero_media_loop_end := 42 }}
+{{ $hero_media_overlay_vh := 78 }}
+{{ $hero_media_modal_id := "hero-media-modal" }}
+{{ with $page.Params.hero_media_interaction }}
+  {{ $hero_media_interaction_enabled = .enabled | default false }}
+  {{ $hero_media_audio_src = .audio_src | default "" }}
+  {{ $hero_media_loop_start = .loop_start | default 16 }}
+  {{ $hero_media_loop_end = .loop_end | default 42 }}
+  {{ $hero_media_overlay_vh = .overlay_vh | default 78 }}
+{{ end }}
 
 {{ if $page.Params.hero_media }}
 <div class="row">
@@ -62,29 +75,109 @@
     {{ $has_responsive_webp := and (fileExists (printf "static/img/%s-800.webp" $hero_variant_base)) (fileExists (printf "static/img/%s-1200.webp" $hero_variant_base)) }}
     {{ $has_responsive_avif := and (fileExists (printf "static/img/%s-800.avif" $hero_variant_base)) (fileExists (printf "static/img/%s-1200.avif" $hero_variant_base)) }}
     {{ $has_responsive := $has_responsive_jpg }}
-    {{ if $has_responsive }}
-    <picture class="hero-picture">
-      {{ if $has_responsive_avif }}
-      <source type="image/avif" srcset="{{ printf "img/%s-800.avif" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.avif" $hero_variant_base | relURL }} 1200w" sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px">
+    {{ if $hero_media_interaction_enabled }}
+    <button
+      type="button"
+      class="hero-media-trigger"
+      data-hero-media-trigger
+      data-hero-media-target="{{ $hero_media_modal_id }}"
+      aria-controls="{{ $hero_media_modal_id }}"
+      aria-haspopup="dialog"
+      aria-label="Open image viewer and play music">
+      {{ if $has_responsive }}
+      <picture class="hero-picture">
+        {{ if $has_responsive_avif }}
+        <source type="image/avif" srcset="{{ printf "img/%s-800.avif" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.avif" $hero_variant_base | relURL }} 1200w" sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px">
+        {{ end }}
+        {{ if $has_responsive_webp }}
+        <source type="image/webp" srcset="{{ printf "img/%s-800.webp" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.webp" $hero_variant_base | relURL }} 1200w" sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px">
+        {{ end }}
+        <img
+          class="hero-img img-fluid"
+          src="{{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }}"
+          srcset="{{ printf "img/%s-800.jpg" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }} 1200w"
+          sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px"
+          width="{{ $hero_width }}"
+          height="{{ $hero_height }}"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
+          alt="{{ $hero_alt }}">
+      </picture>
+      {{ else }}
+      <img class="hero-img img-fluid" src="{{ printf "img/%s" $hero_media | relURL }}" loading="eager" decoding="async" fetchpriority="high" alt="{{ $hero_alt }}">
       {{ end }}
-      {{ if $has_responsive_webp }}
-      <source type="image/webp" srcset="{{ printf "img/%s-800.webp" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.webp" $hero_variant_base | relURL }} 1200w" sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px">
-      {{ end }}
-      <img
-        class="hero-img img-fluid"
-        src="{{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }}"
-        srcset="{{ printf "img/%s-800.jpg" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }} 1200w"
-        sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px"
-        width="{{ $hero_width }}"
-        height="{{ $hero_height }}"
-        decoding="async"
-        fetchpriority="high"
-        loading="eager"
-        alt="{{ $hero_alt }}">
-    </picture>
+    </button>
     {{ else }}
-    <img class="hero-img img-fluid" src="{{ printf "img/%s" $hero_media | relURL }}" loading="eager" decoding="async" fetchpriority="high" alt="{{ $hero_alt }}">
+      {{ if $has_responsive }}
+      <picture class="hero-picture">
+        {{ if $has_responsive_avif }}
+        <source type="image/avif" srcset="{{ printf "img/%s-800.avif" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.avif" $hero_variant_base | relURL }} 1200w" sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px">
+        {{ end }}
+        {{ if $has_responsive_webp }}
+        <source type="image/webp" srcset="{{ printf "img/%s-800.webp" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.webp" $hero_variant_base | relURL }} 1200w" sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px">
+        {{ end }}
+        <img
+          class="hero-img img-fluid"
+          src="{{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }}"
+          srcset="{{ printf "img/%s-800.jpg" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }} 1200w"
+          sizes="(max-width: 389.98px) 92vw, (max-width: 767.98px) 88vw, (max-width: 1024px) 44vw, 480px"
+          width="{{ $hero_width }}"
+          height="{{ $hero_height }}"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
+          alt="{{ $hero_alt }}">
+      </picture>
+      {{ else }}
+      <img class="hero-img img-fluid" src="{{ printf "img/%s" $hero_media | relURL }}" loading="eager" decoding="async" fetchpriority="high" alt="{{ $hero_alt }}">
+      {{ end }}
     {{ end }}
   </div>
 </div>
+{{ if $hero_media_interaction_enabled }}
+<div
+  id="{{ $hero_media_modal_id }}"
+  class="hero-media-modal"
+  data-hero-media-modal
+  data-loop-start="{{ $hero_media_loop_start }}"
+  data-loop-end="{{ $hero_media_loop_end }}"
+  data-overlay-vh="{{ $hero_media_overlay_vh }}"
+  aria-hidden="true"
+  hidden>
+  <div class="hero-media-modal__backdrop" data-hero-media-close></div>
+  <div class="hero-media-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="{{ $hero_media_modal_id }}-title">
+    <h3 id="{{ $hero_media_modal_id }}-title" class="sr-only">{{ $hero_alt }}</h3>
+    <button type="button" class="hero-media-modal__close" data-hero-media-close aria-label="Close viewer">Close</button>
+
+    <div class="hero-media-modal__stage" style="--hero-overlay-vh: {{ $hero_media_overlay_vh }};">
+      {{ if $has_responsive_jpg }}
+      <img
+        class="hero-media-modal__image"
+        src="{{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }}"
+        srcset="{{ printf "img/%s-800.jpg" $hero_variant_base | relURL }} 800w, {{ printf "img/%s-1200.jpg" $hero_variant_base | relURL }} 1200w"
+        sizes="96vw"
+        width="{{ $hero_width }}"
+        height="{{ $hero_height }}"
+        decoding="async"
+        loading="lazy"
+        alt="{{ $hero_alt }}">
+      {{ else }}
+      <img class="hero-media-modal__image" src="{{ printf "img/%s" $hero_media | relURL }}" loading="lazy" decoding="async" alt="{{ $hero_alt }}">
+      {{ end }}
+    </div>
+
+    <div class="hero-media-modal__controls">
+      <button type="button" class="hero-media-modal__toggle" data-hero-media-toggle aria-pressed="true">Pause Music</button>
+      <span class="hero-media-modal__status" data-hero-media-status aria-live="polite">Looping 0:16-0:42</span>
+    </div>
+
+    <audio
+      data-hero-media-audio
+      preload="metadata"
+      {{ if ne $hero_media_audio_src "" }}src="{{ $hero_media_audio_src | safeURL }}"{{ end }}>
+    </audio>
+  </div>
+</div>
+{{ end }}
 {{ end }}

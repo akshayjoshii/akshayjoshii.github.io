@@ -12,6 +12,13 @@ hero_media = "profile/akshay-white-skintight-aurora-1200.jpg"
 hero_media_width = 1200
 hero_media_height = 900
 
+[hero_media_interaction]
+  enabled = true
+  audio_src = "/files/music/music.mp3"
+  loop_start = 16
+  loop_end = 42
+  overlay_vh = 78
+
 [design.background]
   # Apply a background color, gradient, or image.
   #   Uncomment (by removing `#`) an option to apply it.
