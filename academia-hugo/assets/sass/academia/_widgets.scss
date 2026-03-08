@@ -156,6 +156,36 @@
   font-size: clamp(1rem, 2.6vw, 1.25rem);
 }
 
+.wg-hero.hero-refined h2 {
+  font-size: clamp(1.7rem, 4.3vw, 2.4rem);
+  line-height: 1.12;
+  margin-bottom: 0.45rem;
+  max-width: 16ch;
+}
+
+.wg-hero.hero-refined p {
+  max-width: 46ch;
+  margin-bottom: 0.75rem;
+  font-size: clamp(0.98rem, 2.1vw, 1.12rem);
+  color: rgba(26, 31, 38, 0.86);
+}
+
+.wg-hero.hero-refined p:first-of-type {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.7rem;
+  padding: 0.22rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(252, 111, 92, 0.34);
+  background: rgba(252, 111, 92, 0.08);
+  color: #fc6f5c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 .hero-lead {
   max-width: 50ch;
   font-size: clamp(1rem, 2.6vw, 1.35rem);
@@ -237,6 +267,24 @@ a.hero-cta-alt:hover {
 }
 
 @media screen and (max-width: $bp-sm-max) {
+  .wg-hero.hero-refined h2 {
+    font-size: clamp(1.45rem, 8.8vw, 1.95rem);
+    max-width: 20ch;
+  }
+
+  .wg-hero.hero-refined p {
+    margin-bottom: 0.62rem;
+    font-size: 0.95rem;
+    line-height: 1.42;
+  }
+
+  .wg-hero.hero-refined p:first-of-type {
+    font-size: 0.64rem;
+    margin-bottom: 0.62rem;
+    padding: 0.19rem 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
   .wg-hero {
     padding-top: clamp(1.25rem, 5vw, 2.2rem);
     padding-bottom: clamp(1.5rem, 6vw, 2.5rem);

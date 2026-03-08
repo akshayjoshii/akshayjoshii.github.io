@@ -86,5 +86,4 @@ user_groups:
 - Researchers
 - Visitors
 ---
-I am a Senior AI Research Scientist and Applied ML Engineer building multimodal AI systems for enterprise products. My work focuses on vision-language models, LLM/VLM fine-tuning, RLHF/DPO alignment, RAG and semantic search, and agentic AI workflows. I take models from research to production using PyTorch, Hugging Face, FastAPI, Docker, Kubernetes, and AWS/GCP/Azure.
-
+I lead applied research on multimodal intelligence, with emphasis on grounding, alignment, and retrieval-aware reasoning. My work turns frontier model ideas into measurable gains on real enterprise decision workflows.

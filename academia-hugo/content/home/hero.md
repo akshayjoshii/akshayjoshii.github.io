@@ -32,6 +32,9 @@ hero_media_height = 900
   # Text color (true=light or false=dark).
   text_color_light = false
 
+[advanced]
+  css_class = "hero-refined"
+
 # Call to action links (optional).
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
@@ -48,8 +51,10 @@ hero_media_height = 900
   primary_cta_full_width = true
 
 +++
-## My name is **Akshay Joshi**, I'm a **Senior AI Research Scientist & Applied ML Engineer** at BlinkIn
+## Akshay Joshi
 
-**Focus:** Multimodal AI, Vision-Language Models, LLM/VLM fine-tuning, RLHF/DPO alignment, RAG, semantic search, and agentic AI systems.
-  
-**Previous Affiliations:** AMD, Google, ETH Zürich, German Research Center for AI, and Universität des Saarlandes.
+Senior AI Research Scientist at BlinkIn
+
+Applied ML Engineer working on multimodal and vision-language intelligence.
+
+**Previously:** AMD, Google, ETH Zurich, DFKI, and Saarland University.
