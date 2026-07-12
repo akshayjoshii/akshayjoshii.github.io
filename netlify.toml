@@ -16,6 +16,12 @@
 [context.branch-deploy]
   command = "hugo --themesDir ../ --gc --minify -b $DEPLOY_PRIME_URL"
 
+[[redirects]]
+  from = "/analytics/*"
+  to = "https://monitor.akjo.tech/analytics/:splat"
+  status = 200
+  force = true
+
 [[headers]]
   for = "*.webmanifest"
   [headers.values]

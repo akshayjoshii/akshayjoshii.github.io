@@ -1,0 +1,9 @@
+# Add this route before the existing monitor.akjo.tech reverse_proxy directive.
+# It keeps the collector private on 127.0.0.1 while exposing a narrow path through Caddy.
+monitor.akjo.tech {
+    handle_path /analytics/* {
+        reverse_proxy 127.0.0.1:8787
+    }
+
+    reverse_proxy localhost:3001
+}

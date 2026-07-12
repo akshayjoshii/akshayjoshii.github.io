@@ -1,0 +1,14 @@
+{
+  "name": "akjo-analytics-collector",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modular, privacy-respecting event collector for akjo.tech",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  }
+}
