@@ -17,6 +17,18 @@
   command = "hugo --themesDir ../ --gc --minify -b $DEPLOY_PRIME_URL"
 
 [[redirects]]
+  from = "/files/akshay_joshi_cv.pdf"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/files/akshay_joshi_cv.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store, no-cache, max-age=0, must-revalidate"
+
+[[redirects]]
   from = "/analytics/*"
   to = "https://monitor.akjo.tech/analytics/:splat"
   status = 200
@@ -44,18 +56,6 @@
   status = 200
   force = true
 
-[[redirects]]
-  from = "https://cv.akjo.tech/*"
-  to = "https://akjo.tech/files/akshay_joshi_cv.pdf/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "http://cv.akjo.tech/*"
-  to = "http://akjo.tech/files/akshay_joshi_cv.pdf/:splat"
-  status = 200
-  force = true
-  
 [[redirects]]
   from = "https://code.akjo.tech/*"
   to = "https://github.com/akshayjoshii/:splat"
